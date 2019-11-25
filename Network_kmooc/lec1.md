@@ -167,7 +167,7 @@
 
 # 참고(Reference)
 
-> - k-mooc 네트워크 기초 강의 (성균관대 안성진교수)<br>
+> - k-mooc 네트워크 강의 (성균관대 안성진교수)<br>
 > - Data Communications and Networking , Behrouz A. Forouzan
 
 <!-- http://www.kmooc.kr/dashboard?status=end -->
