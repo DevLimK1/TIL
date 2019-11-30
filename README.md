@@ -1,5 +1,22 @@
 # TIL(Today I Learned)
 
+## [Algorithm]
+
+> ### [Queue](https://github.com/DevLimK1/TIL/tree/master/Algorithm/Queue)
+>
+> - #### [Queue_Baekjoon-10845](https://github.com/DevLimK1/TIL/blob/master/Algorithm/Queue/Queue_Baekjoon-10845.md)
+
+---
+
+## [Network]
+
+> ### [k-mooc 네트워크 강의 (안성진 교수)](https://github.com/DevLimK1/TIL/tree/master/Network_kmooc)
+>
+> - #### [01.네트워크의 개념](https://github.com/DevLimK1/TIL/blob/master/Network_kmooc/lec1.md)
+> - #### [02.스위칭과 다중접속 프로토콜](https://github.com/DevLimK1/TIL/blob/master/Network_kmooc/lec2.md)
+
+---
+
 ## [JAVA]
 
 > ### [개발자가 반드시 알아야 할 자바 성능 튜닝 이야기 (이상민 저)](https://github.com/DevLimK1/TIL/tree/master/%EC%9E%90%EB%B0%94%EC%84%B1%EB%8A%A5%ED%8A%9C%EB%8B%9D%EC%9D%B4%EC%95%BC%EA%B8%B0)
@@ -10,13 +27,6 @@
 >
 > - #### [ch1.자바 시작하기](https://github.com/DevLimK1/TIL/blob/master/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4/ch1.%EC%9E%90%EB%B0%94%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0.md)
 > - #### [ch2.제네릭](https://github.com/DevLimK1/TIL/blob/master/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4/ch13.%EC%A0%9C%EB%84%A4%EB%A6%AD.md)
-
-## [Network]
-
-> ### [k-mooc 네트워크 강의 (안성진 교수)](https://github.com/DevLimK1/TIL/tree/master/Network_kmooc)
->
-> - #### [01.네트워크의 개념](https://github.com/DevLimK1/TIL/blob/master/Network_kmooc/lec1.md)
-> - #### [02.스위칭과 다중접속 프로토콜](https://github.com/DevLimK1/TIL/blob/master/Network_kmooc/lec2.md)
 
 ---
 
