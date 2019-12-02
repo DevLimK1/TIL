@@ -120,6 +120,69 @@ public class Main {
 }
 ```
 
-# 참고
+**<Library .ver>**
+
+```java
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int cmdSize = sc.nextInt(); // 첫 줄 입력 사이즈
+        Queue<Integer> queue= new LinkedList<Integer>();
+
+        for(int k=0;k<cmdSize;k++){
+            String cmd=sc.next();
+            if(cmd.equals("push")){
+                int num=Integer.parseInt(sc.next());
+                queue.offer(num); //push하는 메소드
+            }else if(cmd.equals("front")){
+                if(queue.isEmpty()){
+                    System.out.println("-1");
+                }else{
+                    System.out.println(queue.peek()); //가장 먼저 보관한 값 단순 참조(꺼내지 않음)
+                }
+            }else if(cmd.equals("size")){
+                System.out.println(queue.size()); //큐에 들어있는 정수갯수 출력
+            }else if(cmd.equals("empty")){
+                if(queue.isEmpty()){
+                    System.out.println("1");
+                }else{
+                    System.out.println("0");
+                }
+            }else if(cmd.equals("pop")){
+                if(queue.isEmpty()){
+                    System.out.println("-1");
+                }else{
+                    System.out.println(queue.poll()); //가장 먼저 보관한 값 꺼내고 반환
+                }
+            }else if(cmd.equals("back")){ //맨 뒤 요소를
+                if(queue.isEmpty()){
+                    System.out.println("-1");
+                }else{
+                    System.out.println( ((LinkedList<Integer>) queue).peekLast()); //맨 뒤 요소 출력
+                }
+
+            }
+        }
+    }
+}
+```
+
+> - queue.offer(num) : 큐에 push하는 메소드
+> - queue.peek() : 맨 앞 요소 값 반환(꺼내지 않음)
+> - queue.size() : 큐에 들어있는 크기 반환
+> - queue.isEmpty(): 큐가 비어있는지 체크, 비어있으면 true, 아니면 false 반환
+> - ((LinkedList<Integer>) queue).peekLast() :링크드리스트에 있는 메소드로, 맨 마지막 요소 반환(꺼내지 않음)
+> - queue.poll() : 맨 앞 요소 꺼내고 반환
+>
+>   - poll() vs remove() : 큐가 비어있을 때 예외처리가 다른 것이 차이점이다.<br> `<poll>` ![img](image/queue_img4.JPG) `<remove>`![img](image/queue_img3.JPG)
+
+# 참고(Reference)
 
 > [code.plus 코드플러스 알고리즘](https://code.plus/course/41)
+
+<!-- 나중에 참고해볼 또 다른 풀이방법 -->
+<!-- https://blog.naver.com/PostView.nhn?blogId=yongyos&logNo=221455392340 -->
