@@ -1,5 +1,11 @@
 # TIL(Today I Learned)
 
+## [Scrap] : IT 신문기사, 블로그 등을 스크랩하여 기록
+
+> ### [Scrap](https://github.com/DevLimK1/TIL/tree/master/Scrap)
+>
+> - #### [191203scrap](https://github.com/DevLimK1/TIL/blob/master/Scrap/191203scrap.md)
+
 ## [Algorithm]
 
 > ### [Queue](https://github.com/DevLimK1/TIL/tree/master/Algorithm/Queue)
