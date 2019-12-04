@@ -47,14 +47,11 @@ public class Main {
         int cmdSize = sc.nextInt(); // 첫 줄 입력 사이즈
         sc.nextLine(); //nextInt()에서 발생하는 개행문자 제거
         ArrayDeque<Integer> queue = new ArrayDeque<Integer>(); //덱 라이브러리 선언
-        String line ;
-        String[] s ;
-        String cmd;
 
         for (int k = 0; k < cmdSize; k++) {
-            line = sc.nextLine(); //문자열 입력
-            s = line.split(" "); //스페이스로 문자열 구분해서 배열에 입력
-            cmd = s[0]; // cmd<-문자열 입력 부분
+           String line = sc.nextLine(); //문자열 입력
+           String[] s = line.split(" "); //스페이스로 문자열 구분해서 배열에 입력
+           String cmd = s[0]; // cmd<-문자열 입력 부분
 
             if (cmd.equals("push_front")) { //정수 x를 덱의 앞에 넣음
                 int num = Integer.parseInt(s[1]); //int로 형변환
