@@ -10,7 +10,8 @@
 
 > ### [Scrap](https://github.com/DevLimK1/TIL/tree/master/Scrap)
 >
-> - #### [191203scrap](https://github.com/DevLimK1/TIL/blob/master/Scrap/191203scrap.md)
+> - #### [191203Tue_scrap](https://github.com/DevLimK1/TIL/blob/master/Scrap/191203scrap.md)
+> - #### [191204Wed_scrap](https://github.com/DevLimK1/TIL/blob/master/Scrap/191204Wed_scrap.md)
 
 ---
 
