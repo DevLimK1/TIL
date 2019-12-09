@@ -1,4 +1,4 @@
-## [월마트, “고객님의 냉장고에 들어가겠습니다”(techNeedle 테크니들)](http://techneedle.com/archives/37942)
+## [월마트, “고객님의 냉장고에 들어가겠습니다”->techNeedle 테크니들](http://techneedle.com/archives/37942)
 
 - 월마트가 인홈(InHome) 식료품 배송 서비스를 시작
 
@@ -18,7 +18,7 @@
 >
 > 고객들에게 잠금장치, 실시간 스트리밍 등의 방법들은 신뢰성을 주기 위한 좋은 방안이지만 집 자체에 낯선 외부인이 들어온다는 것 자체가 불편한 고객들은 앱을 사용하기까지 망설여질 것이다.
 
-## [페이스북은 당신의 금융, 재무 상태를 페이스북 친구와 비교할 생각이다](http://techneedle.com/archives/37982)
+## [페이스북은 당신의 금융, 재무 상태를 페이스북 친구와 비교할 생각이다->techNeedle 테크니들](http://techneedle.com/archives/37982)
 
 - 페이스북이 2013년 출원하고 최근 승인받은 금융 특허는 개인 금융 관리 툴에 가까움
   - 개인 페이스북 사용자의 금융, 재무 내역을 다른 페이스북 사용자, 혹은 그룹과 비교
@@ -31,7 +31,7 @@
 > - 구글: 구글 파이낸스, 구글 페이
 > - 페이스북: 다른 거대 IT기업들이 핀테크 개발에 주력하는 모습을 보고 초조했던 것일까? 페이스북만의 금융 아이템은 무엇일지 기대가된다.
 
-## [모든 개발자가 알아야만 하는 SOLID 원칙 - 1편(SRP/OCP)](http://doublem.org/SOLID_SRP_OCP/)
+## [모든 개발자가 알아야만 하는 SOLID 원칙 - 1편(SRP/OCP)->doublem.org](http://doublem.org/SOLID_SRP_OCP/)
 
 - S: Single Responsibility Principle (단일책임원칙)
 
@@ -40,7 +40,7 @@
 - O: Open-Closed Principle (열린-닫힌 원칙)
   - 기존의 코드를 변경하지 않으면서 기능을 추가할 수 있도록 설계가 되어야 한다.
 
-## [모든 개발자가 알아야만 하는 SOLID 원칙 - 2편(LSP/ISP/DIP)](http://doublem.org/SOLID_LSP_ISP_DIP/)
+## [모든 개발자가 알아야만 하는 SOLID 원칙 - 2편(LSP/ISP/DIP)->doublem.org](http://doublem.org/SOLID_LSP_ISP_DIP/)
 
 - L : Liskov Substitution Principle (리스코프 치환원칙:LSP)
   - 하위 클래스는 반드시 상위클래스와 대체 가능 해야 한다.
