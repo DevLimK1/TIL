@@ -11,3 +11,8 @@
 >
 > - [ch1.자바 시작하기](https://github.com/DevLimK1/TIL/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4/ch1.%EC%9E%90%EB%B0%94%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0.md)
 > - [ch13.제네릭](https://github.com/DevLimK1/TIL/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4/ch13.%EC%A0%9C%EB%84%A4%EB%A6%AD.md)
+
+> ### 이펙티브자바(3판) (조슈아블로크 저)
+>
+> - [독서마라톤](https://github.com/DevLimK1/TIL/tree/master/%EB%8F%85%EC%84%9C%EB%A7%88%EB%9D%BC%ED%86%A4)
+>   - [이펙티브자바(3판)](https://github.com/DevLimK1/TIL/blob/master/%EB%8F%85%EC%84%9C%EB%A7%88%EB%9D%BC%ED%86%A4/%EC%9D%B4%ED%8E%99%ED%8B%B0%EB%B8%8C%EC%9E%90%EB%B0%943-E.md)
