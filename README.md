@@ -4,7 +4,8 @@
 - [Algorithm](#Algorithm)
 - [Network](#Network)
 - [JAVA](#JAVA)
-- [Servlet/JSP](#Servlet/JSP)
+- [Servlet&JSP](#Servlet&JSP)
+- [객체지향](#객체지향)
 
 ## [Scrap](https://github.com/DevLimK1/TIL/tree/master/Scrap)
 
@@ -45,15 +46,15 @@
 
 ---
 
-## [Servlet/JSP](https://github.com/DevLimK1/TIL/tree/master/Servlet-JSP)
+## [Servlet&JSP](https://github.com/DevLimK1/TIL/tree/master/Servlet-JSP)
 
 > ### Servlet/JSP (뉴렉처T)
 >
 > - [Servlet/JSP](https://github.com/DevLimK1/TIL/tree/master/Servlet-JSP/Servlet-JSP_newlecT)
 
-> ### 처음 해보는 Servlet&JSP(오정임 저)
+> ### 처음 해보는 Servlet/JSP(오정임 저)
 >
-> - [처음 해보는 Servlet&JSP](https://github.com/DevLimK1/TIL/tree/master/Servlet-JSP/%EC%B2%98%EC%9D%8C%ED%95%B4%EB%B3%B4%EB%8A%94%20Servlet%26JSP)
+> - [처음 해보는 Servlet/JSP](https://github.com/DevLimK1/TIL/tree/master/Servlet-JSP/%EC%B2%98%EC%9D%8C%ED%95%B4%EB%B3%B4%EB%8A%94%20Servlet%26JSP)
 
 <!--테이블 만들어주는 사이트:http://www.tablesgenerator.com/markdown_tables -->
 
