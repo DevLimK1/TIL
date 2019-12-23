@@ -8,21 +8,20 @@
 
 - **스택**을 이용해서 풀이가능
 - 커서를 기준으로 커서의 왼쪽 스택(left)와 오른쪽 스택(right)로 나눠서 문제를 풀 수 있다.
-- 예: abc|xyz(|는 커서)
-  ![img](image/editorimg3.JPG)
+- > 예: abc|xyz(|는 커서) <br> ![img](image/editorimg3.JPG)
 
-- L: 커서를 왼쪽으로 한 칸 옮김
-- abc|xyz -> ab|cxyz
-  ![img](image/editorimg4.JPG)
-- D: 커서를 오른쪽으로 한 칸 옮김
-- abc|xyz -> abcx|yz
-  ![img](image/editorimg5.JPG)
-- B: 커서를 왼쪽에 있는 문자를 삭제함
-- abc|xyz -> ab|xyz
-  ![img](image/editorimg6.JPG)
-- P $ : $를 커서 오른쪽에 추가하고 커서는 \$의 오른쪽에 위치함
-- abc|xyz -> abcd|xyz
-  ![img](image/editorimg7.JPG)
+- > L: 커서를 왼쪽으로 한 칸 옮김 <br>
+  > abc|xyz -> ab|cxyz <br> ![img](image/editorimg4.JPG)
+
+- > D: 커서를 오른쪽으로 한 칸 옮김<br>
+  > abc|xyz -> abcx|yz <br> ![img](image/editorimg5.JPG)
+
+- > B: 커서를 왼쪽에 있는 문자를 삭제함 <br>
+  > abc|xyz -> ab|xyz <br> ![img](image/editorimg6.JPG)
+
+- > P $ : $를 커서 오른쪽에 추가하고 커서는 \$의 오른쪽에 위치함 <br>
+  > abc|xyz -> abcd|xyz <br> ![img](image/editorimg7.JPG)
+
 - **링크드리스트**를 이용해서도 풀이 가능
 
 # 구현 소스(JAVA)
