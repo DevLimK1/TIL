@@ -11,11 +11,12 @@
 > #### [Stack](https://github.com/DevLimK1/TIL/tree/master/Algorithm/Stack)
 >
 > - [Stack_problem-collection : Stack 문제 풀이 모음](https://github.com/DevLimK1/TIL/blob/master/Algorithm/Stack/Stack_problem-collection.md)
-> - [baekjoon_1406_java : 에디터(Stack,LinkedList)](https://github.com/DevLimK1/TIL/blob/master/Algorithm/Stack/baekjoon_1406_java.md)
+> - [baekjoon_1406_java : 에디터(+LinkedList)](https://github.com/DevLimK1/TIL/blob/master/Algorithm/Stack/baekjoon_1406_java.md)
 >
 > #### [Queue](https://github.com/DevLimK1/TIL/tree/master/Algorithm/Queue)
 >
 > - [Queue_Baekjoon-10845 : 큐](https://github.com/DevLimK1/TIL/blob/master/Algorithm/Queue/Queue_Baekjoon-10845.md)
+> - [baekjoon_1158_java : 조세퍼스(+LinkedList)](https://github.com/DevLimK1/TIL/blob/master/Algorithm/Queue/baekjoon_1158_java.md)
 >
 > #### [Deque](https://github.com/DevLimK1/TIL/tree/master/Algorithm/Deque)
 >

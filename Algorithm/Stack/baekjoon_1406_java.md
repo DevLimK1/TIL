@@ -148,6 +148,8 @@ yxabc
     }
 ```
 
+<!-- https://gangzzang.tistory.com/entry/Java-Enumeration-Iterator-ListIterator List interface 참고하면 좋을듯-->
+
 # 참고(Reference)
 
 > [code.plus 코드플러스 알고리즘](https://code.plus/course/41)
