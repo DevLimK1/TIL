@@ -1,13 +1,17 @@
-- [ch1.자바 시작하기](https://github.com/DevLimK1/TIL/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4/ch1.%EC%9E%90%EB%B0%94%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0.md) update
+- [ch1.자바 시작하기 post](https://github.com/DevLimK1/TIL/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4/ch1.%EC%9E%90%EB%B0%94%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0.md)
 
   - 프로그래밍 언어란?
   - 자바란?
   - 자바 가상 기계(JVM)
 
-- [ch13.제네릭](https://github.com/DevLimK1/TIL/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4/ch13.%EC%A0%9C%EB%84%A4%EB%A6%AD.md) update
+- [ch13.제네릭 post](https://github.com/DevLimK1/TIL/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4/ch13.%EC%A0%9C%EB%84%A4%EB%A6%AD.md)
 
   - 왜 제네릭을 사용해야하는가?
   - 제네릭 타입(class<T>, interface<T>)
+
+- [ch7.상속 post](https://github.com/DevLimK1/TIL/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4/ch7.%EC%83%81%EC%86%8D.md)
+
+  - ch7.8 추상클래스 개념,용도,선언 [200103 update]
 
 ---
 
@@ -34,3 +38,8 @@
 
 - [x] ~~_'이것이 자바다' 2권 복습_~~ [2019-12-20]
   - Do: ch.15 컬렉션 프레임워크(p.722~742)
+
+---
+
+- [x] ~~_'이것이 자바다' youtube 신용권_~~ [2020-01-03]
+  - Do: 7.7 타입변환과 다형성(1~3) 강의 / [7.8추상 클래스 강의(post 작성)](https://github.com/DevLimK1/TIL/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4/ch7.%EC%83%81%EC%86%8D.md)
