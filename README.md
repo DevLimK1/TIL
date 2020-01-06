@@ -65,3 +65,11 @@
 > ### 객체지향의 사실과 오해 (조영호 저)
 >
 > - [독서마라톤](https://github.com/DevLimK1/TIL/blob/master/%EB%8F%85%EC%84%9C%EB%A7%88%EB%9D%BC%ED%86%A4/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98_%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4.md)
+
+---
+
+## [운영체제(OperatingSystem)](https://github.com/DevLimK1/TIL/tree/master/OperatingSystem)
+
+> ### 운영체제 (HPC-Lab 김덕수교수)
+>
+> - [운영체제](https://github.com/DevLimK1/TIL/tree/master/OperatingSystem/HPC-Lab)
