@@ -17,5 +17,5 @@
 
 ### [하드웨어와 소프트웨어에 숨어 있는 언어 CODE]
 
-> - [CODE\_찰스펫졸드]()
+> - [CODE\_찰스펫졸드](https://github.com/DevLimK1/TIL/blob/master/%EB%8F%85%EC%84%9C%EB%A7%88%EB%9D%BC%ED%86%A4/CODE.md)
 >   - 200111(토) p.115~143(29page)/ 29m / 206m
