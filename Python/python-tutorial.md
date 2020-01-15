@@ -109,3 +109,7 @@ print(round(a,2)) # a라는 숫자를 소숫점 2자리까지 남기고 반올�
 
 <!-- https://www.youtube.com/watch?v=A60Rgf3aGEw&list=PLz2iXe7EqJONlmYvSWwTGYftu4PcWGhXZ&index=3
 youtube SONOL, 파이썬 예제 강의 2강- 기초입력 -->
+
+# 참조(Reference)
+
+> 혼자 공부하는 파이썬(윤인성 저)
