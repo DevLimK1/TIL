@@ -4,3 +4,7 @@
 >
 > - [01.네트워크의 개념](https://github.com/DevLimK1/TIL/blob/master/Network/Network_kmooc/lec1.md)
 > - [02.스위칭과 다중접속 프로토콜](https://github.com/DevLimK1/TIL/blob/master/Network/Network_kmooc/lec2.md)
+
+> ### [후니의 쉽게 쓴 네트워킹 4판 개정 (진강훈 저)]
+>
+> - reading
