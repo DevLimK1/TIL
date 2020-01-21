@@ -39,37 +39,27 @@
 
 ## [JAVA](https://github.com/DevLimK1/TIL/tree/master/JAVA)
 
-> ### 자바 성능 튜닝 이야기 (이상민 저)
->
-> - [자바성능튜닝이야기](https://github.com/DevLimK1/TIL/tree/master/JAVA/%EC%9E%90%EB%B0%94%EC%84%B1%EB%8A%A5%ED%8A%9C%EB%8B%9D%EC%9D%B4%EC%95%BC%EA%B8%B0)
+> ### [자바 성능 튜닝 이야기 (이상민 저)](<(https://github.com/DevLimK1/TIL/tree/master/JAVA/%EC%9E%90%EB%B0%94%EC%84%B1%EB%8A%A5%ED%8A%9C%EB%8B%9D%EC%9D%B4%EC%95%BC%EA%B8%B0)>)
 
-> ### 이것이 자바다(신용권 저)
->
-> - [이것이자바다](https://github.com/DevLimK1/TIL/tree/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4)
+> ### [이것이 자바다(신용권 저)](https://github.com/DevLimK1/TIL/tree/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4%20%EC%9E%90%EB%B0%94%EB%8B%A4)
 
 ---
 
 ## [Network](https://github.com/DevLimK1/TIL/tree/master/Network)
 
-> ### k-mooc 네트워크 (안성진 교수)
->
-> - [k-mooc 네트워크](https://github.com/DevLimK1/TIL/tree/master/Network/Network_kmooc)
+> ### [k-mooc 네트워크 (안성진 교수)](<(https://github.com/DevLimK1/TIL/tree/master/Network/Network_kmooc)>)
+
+> ### [후니의 쉽게 쓴 네트워킹 4판 개정 (진강훈 저)](<(https://github.com/DevLimK1/TIL/tree/master/Network/%ED%9B%84%EB%8B%88%EC%9D%98_%EC%89%BD%EA%B2%8C_%EC%93%B4_%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%82%B9)>)
 
 ---
 
 ## [운영체제(OperatingSystem)](https://github.com/DevLimK1/TIL/tree/master/OperatingSystem)
 
-> ### 운영체제 (HPC-Lab 김덕수교수)
->
-> - [운영체제](https://github.com/DevLimK1/TIL/tree/master/OperatingSystem/HPC-Lab)
+> ### [운영체제 (HPC-Lab 김덕수교수)](<(https://github.com/DevLimK1/TIL/tree/master/OperatingSystem/HPC-Lab)>)
 
 ---
 
 ## [파이썬(Python)](https://github.com/DevLimK1/TIL/tree/master/Python)
-
-> ### 파이썬 언어
->
-> - [Python-tutorial(혼자 공부하는 파이썬)](https://github.com/DevLimK1/TIL/blob/master/Python/python-tutorial.md)
 
 ---
 
@@ -79,13 +69,9 @@
 
 ## [Servlet&JSP](https://github.com/DevLimK1/TIL/tree/master/Servlet-JSP)
 
-> ### Servlet/JSP (뉴렉처T)
->
-> - [Servlet/JSP](https://github.com/DevLimK1/TIL/tree/master/Servlet-JSP/Servlet-JSP_newlecT)
+> ### [Servlet/JSP (뉴렉처T)](<(https://github.com/DevLimK1/TIL/tree/master/Servlet-JSP/Servlet-JSP_newlecT)>)
 
-> ### 처음 해보는 Servlet/JSP(오정임 저)
->
-> - [처음 해보는 Servlet/JSP](https://github.com/DevLimK1/TIL/tree/master/Servlet-JSP/%EC%B2%98%EC%9D%8C%ED%95%B4%EB%B3%B4%EB%8A%94%20Servlet%26JSP)
+> ### [처음 해보는 Servlet/JSP(오정임 저)](<(https://github.com/DevLimK1/TIL/tree/master/Servlet-JSP/%EC%B2%98%EC%9D%8C%ED%95%B4%EB%B3%B4%EB%8A%94%20Servlet%26JSP)>)
 
 <!--테이블 만들어주는 사이트:http://www.tablesgenerator.com/markdown_tables -->
 
