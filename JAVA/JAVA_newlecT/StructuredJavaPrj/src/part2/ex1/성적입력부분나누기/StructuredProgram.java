@@ -2,11 +2,18 @@ package part2.ex1.성적입력부분나누기;
 
 import java.util.Scanner;
 
-//절차지향적인 프로그래밍 코드
+//구조적인 프로그래밍 코드
 public class StructuredProgram {
+	
+ 
+	/*
+	 * 전역 변수 만들어서 main에 있었던 변수를 
+	 * 성적입력 함수에도 변수를 공유해서 사용 가능
+	 */	
+	static int[] kors = new int[3]; 
+
 	public static void main(String[] args) {
 
-		int[] kors = new int[3];
 		int total = 0;
 		float avg; // 평균
 		int menu;
@@ -29,20 +36,9 @@ public class StructuredProgram {
 			switch (menu) {
 
 			case 1:
-				System.out.println("┌────────────────────┐");
-				System.out.println("│      성적 입력     │");
-				System.out.println("└────────────────────┘");
-				System.out.println();
-
-				for (int i = 0; i < 3; i++)
-					do {
-						System.out.printf("국어%d: ", i + 1);
-						kors[i] = scan.nextInt();
-
-						if (kors[i] < 0 || 100 < kors[i])
-							System.out.println("국어 성적은 0~100까지 범위 입력만 가능합니다.");
-					} while (kors[i] < 0 || 100 < kors[i]);
-				System.out.println("───────────────────────────────────────────────────────");
+				
+				성적입력();
+				
 				break;
 
 			case 2:
@@ -75,5 +71,27 @@ public class StructuredProgram {
 				break;
 			}
 		}
+	} //~main
+	
+	/*
+	 * switch 문 case 1에 있었던 코드를 함수로 분리시킴
+	 */
+	static void 성적입력() { 
+		Scanner scan = new Scanner(System.in);
+		System.out.println("┌────────────────────┐");
+		System.out.println("│      성적 입력     │");
+		System.out.println("└────────────────────┘");
+		System.out.println();
+
+		for (int i = 0; i < 3; i++)
+			do {
+				System.out.printf("국어%d: ", i + 1);
+				kors[i] = scan.nextInt();
+
+				if (kors[i] < 0 || 100 < kors[i])
+					System.out.println("국어 성적은 0~100까지 범위 입력만 가능합니다.");
+			} while (kors[i] < 0 || 100 < kors[i]);
+		System.out.println("───────────────────────────────────────────────────────");
 	}
+	
 }
