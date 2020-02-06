@@ -1,10 +1,13 @@
 # TIL(Today I Learned)
 
 - [독서마라톤](#독서마라톤)
-- [Scrap: IT 신문기사, 블로그 등을 스크랩](#Scrap)
+- [운영체제](<#운영체제(OperatingSystem)>)
+- [파이썬](<#파이썬(Python)>)
 - [Algorithm](#Algorithm)
+- [HTML&CSS](#HTML&CSS)
 - [Network](#Network)
 - [JAVA](#JAVA)
+- [Scrap: IT 신문기사, 블로그 등을 스크랩](#Scrap)
 - [Servlet&JSP](#Servlet&JSP)
 
 ---
@@ -27,6 +30,16 @@
 
 ---
 
+## [운영체제(OperatingSystem)](https://github.com/DevLimK1/TIL/tree/master/OperatingSystem)
+
+> ### [운영체제 (HPC-Lab 김덕수교수)](<(https://github.com/DevLimK1/TIL/tree/master/OperatingSystem/HPC-Lab)>)
+
+---
+
+## [파이썬(Python)](https://github.com/DevLimK1/TIL/tree/master/Python)
+
+---
+
 ## [Algorithm](https://github.com/DevLimK1/TIL/tree/master/Algorithm)
 
 > - [Stack](https://github.com/DevLimK1/TIL/tree/master/Algorithm/Stack)
@@ -34,6 +47,12 @@
 > - [Queue](https://github.com/DevLimK1/TIL/tree/master/Algorithm/Queue)
 >
 > - [Deque](https://github.com/DevLimK1/TIL/tree/master/Algorithm/Deque)
+
+---
+
+## [HTML&CSS]
+
+> ### [CSS-TIL]
 
 ---
 
@@ -50,16 +69,6 @@
 > ### [k-mooc 네트워크 (안성진 교수)](<(https://github.com/DevLimK1/TIL/tree/master/Network/Network_kmooc)>)
 
 > ### [후니의 쉽게 쓴 네트워킹 4판 개정 (진강훈 저)](<(https://github.com/DevLimK1/TIL/tree/master/Network/%ED%9B%84%EB%8B%88%EC%9D%98_%EC%89%BD%EA%B2%8C_%EC%93%B4_%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%82%B9)>)
-
----
-
-## [운영체제(OperatingSystem)](https://github.com/DevLimK1/TIL/tree/master/OperatingSystem)
-
-> ### [운영체제 (HPC-Lab 김덕수교수)](<(https://github.com/DevLimK1/TIL/tree/master/OperatingSystem/HPC-Lab)>)
-
----
-
-## [파이썬(Python)](https://github.com/DevLimK1/TIL/tree/master/Python)
 
 ---
 
