@@ -45,12 +45,12 @@ public class ExamProgram {
 	}
 
 	private static void input(Exam exam) {
+		Scanner scan = new Scanner(System.in);
 		System.out.println("┌────────────────────┐");
 		System.out.println("│      성적 입력     │");
 		System.out.println("└────────────────────┘");
 		System.out.println();
 
-		Scanner scan = new Scanner(System.in);
 		int kor,eng,math;
 		
 		do {
