@@ -13,14 +13,14 @@
 
 
 ### 형식명
-34 -> 정수 -> int(4byte)
-34L -> Long 정수-> long(8byte)
-123.4 -> 2배 실수 -> double (8byte)
-123.4f -> 실수 -> float (4byte)
-byte : 1byte
-short : 2byte
-boolean : 가변
-char : 2 byte
+34 -> 정수 -> int(4byte)  
+34L -> Long 정수-> long(8byte)  
+123.4 -> 2배 실수 -> double (8byte)  
+123.4f -> 실수 -> float (4byte)  
+byte : 1byte  
+short : 2byte  
+boolean : 가변  
+char : 2 byte 
 
 ###### (명시적인 형 변환)
 int x;
@@ -39,11 +39,11 @@ FileOutputStream out= new FileOutputStream();
 out.write();  // 출력버퍼객체명.write()
 ```
 
-OutputStream : 출력 스트림 개체명(타입명)
-out : 출력 스트림 객체(실체화)
-비유) 자전거 다롱이 
-자전거-> 타입명 
-다롱이 -> 타입의 실체화
+OutputStream : 출력 스트림 개체명(타입명)  
+out : 출력 스트림 객체(실체화)  
+비유) 자전거 다롱이   
+자전거-> 타입명   
+다롱이 -> 타입의 실체화  
 
 예제)
 ```java
@@ -82,18 +82,18 @@ out.print("Hello");
   15: 		fis.close();			
 ```
 
-> 1~ 5 : 선언문 (수행되지는 않음)
-> 8: Scanner 클래스로 fis 변수(C:\\workspace\\data.txt) 읽어들임
-> 9: nextInt() : 다음 공백이 있을 때까지 정수를 읽어옴
+> 1~ 5 : 선언문 (수행되지는 않음)  
+> 8: Scanner 클래스로 fis 변수(C:\\workspace\\data.txt) 읽어들임  
+> 9: nextInt() : 다음 공백이 있을 때까지 정수를 읽어옴  
 
-파일에서 문자 하나씩 읽어오는 도구 (자바에서 제공): FileInputStream 
-FIleInputStream fis=new FileInputStream("");
+파일에서 문자 하나씩 읽어오는 도구 (자바에서 제공): FileInputStream   
+FIleInputStream fis=new FileInputStream("");  
 fis.read();
 
-파일에서 문자 여러개씩(단어 또는 줄단위)로 읽어오는 도구
-Scanner scan= new Scanner(fis);   * 인자(버퍼)로 값을 넘겨줘야함
-int x= scan.nextInt();
-int y= scan.nextInt();
+파일에서 문자 여러개씩(단어 또는 줄단위)로 읽어오는 도구  
+Scanner scan= new Scanner(fis);   * 인자(버퍼)로 값을 넘겨줘야함  
+int x= scan.nextInt();  
+int y= scan.nextInt();  
 
 ---
 
@@ -116,7 +116,7 @@ int y= scan.nextInt();
 
 5.그 결과를 화면에 출력
 
-- System.out.printf("%d %d",x,y);
+- System.out.printf("%d %d",x,y);   
 
 
 
@@ -151,11 +151,16 @@ int y= scan.nextInt();
   12: 		out.println(result);
 ```
 
-> 1: FileInputStream 클래스를 사용하여 파일데이터를 읽은 fis 객체 생성 
-> 2: fis 객체의 데이터를 읽어올 Scanner 클래스 scan 객체 생성
-> 3~4: scan.nextInt(); 를 사용하여 띄어쓰기를 구분하여 변수 x, y에 대입
-> 7~8: scan.close(); fis.close(); 를 하여 메모리 누수를 방지
+> 1: FileInputStream 클래스를 사용하여 파일데이터를 읽은 fis 객체 생성   
+> 2: fis 객체의 데이터를 읽어올 Scanner 클래스 scan 객체 생성  
+> 3`~`4: scan.nextInt(); 를 사용하여 띄어쓰기를 구분하여 변수 x, y에 대입  
+> 7~8: scan.close(); fis.close(); 를 하여 메모리 누수를 방지  
 >
-> 10: FileOutputStream 클래스를 사용하여 파일데이터를 출력할 fos 객체 생성
-> 11: PrintStream 클래스를 사용하여 fos 객체의 데이터에 출력할 out 객체 생성
-> 12: out.println(result); 의 결과로 data.txt 에 결과값 그대로 저장됨
+> 10: FileOutputStream 클래스를 사용하여 파일데이터를 출력할 fos 객체 생성  
+> 11: PrintStream 클래스를 사용하여 fos 객체의 데이터에 출력할 out 객체 생성  
+> 12: out.println(result); 의 결과로 data.txt 에 결과값 그대로 저장됨  
+
+
+
+
+
