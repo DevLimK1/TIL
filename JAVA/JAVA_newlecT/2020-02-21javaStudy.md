@@ -81,7 +81,7 @@ PrintStream : 숫자를 써도 **문자열**로 변환해줌
 API　　　　　1. 연산자  
 　　　　　　  2.피연산자(표현방법, 값의형식, 변수선언)        
 　　　　　　  3.(while, if, ...)  
-　　　　　　 
+
 Console  
 ​      System.in  
 ​      System.out  
