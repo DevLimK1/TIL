@@ -21,3 +21,13 @@
 - FileOutputStream 과 FileInputStream의 이해
 - 이미지 파일을 읽기 위한 버퍼 객체 사용하여 읽고 쓰기
 - Scanner을 사용하여  next() ,nextInt() ,nextLine() 사용에 대한 이해
+
+[2020-02-24javaStudy (박용우T 오프라인수업)](https://github.com/DevLimK1/TIL/blob/master/JAVA/JAVA_newlecT/2020-02-24javaStudy.md)
+
+- 문자열의 특징
+- 자료형식(기본형) , 참조형식 개념
+- 형식변환
+
+[2020-02-25javaStudy (박용우T 오프라인수업)](https://github.com/DevLimK1/TIL/blob/master/JAVA/JAVA_newlecT/2020-02-25javaStudy.md)
+
+- 가장 큰 수 구하기, 두번째 큰 수 구하기 소스코드 구현
