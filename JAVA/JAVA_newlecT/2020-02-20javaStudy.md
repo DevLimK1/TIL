@@ -157,8 +157,8 @@ int y= scan.nextInt();
 
 > 1: FileInputStream 클래스를 사용하여 파일데이터를 읽은 fis 객체 생성   
 > 2: fis 객체의 데이터를 읽어올 Scanner 클래스 scan 객체 생성  
-> 3~4: scan.nextInt(); 를 사용하여 띄어쓰기를 구분하여 변수 x, y에 대입  
-> 7~8: scan.close(); fis.close(); 를 하여 메모리 누수를 방지  
+> 3`~`4: scan.nextInt(); 를 사용하여 띄어쓰기를 구분하여 변수 x, y에 대입  
+> 7`~`8: scan.close(); fis.close(); 를 하여 메모리 누수를 방지  
 >
 > 10: FileOutputStream 클래스를 사용하여 파일데이터를 출력할 fos 객체 생성  
 > 11: PrintStream 클래스를 사용하여 fos 객체의 데이터에 출력할 out 객체 생성  
