@@ -1,3 +1,20 @@
+
+
+---
+
+##  [문법]
+
+- char[] chArr, String[] strArr 등의 배열의 길이는 chArr.length; 
+- String str 문자열의 길이는 str.length()  --> String은 클래스라서 str.length(); 호출
+
+
+
+---
+
+## [알고리즘]
+
+
+
 ### <버블 정렬>
 
 ```java
@@ -40,7 +57,7 @@ public class BubbleSort {
 
 ```
 
-// 자바의 정석 3판 p.201 참조
+<!--자바의 정석 3판 p.201 참조-->
 
 ### <빈도수 구하기>
 
@@ -80,7 +97,7 @@ public class ArrayEx11_빈도수구하기 {
 9의 개수: 0
 ```
 
-//자바의 정석 3판 p.204 참조
+<!--자바의 정석 3판 p.204 참조-->
 
 ### <16진수 -> 2진수 변환>
 
@@ -109,6 +126,10 @@ public class ArrayEx11_빈도수구하기 {
   22: 	}
   23: }
   24: 
+
+실행결과:
+hex: CAFE
+binary: 1100101011111110
 ```
 ```java
 16: resultString+=binary[hex[i]-'A'+10];
@@ -118,8 +139,10 @@ public class ArrayEx11_빈도수구하기 {
     ->resultString+= "1100";
 ```
 
-//java 정석 3판 p.208 참고
+<!--java 정석 3판 p.208 참고-->
 
-- char[] chArr, String[] strArr 등의 배열의 길이는 ch.length 
-- String str 문자열의 길이는 str.length()  --> String은 클래스라서 length() 호출
 
+
+> 참고(Reference)
+>
+> - 자바의 정석(3판)
