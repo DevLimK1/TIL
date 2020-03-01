@@ -141,7 +141,7 @@ binary: 1100101011111110
 
 > 참고(Reference)
 >
-> - 자바의 정석(3판)
+> - 자바의 정석(3판) 
 
 
 
@@ -275,3 +275,93 @@ public class Test {
 평균 : 83.33 점 
 학점 : B
 ```
+
+
+
+### <빙고>
+
+: 빙고판을 만들고 입력받은 숫자를 빙고판에서 지운다. (결과에서는 지우는 것 대신 0으로 변환)
+
+```java
+	final int SIZE = 5; // 빙고판 사이즈
+		int x = 0, y = 0, num = 0;
+
+		int[][] bingo = new int[SIZE][SIZE];
+		Scanner scanner = new Scanner(System.in);
+
+		// 배열의 모든 요소를 1부터 SIZE*SIZE까지의 숫자로 초기화
+		// 1 2 3 4 5
+		// 6 7 8 9 10
+		// 11 12 13 14 15
+		// 16 17 18 19 20
+		// 21 22 23 24 25
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				bingo[i][j] = i * SIZE + j + 1;
+			} // end for j
+		} // end for i
+
+		// 배열에 저장된 값을 뒤섞는다.
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				x = (int) (Math.random() * SIZE); //0~SIZE index 랜덤으로 저장
+				y = (int) (Math.random() * SIZE); //0~SIZE index 랜덤으로 저장
+
+				// bingo[i][j]와 임의로 선택된 값(bingo[x][y])을 바꾼다.
+				int tmp = bingo[i][j];
+				bingo[i][j] = bingo[x][y];
+				bingo[x][y] = tmp;
+			}
+		}
+
+		do {
+			for (int i = 0; i < SIZE; i++) {  //빙고판 출력
+				for (int j = 0; j < SIZE; j++) {
+					System.out.printf("%2d ", bingo[i][j]);
+				}
+				System.out.println();
+			} // end for i
+			System.out.println();
+
+			System.out.printf("1~%d의 숫자를 입력하세요.(종료:0)>", SIZE * SIZE);
+			String tmpString = scanner.nextLine();// 화면 입력 내용
+			num = Integer.parseInt(tmpString); // 숫자로 변환
+
+			// 입력받은 숫자와 같은 숫자가 저장된 요소를 찾아서 0을 저장
+			outer: for (int i = 0; i < SIZE; i++) {
+				for (int j = 0; j < SIZE; j++) {
+					if (bingo[i][j] == num) {
+						bingo[i][j] = 0;
+						break outer; //2중 반복문을 벗어남
+					} // end if bingo[i][j]==num
+
+				} // end for j
+			} // end for i
+
+		} while (num!=0);
+
+실행결과:
+ 8 12  3 23 13 
+15 24 21 19  6 
+ 5 11 14 10  7 
+ 9 17 16  2 18 
+ 1 22  4 20 25 
+
+1~25의 숫자를 입력하세요.(종료:0)>8
+ 0 12  3 23 13 
+15 24 21 19  6 
+ 5 11 14 10  7 
+ 9 17 16  2 18 
+ 1 22  4 20 25 
+
+1~25의 숫자를 입력하세요.(종료:0)>3
+ 0 12  0 23 13 
+15 24 21 19  6 
+ 5 11 14 10  7 
+ 9 17 16  2 18 
+ 1 22  4 20 25 
+```
+
+> 참고(Reference)
+>
+> - 자바의 정석(3판)
