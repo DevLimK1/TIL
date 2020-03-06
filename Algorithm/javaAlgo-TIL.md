@@ -4,13 +4,18 @@
 
 - [빈도수 구하기](#빈도수-구하기) : 배열에 저장되어 있는 요소의 빈도수 구하기
 
-- [16진수 -> 2진수 변환](#16진수-`-`>-2진수-변환)
+- [16진수->2진수 변환](#16진수->2진수-변환)
 
 - [성적 출력 프로그램](#성적-출력-프로그램) : 유효성검사有
 
 - [빙고](#빙고) : 빙고판을 만들고 입력받은 숫자를 빙고판에서 지운다. (실행결과에서는 지우는 것 대신 0으로 변환) (2차원배열)
 
 - [모든 정수들 한칸씩 옆으로 Shift하기](#모든-정수들-한칸씩-옆으로-Shift하기) : n개의 정수를 입력받아 순서대로 배열에 저장한다. 그런 다음 모든 정수들을 한칸씩 오른쪽으로 shift한다. 마지막 정수는 배열의 첫 칸으로 이동한다.
+
+- [소수구하기](#소수구하기) : 소수 정의 : 약수가 1과 자기 자신만 있는 자연수
+- [중복된 정수쌍의 개수 구하기](#중복된-정수쌍의-개수-구하기): 입력받은 정수들 중에서 중복된 쌍의 개수를 출력해라.
+- [연속된 수들의 합의 최대값 구하기](#연속된-수들의-합의-최대값-구하기):0개 이상의 연속된 정수들을 더하여 얻을 수 있는 최대값을 출력
+- [입력될 때마다 오름차순 정렬](#입력될-때마다-오름차순-정렬): 정수를 하나씩 입력받을 때 마다 현재까지 입력된 정수들을 오름차순으로 정렬해서 출력
 
 ---
 
@@ -112,7 +117,7 @@ public class ArrayEx11_빈도수구하기 {
 
 <!--자바의 정석 3판 p.204 참조-->
 
-### <16진수 -> 2진수 변환>
+### <16진수->2진수 변환>
 
 ```java
    1: public class ArrayEx13_radix16to2 {
@@ -402,8 +407,8 @@ public class Test {
   16: 			System.out.print(arr[i]+" ");
 
 실행결과1)
-10
-1 2 3 4 5 6 7 8 9 10
+10 //입력
+1 2 3 4 5 6 7 8 9 10 //입력
 10 1 2 3 4 5 6 7 8 9
 
 실행결과2)
@@ -415,3 +420,222 @@ public class Test {
 > 10`~` 13 : 코드의 핵심!  
 > 맨 마지막 배열 요소를 임시 변수에 저장한 후, 나머지 배열 요소를 모두 오른쪽으로 이동시킨 후에
 > 임시변수에 저장했던 요소를 맨 첫 칸에 저장시킨다.
+
+### <소수구하기>
+
+소수 정의 : 약수가 1과 자기 자신만 있는 자연수
+
+```java
+
+		int endNum=30;
+		for (int num = 2; num <= endNum; num++) {
+			boolean isPrime = true;
+
+			// Sol1) break 활용
+//		for(int i=2;i<=num/2;i++) {
+//			if(num%i==0) {
+//				isPrime=false;
+//				break;
+//			}
+//		}
+
+			// Sol2) for문 안에 isPrime 활용
+//			for (int i = 2; i <= num / 2 && isPrime; i++) // isPrime이 false 되면 반복문 빠져나감
+//				if (num % i == 0)  //나누어 떨어지면 false(소수가 아님)
+//					isPrime = false;
+
+			//sol3) for문 안에 제곱근을 활용 (i*i<=num)
+			for (int i = 2; i*i <= num && isPrime; i++) // isPrime이 false 되면 반복문 빠져나감
+				if (num % i == 0)
+					isPrime = false;
+
+			if (isPrime)
+				System.out.printf("%d는 소수%n", num);
+		} //end for num
+
+실행결과) //endNum=30 일 때, 즉 30까지의 소수구하기
+2는 소수
+3는 소수
+5는 소수
+7는 소수
+11는 소수
+13는 소수
+17는 소수
+19는 소수
+23는 소수
+29는 소수
+
+```
+
+### <중복된 정수쌍의 개수 구하기>
+
+: 입력받은 정수들 중에서 중복된 쌍의 개수를 출력해라.
+
+```java
+	Scanner scanner=new Scanner(System.in);
+		int size=scanner.nextInt(); //정수 갯수 입력
+
+		int[] arr=new int[size];// 정수 갯수만큼 배열 생성
+
+		for(int i=0;i<size;i++) // 배열에 넣을 요소 입력
+			arr[i]=scanner.nextInt();
+
+		scanner.close();
+
+		int count=0;
+		for(int i=0;i<size-1;i++) {
+			for(int j=i+1;j<size;j++) { //i<j의 조건(j=i+1)이 성립해야함
+				if(arr[i]==arr[j]) {
+					System.out.printf("i가 %d, j가 %d (%d,%d)%n",i,j,arr[i],arr[j]);
+					count++;
+
+				}
+			}
+		}
+
+		System.out.println("쌍의 총 개수: "+count);
+
+실행결과)
+6 //입력
+2 4 2 4 5 2 //입력
+i가 0, j가 2 (2,2)
+i가 0, j가 5 (2,2)
+i가 1, j가 3 (4,4)
+i가 2, j가 5 (2,2)
+쌍의 총 개수: 4
+
+```
+
+### <연속된 수들의 합의 최대값 구하기>
+
+: 0개 이상의 연속된 정수들을 더하여 얻을 수 있는 최대값을 출력
+
+```java
+Scanner scanner=new Scanner(System.in);
+		int size=scanner.nextInt(); //정수 갯수 입력
+
+		int[] arr=new int[size];// 정수 갯수만큼 배열 생성
+
+		for(int i=0;i<size;i++) // 배열에 넣을 요소 입력
+			arr[i]=scanner.nextInt();
+
+		scanner.close();
+
+		int maxSum=0;
+		for(int i=0;i<size;i++) {//합계 시작위치
+			int sum=0;
+			for(int j=i;j<size;j++) { // i~size-1까지의 합
+				sum+=arr[j];
+				if(sum>maxSum) { //합계를 더할 때 마다 비교해서 최대값 구하기
+					maxSum=sum;
+				}
+			} //end for j
+		}//end for i
+
+		System.out.println("연속된 수들의 합의 최대값: "+maxSum);
+
+실행결과)
+6
+-2 3 4 5 -1 10
+연속된 수들의 합의 최대값: 21
+```
+
+### <입력될 때마다 오름차순 정렬>
+
+:정수를 하나씩 입력받을 때 마다 현재까지 입력된 정수들을 오름차순으로 정렬해서 출력한다.
+
+```java
+Scanner scanner=new Scanner(System.in);
+		int size=scanner.nextInt();
+		int[] arr=new int[size];
+
+		for(int i=0;i<size;i++) { //i는 현재까지 입력한 값의 갯수를 나타낸다고 봐도 됨
+			int tmp=scanner.nextInt(); //입력받은 수 임시변수에 저장
+			int j=i-1;
+			while(j>=0&&arr[j]>tmp) { //j index가 0보다 크거나 같고 입력값보다 크면
+				arr[j+1]=arr[j];
+				j--;
+			}
+			arr[j+1]=tmp;
+
+			for(int k=0;k<=i;k++) {
+				System.out.print(arr[k]+" ");
+			}
+			System.out.println();
+		}
+		scanner.close();
+
+실행결과)
+5 //입력
+1 //입력
+1
+2 //입력
+1 2
+10 //입력
+1 2 10
+-2 //입력
+-2 1 2 10
+3 //입력
+-2 1 2 3 10
+
+```
+
+### <file에서 데이터입력받아서 버블정렬해서출력>
+
+```java
+   1: public class Code20_file읽어와서이름정렬해서출력 {
+   2: 	static String[] nameStrings=new String[100];
+   3: 	static String[] numberStrings=new String[100];
+   4: 	static int count=0;
+   5:
+   6: 	public static void main(String[] args) {
+   7:
+   8:
+   9: 		try {
+  10: 			Scanner scanner=new Scanner(new File("input.txt"));//input.txt에서 데이터 읽어올 객체 생성
+  11:
+  12: 			while(scanner.hasNext()) {
+  13: 				nameStrings[count]=scanner.next();
+  14: 				numberStrings[count]=scanner.next();
+  15: 				count++;
+  16: 			}
+  17:
+  18: 			scanner.close();
+  19: 		}
+  20: 		catch (FileNotFoundException e) {
+  21: 			System.out.println("No File");
+  22: 			System.exit(0);
+  23: 		}
+  24:
+  25: 		bubbleSort();
+  26:
+  27: 		for(int i=0;i<count;i++) {
+  28: 			System.out.println(nameStrings[i]+" "+numberStrings[i]);
+  29: 		}
+  30:
+  31: 	} //end main
+  32:
+  33: 	static void bubbleSort() { //버블정렬
+  34: 		for(int i=count-1;i>0;i--) {
+  35: 			for(int j=0;j<i;j++) {
+  36: 				if(nameStrings[j].compareToIgnoreCase(nameStrings[j+1])>0) {//양수라면 nameStrings[j]가 사전식 순서에서 뒤에 위치
+  37: 					String string=nameStrings[j]; //이름 swap
+  38: 					nameStrings[j]=nameStrings[j+1];
+  39: 					nameStrings[j+1]=string;
+  40:
+  41: 					string=numberStrings[j]; //번호 swap
+  42: 					numberStrings[j]=numberStrings[j+1];
+  43: 					numberStrings[j+1]=string;
+  44: 				}//end if
+  45:
+  46: 			}//end for j
+  47: 		}// end for i
+  48:
+  49: 	} //end bubbleSort()
+  50: }
+```
+
+> (문법사항 체크 √)
+>
+> - compareTo : 두 문자열을 사전순으로 비교하는 메소드(차이값 int를 반환)
+> - compareToIgnoreCase : 대소문자 구분없이 두 문자열을 사전순으로 비교하는 메소드(차이값 int를 반환)
