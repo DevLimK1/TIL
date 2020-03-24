@@ -21,10 +21,17 @@ public class Fighter implements Movable{
 	private double dx; //목적지 위치
 	private double dy;
 	
+	private int d; //방향을 나타내는 변수
+	
 	private int speed;
 	private int width;
 	private int height;
 	private int imgIndex;
+	
+	private static final int N=1;
+	private static final int E=2;
+	private static final int S=4;
+	private static final int W=8;
 	
 	
 	static { //함수 호출과 상관없이 프로그램이 실행되면서 한번 초기화됨 
@@ -54,6 +61,37 @@ public class Fighter implements Movable{
 	public void draw(Graphics g) { //그림이 그려질 객체는 다 포함되어야 할 메소드
 //		g.drawImage(image, 300, 600, 300+width, 600+height, 
 //				0, 0, 64, 64, ShootingCanvas.getInstance());ㅇ
+		
+		if ((d & W) == W) { //왼쪽키가 눌림
+			x-=speed;
+			if(imgIndex>0)
+				imgIndex--;
+			if(x<0)
+				x=0;
+		}
+
+		if ((d & E) == E) { //오른쪽키가 눌림
+			x+=speed;
+			if(imgIndex<6)
+				imgIndex++;
+			if(x>Space.getWidth())
+				x=Space.getWidth();
+		}
+
+		if ((d & N) == N) { //위쪽키가 눌림
+			y-=speed;
+			if(y<0)
+				y=0;
+		}
+
+		if ((d & S) == S) { //아래키가 눌림
+			y+=speed;
+			if(y>650)
+				y=650;
+			
+		}
+		System.out.println(x);
+		System.out.println(y);
 		int offsetX = width / 2; // 전투기이미지의 x축 중심점 이동위해서 선언
 		int offsetY = height / 2; // 전투기이미지의 y축 중심점 이동위해서 선언
 		int dx1 = (int) (x - offsetX);
@@ -106,36 +144,6 @@ public class Fighter implements Movable{
 			
 	}
 
-	public void moveLeft() {
-		x-=speed;
-		if(imgIndex>0)
-			imgIndex--;
-		if(x<0)
-			x=0;
-	}
-
-	public void moveUp() {
-		y-=speed;
-		
-		if(y<0)
-			y=0;
-	}
-	
-	public void moveRight() {
-		x+=speed;
-		if(imgIndex<6)
-			imgIndex++;
-		if(x>Space.getWidth())
-			x=Space.getWidth();
-	}
-	
-	public void moveDown() {
-		y+=speed;
-		
-		if(y>650)
-			y=650;
-		
-	}
 
 	public Missile fire() {
 		// TODO Auto-generated method stub
@@ -146,5 +154,9 @@ public class Fighter implements Movable{
 		imgIndex=3;
 	}
 
+	public void move(int d) {
+		this.d=d;
+	}
 	
 }
+

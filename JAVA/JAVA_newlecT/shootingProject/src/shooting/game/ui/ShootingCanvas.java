@@ -7,6 +7,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 import shooting.game.item.Enemy;
 import shooting.game.item.Fighter;
@@ -20,50 +21,45 @@ public class ShootingCanvas extends Canvas {
 	
 	private Space space;
 	private Fighter fighter;
-	private Enemy[] enemy=new Enemy[10];
+	private Enemy enemy;
 	private Movable[] items; // space,fighter,enemy의
 	// moving하는 것에 대해 일괄 관리할 수 있는 추상화클래스(Movable 클래스)로 관리한다.
 
+	private int max;
 	private int unitIndex = 0;
+	private int countdown; //적기 랜덤 출현
 
+	private static final int N=1;
+	private static final int E=2;
+	private static final int S=4;
+	private static final int W=8;
+	
+	private int d=0;
+	
+	//게임을 구성하는 속성은 아님.. 다만 효율성을 위한 꼼수?
+	private Random random;
+	
 	private static ShootingCanvas shootingCanvas;
 
 	public ShootingCanvas() {
 
 		shootingCanvas = this;
 		
+		random=new Random();
+		countdown=random.nextInt(120)+60;
+		
 		fighter = new Fighter();
 		space = new Space();
-		items = new Movable[100];
-
-		for(int i=0;i<enemy.length;i++) { //적기 10개 만들기
-			enemy[i]=new Enemy();
-		}
+		enemy=new Enemy();
 		
+		max=100;
+		items = new Movable[max];
+
 		// 나타내는 순서가 중요함(계층별로 보인다고 생각)
 		items[unitIndex++] = space;
 		items[unitIndex++] = fighter;
-//		items[unitIndex++] = enemy;
+		items[unitIndex++] = enemy;
 		
-
-//		this.addMouseMotionListener(new MouseMotionListener() {
-//
-//			@Override
-//			public void mouseMoved(MouseEvent e) {// 마우스 움직일 때 좌표
-//				System.out.printf("mouseMoved: (%d,%d)%n", e.getX(), e.getY());
-//				if (startButton.contains(e.getX(), e.getY()))
-//					startButton.state(StartButton.STATE_ON);
-//		
-//				else {
-//					startButton.state(StartButton.STATE_OFF);
-//				}
-//			}
-//
-//			@Override
-//			public void mouseDragged(MouseEvent e) {
-//
-//			}
-//		});
 
 		this.addMouseListener(new MouseAdapter() { // MouseAdapter:더미 클래스
 
@@ -91,16 +87,16 @@ public class ShootingCanvas extends Canvas {
 				System.out.printf("pressed %d\n", e.getKeyCode());
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
-					fighter.moveLeft();
+					d|=W;
 					break;
 				case KeyEvent.VK_UP:
-					fighter.moveUp();
+					d|=N;
 					break;
 				case KeyEvent.VK_RIGHT:
-					fighter.moveRight();
+					d|=E;
 					break;
 				case KeyEvent.VK_DOWN:
-					fighter.moveDown();
+					d|=S;
 					break;
 				case KeyEvent.VK_SPACE:
 					Missile msMissile = fighter.fire();
@@ -109,10 +105,29 @@ public class ShootingCanvas extends Canvas {
 				default:
 					break;
 				}
+				fighter.move(d);
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
+				
+				
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_LEFT:
+					d&=~W;
+					break;
+				case KeyEvent.VK_UP:
+					d&=~N;
+					break;
+				case KeyEvent.VK_RIGHT:
+					d&=~E;
+					break;
+				case KeyEvent.VK_DOWN:
+					d&=~S;
+					break;
+				}
+				
+				fighter.move(d);
 				fighter.standardImage();
 			}
 
@@ -155,9 +170,35 @@ public class ShootingCanvas extends Canvas {
 			items[i].update(); // 화면의 이동시 변경 후 업데이트 (쓰레드에서 호출됨)
 		}
 		
-//		for (int i = 0; i < enemy.length; i++) {
-//			enemy[i].update(); // 화면의 이동시 변경 후 업데이트 (쓰레드에서 호출됨)
-//		}
+//		System.out.println(countdown);
+		
+		if(--countdown == 0) {
+			
+			enemy=new Enemy();
+			
+			// items 개수 늘려주는 코드 추가
+//			if(items의 개수가 모자라다면) {
+//				늘려주고
+//			}
+			
+			if(unitIndex>=max) {
+				Movable[] temp=new Movable[max+50];
+//				temp<-items;
+				for(int i=0;i<unitIndex;i++) 
+				{
+					temp[i]=items[i];
+				}
+				
+				items=temp;
+				max+=50;
+			}
+			
+			items[unitIndex++]=enemy;
+			random=new Random();
+			countdown=random.nextInt(120)+60;
+		}
+		
+		
 	}
 
 	
@@ -182,16 +223,6 @@ public class ShootingCanvas extends Canvas {
 			items[i].draw(gg);
 		}
 		
-		for (int i = 0; i < enemy.length; i++) {
-//			items[i].draw(g); //화면 버퍼 g를 넘겨준다.
-//			try {
-//				Thread.sleep(3000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			enemy[i].draw(gg);
-		}
 
 		// 모든 그림이 다 그려지면? 이제 한번만,,,화면 버퍼에 그리자
 		g.drawImage(buf, 0, 0, this);

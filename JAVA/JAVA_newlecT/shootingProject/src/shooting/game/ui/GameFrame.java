@@ -40,15 +40,19 @@ public class GameFrame extends Frame {
 		//this를 쓸 수 없음
 	}
 	
-	public void changeCanvas(int canvasId) {
+	public void changeCanvas(int canvasId) { //화면 전환
+//		if(canvasId==1) {}
 		this.remove(introCanvas);
 		
 		shootingCanvas.start();
+		
 		this.add(shootingCanvas);
 		this.revalidate(); //윈도우를 다시 재배치 하는 작업(Canvas 변경 후 화면 다시 구성하기 이게 없으면 화면 전화해서 나오지가 않음)
 	
 		shootingCanvas.setFocusable(true);
 		shootingCanvas.requestFocus(); //키보드 입력을 위한
+		
+		
 	}
 
 }

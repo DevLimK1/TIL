@@ -14,11 +14,16 @@ import shooting.game.ui.ShootingCanvas;
 
 public class Enemy implements Movable{
 	private static Image image;
-	private int x;
-	private int y;
+	private double x;
+	private double y;
+	private double vx; //이동할 단위 위치
+	private double vy;
+	private double dx; //목적지 위치
+	private double dy;
 	private int width;
 	private int height;
 	
+	private int timeout;
 	private int imgIndex;
 	private int speed;
 	
@@ -34,15 +39,16 @@ public class Enemy implements Movable{
 	}
 	
 	public Enemy() { //Enemy Constructor
-		
+		timeout=3;
+		Random random=new Random();
 		width=(image.getWidth(ShootingCanvas.getInstance()))/12; //ImageObserver(this)는 Canvas 클래스내에서 혹은 상속받은 상태에서 가능
 		height=image.getHeight(ShootingCanvas.getInstance());
 		
+		height=34;
 		
-		Random random=new Random();
-		
-		x=random.nextInt(200)+10;
+		x=random.nextInt(360)+1;
 		y=200;
+
 		speed=1;
 		imgIndex=0;
 //		System.out.println("enemy width: "+ width);
@@ -71,8 +77,17 @@ public class Enemy implements Movable{
 		
 	}
 	
-	public void move() {
+	public void move(double dx, double dy) {
+		this.dx=dx; //목표점이 됨
+		this.dy=dy;
+//		vx=(dx-x)/15; //15step에 동일하게 해당 위치에 도착한다. 즉, 멀리에 클릭하면 빠르게 움직이고, 가까이서 클릭하면 느리게 움직인다.
+//		vy=(dy-y)/15;
 		
+		double w=dx-x;
+		double h=dy-y;
+		double d=Math.sqrt(w*w+h*h);
+		vx=w/d * speed;
+		vy=h/d * speed;
 	}
 	
 	public Bullet fire() {
@@ -85,8 +100,13 @@ public class Enemy implements Movable{
 	}
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		
+		// this.timeout=3;
+		if (timeout-- == 0) {
+			imgIndex++;
+			imgIndex %= 12; // 0~11까지 -> 이미지 인덱스가 바뀌면서 ufo가 회전하게됨
+			timeout=3;
+		}
 	}
 	
 }
