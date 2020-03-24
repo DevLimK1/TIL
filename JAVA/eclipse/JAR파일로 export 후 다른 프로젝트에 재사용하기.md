@@ -7,4 +7,3 @@ JavaPrj -> export ->JAR file(컴파일되고 난 후의 class파일(소스코드
 (사용하고자 할 때)
 
 해당 프로젝트 Build path->Configure Build path-> libraries탭-> add external JARs 에서 선택
-
