@@ -1,4 +1,4 @@
-package shooting.game;
+package shooting.game.item;
 
 import java.awt.Image;
 

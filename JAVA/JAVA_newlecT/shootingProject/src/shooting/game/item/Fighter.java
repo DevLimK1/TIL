@@ -1,4 +1,4 @@
-package shooting.game;
+package shooting.game.item;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import shooting.game.ui.ShootingCanvas;
 
 public class Fighter implements Movable{
 	//부모(GameUnit)로부터 물려 받는 속성
@@ -23,6 +25,7 @@ public class Fighter implements Movable{
 	private int width;
 	private int height;
 	private int imgIndex;
+	
 	
 	static { //함수 호출과 상관없이 프로그램이 실행되면서 한번 초기화됨 
 		try {
@@ -78,8 +81,8 @@ public class Fighter implements Movable{
 
 	public void update() { // 애니매이션 필요한 애들은 있어야하는 메소드, update가 항상 바꾸는 역할을 한다
 		//범위 블럭을 넘어서려면 벡터를 0으로 해야한다.(더이상 움직이지않게)
-		System.out.printf("(dx,x) : (%f,%f)",dx,x);
-		System.out.printf("(dy,y) : (%f,%f)\n",dy,y);
+//		System.out.printf("(dx,x) : (%f,%f)",dx,x);
+//		System.out.printf("(dy,y) : (%f,%f)\n",dy,y);
 		
 		if (
 				(dx - speed <= x && x <= dx + speed) && 

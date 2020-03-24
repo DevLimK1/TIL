@@ -1,4 +1,4 @@
-package shooting.game;
+package shooting.game.item;
 
 import java.awt.Graphics;
 
@@ -7,5 +7,7 @@ public interface Movable { //일괄 참조와 일괄 사용해야하는 클래�
 	public abstract void update();
 
 	public abstract void draw(Graphics g);
+
+	
 
 }

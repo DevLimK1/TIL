@@ -1,4 +1,4 @@
-package shooting.game;
+package shooting.game.item;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+
+import shooting.game.ui.ShootingCanvas;
 
 //랜덤으로 띄우기 구현하기
 
@@ -20,7 +22,6 @@ public class Enemy implements Movable{
 	private int imgIndex;
 	private int speed;
 	
-//	private Enemy enemy;
 	
 	static { //함수 호출과 상관없이 프로그램이 실행되면서 한번 초기화됨 
 		try {
@@ -29,17 +30,20 @@ public class Enemy implements Movable{
 			e.printStackTrace();
 		}
 		
+		
 	}
 	
 	public Enemy() { //Enemy Constructor
-//		enemy=this;
 		
 		width=(image.getWidth(ShootingCanvas.getInstance()))/12; //ImageObserver(this)는 Canvas 클래스내에서 혹은 상속받은 상태에서 가능
 		height=image.getHeight(ShootingCanvas.getInstance());
 		
-		x=200;
+		
+		Random random=new Random();
+		
+		x=random.nextInt(200)+10;
 		y=200;
-		speed=5;
+		speed=1;
 		imgIndex=0;
 //		System.out.println("enemy width: "+ width);
 //		System.out.println("enemy height: "+height);
@@ -55,11 +59,12 @@ public class Enemy implements Movable{
 		int dx2 = (int) (x+width - offsetX);
 		int dy2 = (int) (y + height - offsetY);
 		
-		Random random=new Random();
 		
 		
 		g.drawImage(image, dx1, dy1, dx2, dy2, 
 				imgIndex*width, 0, imgIndex*width+width, 0+height, ShootingCanvas.getInstance());
+		
+		
 	}
 	
 	public void show() {
