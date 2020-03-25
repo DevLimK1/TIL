@@ -47,8 +47,11 @@ public class Enemy implements Movable{
 		height=34;
 		
 		x=random.nextInt(360)+1;
-		y=200;
-
+		y=100;
+		
+		vy=random.nextInt(5)+1;
+		vx=random.nextInt(20)+1;
+		
 		speed=1;
 		imgIndex=0;
 //		System.out.println("enemy width: "+ width);
@@ -58,6 +61,8 @@ public class Enemy implements Movable{
 	}
 	
 	public void draw(Graphics g) { //그림이 그려질 객체는 다 포함되어야 할 메소드
+	
+		
 		int offsetX = width / 2; // 전투기이미지의 x축 중심점 이동위해서 선언
 		int offsetY = height / 2; // 전투기이미지의 y축 중심점 이동위해서 선언
 		int dx1 = (int) (x - offsetX);
@@ -101,6 +106,21 @@ public class Enemy implements Movable{
 	@Override
 	public void update() {
 		
+		if(y<200) {
+			this.x-=vx;
+		}else if(y<300) {
+			this.x+=vx;
+		}else if(y<400) {
+			this.x-=vx;
+		}else if(y<500) {
+			this.x+=vx;
+		}else if(y<700) {
+			this.x-=vx;
+		}
+//		this.x += vx;
+		
+		this.y += vy;
+		System.out.printf("Enemy (x,y): (%f,%f)",x,y);
 		// this.timeout=3;
 		if (timeout-- == 0) {
 			imgIndex++;

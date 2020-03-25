@@ -65,7 +65,7 @@ public class ShootingCanvas extends Canvas {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.printf("(x,y) : (%d,%d)\n", e.getX(), e.getY());
+//				System.out.printf("(x,y) : (%d,%d)\n", e.getX(), e.getY());
 				fighter.move(e.getX(), e.getY());
 				ShootingCanvas.this.repaint();
 			}

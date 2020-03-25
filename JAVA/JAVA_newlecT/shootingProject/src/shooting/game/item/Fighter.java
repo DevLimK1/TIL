@@ -90,8 +90,8 @@ public class Fighter implements Movable{
 				y=650;
 			
 		}
-		System.out.println(x);
-		System.out.println(y);
+//		System.out.println(x);
+//		System.out.println(y);
 		int offsetX = width / 2; // 전투기이미지의 x축 중심점 이동위해서 선언
 		int offsetY = height / 2; // 전투기이미지의 y축 중심점 이동위해서 선언
 		int dx1 = (int) (x - offsetX);
@@ -154,7 +154,7 @@ public class Fighter implements Movable{
 		imgIndex=3;
 	}
 
-	public void move(int d) {
+	public void move(int d) { //8가지 방향 좌표(동서남북..)
 		this.d=d;
 	}
 	
