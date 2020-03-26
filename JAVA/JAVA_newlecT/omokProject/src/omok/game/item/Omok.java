@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 
 import omok.game.ui.OmokCanvas;
 
+
 public class Omok {
 	//흰 오목알 ,검은 오목알은 boolean으로 하는 것 보다(참 거짓이 아니기 때문)는
 	//정수형으로 구분하는게 좋다.
@@ -16,7 +17,13 @@ public class Omok {
 	private static final int BLACK;
 	
 	private int color=BLACK;
-	private int x,y;
+	private double x,y;
+	
+	private double dx; //목적지
+	private double dy;
+	private double vx; //벡터, 이동단위 변화랑
+	private double vy;
+	
 	private static int width;
 	private static int height;
 	
@@ -100,9 +107,45 @@ public class Omok {
 		if(color==WHITE) {
 			tempImage=imgWhite;
 		}
-		g.drawImage(tempImage,x-offset,y-offset,OmokCanvas.getInstance());
+		
+		int x= (int)(this.x-offset);
+		int y= (int)(this.y-offset);
+		
+		g.drawImage(tempImage,x,y,OmokCanvas.getInstance());
 		//////////////////////////////////////////////////////////
 	
+	}
+
+	public void setX(int x) {
+		this.x=x;
+	}
+
+	public void setY(int y) {
+		this.y=y;
+	}
+
+	public void update() {
+		if(dx==x&&dy==y) {
+			vx=0;
+			vy=0;
+		}
+		this.x+=vx;
+		this.y+=vy;
+	}
+
+	public void move(int x, int y) {
+		this.dx=x; //클릭한 목적지 정해줌
+		this.dy=y;//클릭한 목적지 정해줌
+		
+		//빗변의 길이를 구하기 위해서는 너비와 높이를 알아야한다. 피타고라스 정리 이용
+		
+		double width=dx-this.x;
+		double height=dy-this.y;
+		double distance = Math.sqrt(width*width+height*height); //빗변
+		
+		vx=width/distance; //1배속
+		vy=height/distance;
+		
 	}
 	
 }

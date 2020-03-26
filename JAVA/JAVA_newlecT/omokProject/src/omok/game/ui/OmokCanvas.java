@@ -7,8 +7,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 import omok.game.item.Omok;
 
@@ -19,6 +21,7 @@ public class OmokCanvas extends Canvas{
 	
 	private int width;
 	private int height;
+	private int top; //오목알 마지막에 있는 알을 가리킴
 	
 	private Omok[] omoks;
 	
@@ -28,6 +31,16 @@ public class OmokCanvas extends Canvas{
 		omokCanvas=this;
 		omoks=new Omok[100];
 		omokIndex=0;
+		top=-1;
+		
+		Random random = new Random();
+		for (int i = 0; i < 5; i++) { // 5개 돌을 미리 만들어놓음
+			int x = random.nextInt(20)+10;
+			int y = random.nextInt(20)+10;
+
+			omoks[omokIndex++] = new Omok(x, y);
+			top++;
+		}
 		
 		try {
 			image=ImageIO.read(new File("res/images/omokmap.png"));
@@ -49,12 +62,23 @@ public class OmokCanvas extends Canvas{
 			public void mouseClicked(MouseEvent e) {
 				int x=e.getX();
 				int y=e.getY();
-				x=(int) (Math.floor(x/40)*40)+20;
-				y=(int)(Math.floor(y/40)*40)+20;
 				
-				omoks[omokIndex++]=new Omok(x,y);
-			
-				repaint(); //-> update(g);->paint(g);로 호출이 됨
+				x = (int) (Math.floor(x / 40) * 40) + 20;
+				y = (int) (Math.floor(y / 40) * 40) +20;
+				
+				try {
+					Omok omok=omoks[top]; //오목알 놓음
+//					omok.setX(x);
+//					omok.setY(y);
+				
+					omok.move(x,y);
+					
+					top--;
+				} catch (ArrayIndexOutOfBoundsException e2) {
+					JOptionPane.showMessageDialog(OmokCanvas.this, "오목알이 없습니다.");
+				}
+				
+				//repaint(); //-> update(g);->paint(g);로 호출이 됨 --> gameThread가 repaint하기 때문에 개별적으로 repaint 하지 않아도 됨
 				
 			}
 			
@@ -63,6 +87,44 @@ public class OmokCanvas extends Canvas{
 		
 		
 	}
+	
+
+	public void start() {  //무한루프가 돌면서 1초에 60번정도 회전하는걸로 
+		
+		Thread gameThread=new Thread(new Runnable() {
+			
+			@Override
+			public void run() { //다른 흐름을 갖게 된다.
+
+				while(true) {
+					
+					//점진적인 업데이트
+					moveUpdate();
+					repaint();
+					
+					try {
+						Thread.sleep(17);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			}
+		});
+		
+		gameThread.start();
+		
+	
+		
+	}
+
+	protected void moveUpdate() { //오목알이 이동할 때 점진적인 업데이트
+		for(int i=0;i<omokIndex;i++)
+			omoks[i].update();
+		
+	}
+
 	
 	@Override
 	public void update(Graphics g) {
@@ -98,7 +160,7 @@ public class OmokCanvas extends Canvas{
 		g.drawImage(buf, 0, 0, width, height-20, //기존 그래픽스에 buf에 그린 오목판 화면 그리기
 				0, 0, width,height, this); //더블버퍼링에 그린 이미지를 한번에 그린다. -->
 	}
-
+	
 	public static OmokCanvas getInstance() {
 		return omokCanvas;
 	}

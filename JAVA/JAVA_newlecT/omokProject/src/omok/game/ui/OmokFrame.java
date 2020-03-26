@@ -15,7 +15,8 @@ public class OmokFrame extends Frame {
 		this.add(omokCanvas); //이걸 안하면 캔버스가 화면에 보이지가 않음
 //		setSize(760,760);
 		pack(); //이미지 사이즈에 맞게 setSize 됨
-
+		omokCanvas.start(); //start() 메소드의 gameThread run() 시켜주기 위함
+		
 		setVisible(true);
 		
 		//한번쓰고 사용안하니 익명객체로 생성
