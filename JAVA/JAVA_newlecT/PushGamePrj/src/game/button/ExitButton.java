@@ -7,15 +7,15 @@ import java.awt.Graphics;
 import game.interFace.Movable;
 
 public class ExitButton implements Movable {
-	public static final int STATE_CLICK = 2;
-	public static final int STATE_ON = 1; // 약속된 변수로 public사용.
-	public static final int STATE_OFF = 0;
-	public static final int STATE_PRESS = 3;
-	public static final int STATE_RELEASE = 4;
+	public static final int STATE_OFF = 0; // 버튼 범위에서 벗어날 때
+	public static final int STATE_ON = 1; // 버튼 범위에 들어올 때
+	public static final int STATE_CLICK = 2; // 버튼 클릭할 때
+	public static final int STATE_PRESS = 3; // 버튼 클릭한 순간
+	public static final int STATE_RELEASE = 4; // 버튼에서 클릭 후 띌 때
 	public static final int STATE_CLOSE = 5;
 
-	public static final Color COLOR_ON = new Color(255, 50, 50);
 	public static final Color COLOR_OFF = new Color(145, 175, 215);
+	public static final Color COLOR_ON = new Color(255, 50, 50);
 	public static final Color COLOR_CLICK = new Color(0, 255, 0);
 	public static final Color COLOR_PRESS = new Color(255, 50, 50);
 	public static final Color COLOR_RELEASE = new Color(185, 130, 230);
@@ -26,21 +26,11 @@ public class ExitButton implements Movable {
 	private int height;
 	private int stateValue;
 
-//		private ExitButton exitButton;
-	//
-//		EeitButton.addActionListener(new ActionListener(){
-//		public void actionPerformed(ActionEvent e)
-//			{System.exit(0);
-//			
-//			}
-	//
-//		});
-
 	@Override
 	public void update() {
 		x = 600;
 		y = 500;
-		width = 400;
+		width = 450;
 		height = 100;
 	}
 
@@ -56,6 +46,8 @@ public class ExitButton implements Movable {
 			buttonColor = COLOR_OFF;
 		} else if (stateValue == STATE_PRESS) {
 			buttonColor = COLOR_PRESS;
+			g.setColor(Color.pink);
+			g.fillRoundRect(x + 5, y + 5, width, height, 100, 100);
 		} else if (stateValue == STATE_RELEASE) {
 			buttonColor = COLOR_RELEASE;
 		} else {
@@ -66,7 +58,7 @@ public class ExitButton implements Movable {
 		g.fillRoundRect(x, y, width, height, 100, 100);
 		g.setColor(Color.darkGray);
 		g.setFont(new Font("시작", Font.BOLD | Font.ITALIC, 60));
-		g.drawString("EXIT", x + 133, y + 75);
+		g.drawString("EXIT", x + 155, y + 75);
 	}
 
 	public boolean contatins(int x, int y) {
@@ -78,7 +70,7 @@ public class ExitButton implements Movable {
 	}
 
 	public void state(int stateValue) {
-		this.stateValue = stateValue; // 이걸로 마우스올리면 색상 변함
+		this.stateValue = stateValue; // 마우스를 버튼위에 위치하면 색상 변하게 하기 위한 매개변수값 저장
 	}
 
 }

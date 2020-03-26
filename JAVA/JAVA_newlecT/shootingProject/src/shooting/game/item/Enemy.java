@@ -35,7 +35,6 @@ public class Enemy implements Movable{
 			e.printStackTrace();
 		}
 		
-		
 	}
 	
 	public Enemy() { //Enemy Constructor

@@ -12,13 +12,15 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 
 	private FightCanvas fightCanvas;
 	private IntroCanvas introCanvas;
+	private MultiCanvas multiCanvas;
 	private StartView startView;
 
 	public GameFrame() {
 		gameFrame = this;
+		
 		introCanvas = new IntroCanvas();
 		this.add(introCanvas); // 캔버스를 프레임에 생성해서 붙이는 작업
-		introCanvas.setFocusable(true); // 캔버스에 포커스를 둠 겜하면 바로 키보드 먹힘.
+		introCanvas.setFocusable(true); // 캔버스에 포커스를 맞추어서 게임 시작하면 바로 키보드로 실행 가능.
 		introCanvas.start();
 
 		this.addWindowListener(new WindowAdapter() {
@@ -36,8 +38,6 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 		});
 	} // end public GameFrame()
 
-//	private GameFrame frame; // 인스턴스. 변수가 아니여서 아래에서 사용불가.
-//	private static GameFrame frame; // static써서 변수로 사용. 위에서 선언해서 주석처리함.
 
 	public static GameFrame getInstance() { // 전역변수의 의미
 		return gameFrame;
@@ -51,6 +51,14 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 			canvas.start();
 			canvas.setFocusable(true);
 			canvas.requestFocus(); // 키보드 입력을 위함.
+			this.revalidate(); //
+		}else if (canvasId == 2) {
+			this.remove(introCanvas);
+			FightCanvas rankCanvas = new FightCanvas();
+			this.add(rankCanvas);
+			rankCanvas.start();
+			rankCanvas.setFocusable(true);
+			rankCanvas.requestFocus(); // 키보드 입력을 위함.
 			this.revalidate(); //
 		}
 	}

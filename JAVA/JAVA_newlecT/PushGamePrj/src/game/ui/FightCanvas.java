@@ -7,26 +7,34 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.Random;
 
 import game.interFace.Movable;
 import game.item.Background;
 import game.item.Character;
+import game.item.Present;
 import game.item.Santa;
 
 public class FightCanvas extends Canvas {
+	private Random random;
+
+	private Image pause;
+
 	private static FightCanvas fightCanvas;
-	private Character character;
-	private Background background;
-	private Santa santa;
-	private Movable[] items;
+
 	private final int P1PUSH = 83;
 	private final int P2PUSH = 40;
 
-	private Random random;
+	private Character character; // 캐릭터(곰)
+	private Background background; // 배경화면
+	private Santa santa; // 산타클로스
+	private Present present; // 선물
+
+	private Movable[] items;
 
 	private int max;
-	private int countdown; // 산타 랜덤 출현
+	private int countdown; // 산타 랜덤 출현 카운트
 	private int unitIndex = 0;
 
 	public FightCanvas() {
@@ -36,41 +44,51 @@ public class FightCanvas extends Canvas {
 
 		max = 100;
 		random = new Random();
-//		countdown=random.nextInt(120)+60; 60초~180초 
-		countdown = 500; // 산타 출현 카운트다운
 
 		background = new Background();
 		character = new Character();
 		santa = new Santa();
+		present = new Present();
+
+		countdown = 700; // 산타 출현 카운트다운
+//		System.out.println(countdown);
+//		countdown=random.nextInt(120)+60; 60초~180초 
+		// 산타가 선물 던지는 거 구현해야함
+		// present = new Present(santa.getX());
 
 		items[unitIndex++] = background;
 		items[unitIndex++] = character;
 		items[unitIndex++] = santa;
+		items[unitIndex++] = present;
 
 		this.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyReleased(KeyEvent e) {
+			public void keyPressed(KeyEvent e) {
 				int result = e.getKeyCode();
 
 				switch (result) {
 				case KeyEvent.VK_ESCAPE: {// esc클릭시 게임 일시정지
-					character.pause();
+//					character.pause();
 					break;
 				}
 				case KeyEvent.VK_LEFT: {// 방향키 좌
 					character.bearR_moveLeft();
+					character.bearR_back();
 					break;
 				}
 				case KeyEvent.VK_RIGHT: {// 방향키 우
 					character.bearR_moveRight();
+					character.bearR_front();
 					break;
 				}
 				case 65: {// A키 p1 왼쪽이동
 					character.bearL_moveLeft();
+					character.bearL_back();
 					break;
 				}
 				case 68: {// D키 p1 오른쪽 이동
 					character.bearL_moveRight();
+					character.bearL_front();
 					break;
 				}
 				case P1PUSH: {// 1p 밀기 보조키
@@ -81,8 +99,8 @@ public class FightCanvas extends Canvas {
 					character.bearR_moveLeft();
 					break;
 				}
-				}
-			}
+				} // end switch
+			} // end keyPressed
 		});
 
 		this.addMouseListener(new MouseAdapter() {
@@ -93,7 +111,8 @@ public class FightCanvas extends Canvas {
 				System.out.println("x : " + x + "   y:  " + y);
 			}
 		});
-	}
+
+	} //end public FightCanvas()
 
 	public static FightCanvas getInstacne() {
 		return fightCanvas;
@@ -105,7 +124,6 @@ public class FightCanvas extends Canvas {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				while (true) {
 					moveUpdate(); // 단위벡터 단위로 움직임
 					fightCanvas.repaint();
@@ -129,23 +147,24 @@ public class FightCanvas extends Canvas {
 
 		if (--countdown == 0) {
 
-			santa = new Santa();
+			santa = new Santa(); // 반복적으로 산타 생성
+			present = new Present(santa.getX()); // 반복적으로 선물 생성
 
 			if (unitIndex >= max) {
 				Movable[] temp = new Movable[max + 50];
-//				temp<-items;
-				for (int i = 0; i < unitIndex; i++) {
+
+				for (int i = 0; i < unitIndex; i++) 
 					temp[i] = items[i];
-				}
 
 				items = temp;
 				max += 50;
 			}
 
 			items[unitIndex++] = santa;
+//			items[unitIndex++] = present;
 			random = new Random();
 //			countdown = random.nextInt(120) + 60;
-			countdown = 500;
+			countdown = 700;
 		}
 	}
 
@@ -156,7 +175,7 @@ public class FightCanvas extends Canvas {
 
 	@Override
 	public void paint(Graphics g) {
-		Image buf = createImage(this.getWidth(), this.getHeight());
+		Image buf = createImage(this.getWidth(), this.getHeight()); //더블 버퍼링 구현
 		Graphics gg = buf.getGraphics();
 
 		for (int i = 0; i < unitIndex; i++) {

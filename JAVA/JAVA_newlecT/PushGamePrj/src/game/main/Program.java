@@ -11,7 +11,7 @@ public class Program {
 		frame.setVisible(true);
 		frame.setSize(1450, 800 );
 		frame.setTitle("Bingsan");
-		
+		frame.setFocusable(true);
 	}
 
 }
