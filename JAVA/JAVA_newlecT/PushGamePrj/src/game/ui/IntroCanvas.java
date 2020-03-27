@@ -14,22 +14,30 @@ import game.button.HelpButton;
 import game.button.MultiButton;
 import game.button.SingleButton;
 import game.interFace.Movable;
+import game.main.Music;
 
 public class IntroCanvas extends Canvas {
-	private static IntroCanvas canvas;
+	private static IntroCanvas introCanvas;
 	private StartView startView;
 
 	private SingleButton singleButton;
 	private MultiButton multiButton;
 	private ExitButton exitButton;
 	private HelpButton helpButton;
-
+	
 	private Movable[] items;
 	private int unitIndex = 0;
 
+	public void introCanvasMusic(){
+	
+		
+//		introMusic.musicStop(); //음악 끝내기
+	}
+	
 	public IntroCanvas() {
-//		Music gymMusic = new Music("introBGM.mp3", true);
-//		gymMusic.start();
+		Music introMusic = new Music("introBGM-fortress.wav", true);
+		introMusic.musicStart(); //음악 시작
+		
 		items = new Movable[100];
 
 		singleButton = new SingleButton();
@@ -37,7 +45,7 @@ public class IntroCanvas extends Canvas {
 		multiButton = new MultiButton();
 		exitButton = new ExitButton();
 		helpButton = new HelpButton();
-
+		
 		items[unitIndex++] = startView;
 		items[unitIndex++] = singleButton;
 		items[unitIndex++] = multiButton;
@@ -135,7 +143,7 @@ public class IntroCanvas extends Canvas {
 	}
 
 	public static IntroCanvas getInstance() {
-		return canvas;
+		return introCanvas;
 	}
 
 	public void start() {

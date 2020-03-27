@@ -32,7 +32,7 @@ public class Santa implements Movable{
 	
 	static { //함수 호출과 상관없이 프로그램이 실행되면서 한번 초기화됨 
 		try {
-			image=ImageIO.read(new File("res/santaMove.png"));
+			image=ImageIO.read(new File("res/images/santaMove.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -57,9 +57,8 @@ public class Santa implements Movable{
 		imgIndex=0;
 	}
 	
-	public void throwPresent() { //선물 던지는 메소드
-		present=new Present(x);
-		
+	public Present throwPresent() { //선물 던지는 메소드
+		return new Present(x);
 	}
 
 	public double getX() {

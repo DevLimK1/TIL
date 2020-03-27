@@ -63,15 +63,15 @@ public class SingleButton implements Movable {
 	}
 
 	public boolean contatins(int x, int y) {
-		if ((this.x < x && x < this.x + width) && (this.y < y && y < this.y + height)) {
+		if ((this.x < x && x < this.x + width) && (this.y < y && y < this.y + height)) 
 			return true;
-		} else {
+		else 
 			return false;
-		}
-
+		
 	}
 
 	public void state(int stateValue) {
+		this.stateValue = stateValue;
 	}
 
 }

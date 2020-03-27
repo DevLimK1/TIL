@@ -12,7 +12,7 @@ import game.ui.FightCanvas;
 import game.ui.IntroCanvas;
 
 public class Character implements Movable {
-	private Image bearImg_left, bearImg_right, wallImg; // 곰, 빙산 이미지
+	private Image bearImg_left, bearImg_right, wallImg, sunImg; // 곰, 빙산, 해 이미지
 
 	/* +++++++++++++좌측 곰 변수++++++++++++++ */
 	private int bearImg_leftX, bearImg_leftY; // 좌측 곰 x,y좌표
@@ -28,16 +28,20 @@ public class Character implements Movable {
 	private int wallX, wallY; // 빙산 x,y좌표
 
 	private double vx;// 이동할 단위 위치
-
-	private static boolean pause;
+	public double aivx = 10;// 이동할 단위 위치
+	
+	/* +++++++++++++해 변수++++++++++++++ */
+	private int sunX;
+	private int sunY;
 
 	public Character() {
 
 		try {
-			bearImg_left = ImageIO.read(new File("res/BBear.png")); // 왼쪽 곰 이미지
-			bearImg_right = ImageIO.read(new File("res/IBear.png")); // 오른쪽 곰 이미지
-			wallImg = ImageIO.read(new File("res/ice.png")); // 빙산 이미지
-
+			bearImg_left = ImageIO.read(new File("res/images/BBear.png")); // 왼쪽 곰 이미지
+			bearImg_right = ImageIO.read(new File("res/images/IBear.png")); // 오른쪽 곰 이미지
+			wallImg = ImageIO.read(new File("res/images/iceice.png")); // 빙산 이미지
+			sunImg = ImageIO.read(new File("res/images/sunrise.png")); // 해 이미지
+//			sunImg = ImageIO.read(new File("res/images/sunrise2.png")); // 강사님 이미지
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -54,17 +58,19 @@ public class Character implements Movable {
 		/* +++++++++++++우측 곰 초기화 설정++++++++++++++ */
 		bearImg_rightX = 1050; // 우측 곰 시작점 x축
 		bearImg_rightY = 480; // 우측 곰 시작점 y축
-//		widthR = 150; // 우측 곰 너비
-//		heightR = 256; // 우측 곰 높이
-		widthR = (bearImg_right.getWidth(FightCanvas.getInstacne()))/ 7;
-		heightR = bearImg_right.getHeight(FightCanvas.getInstacne());
+		widthR = 160; // 우측 곰 너비
+		heightR = 256; // 우측 곰 높이
+//		widthR = (bearImg_right.getWidth(FightCanvas.getInstacne())) / 7;
+//		heightR = bearImg_right.getHeight(FightCanvas.getInstacne());
 		imgIndexR = 0; // 우측 곰 이미지인덱스
-
+		vx = 10;//이동단위
 		/* +++++++++++++빙산 초기화 설정++++++++++++++ */
-		wallX = 650; // 빙산 x축
-		wallY = 330; // 빙산 y축
-
-		vx = 10;
+		wallX = 750; // 빙산 x축
+		wallY = 220; // 빙산 y축
+		
+		/* +++++++++++++해 초기화 설정++++++++++++++ */
+		sunX=10;
+		sunY=10;
 	}
 
 	/* +++++++++++캐릭터 이동 메소드+++++++++++++ */
@@ -83,9 +89,9 @@ public class Character implements Movable {
 		this.bearImg_leftX += vx;
 
 		// 왼쪽 곰이 (왼쪽 빙하 경계선)빙하를 밀 때
-		if (bearImg_leftX > wallX - 120) {
+		if (bearImg_leftX > wallX - 140) {
 			this.wallX += vx;
-			if (wallX + 120 >= bearImg_rightX) // 빙하 우 경계선이 우측 곰과 맞닿을때
+			if (wallX + 130 >= bearImg_rightX) // 빙하 우 경계선이 우측 곰과 맞닿을때
 				bearR_moveRight();// 우측곰이 뒤로 밀림
 		}
 
@@ -97,9 +103,9 @@ public class Character implements Movable {
 	public void bearR_moveLeft() {// 우측곰 왼쪽 이동
 		this.bearImg_rightX -= vx;
 
-		if (bearImg_rightX < wallX + 130) {// 우측곰 손과 빙하 우 경계 비교해서 빙하를 민다.
+		if (bearImg_rightX < wallX + 140) {// 우측곰 손과 빙하 우 경계 비교해서 빙하를 민다.
 			this.wallX -= vx; // 빙하가 좌측으로 이동
-			if (bearImg_leftX >= wallX - 110)// 좌측곰이랑 빙하랑 닿으면
+			if (bearImg_leftX >= wallX - 130)// 좌측곰이랑 빙하랑 닿으면
 				bearL_moveLeft();// 좌측곰이 왼쪽으로 밀림
 		}
 
@@ -110,6 +116,9 @@ public class Character implements Movable {
 
 	public void bearR_moveRight() { // 우측곰 오른쪽 이동
 		this.bearImg_rightX += vx;
+		if (bearImg_rightX > 1320 || wallX + 60 > 1280) {
+			vx = 0;
+		}
 	}
 
 	/* +++++++++++캐릭터 이미지인덱스 변화 메소드+++++++++++++ */
@@ -134,20 +143,59 @@ public class Character implements Movable {
 		imgIndexR++;
 		imgIndexR %= 7;
 	}
+	
+	public void aivx() {// 우측 곰이 앞으로 갈 때 이미지인덱스 변화
+		this.bearImg_rightX -= vx;
+		bearR_front();
+		if (bearImg_rightX < wallX + 140) {// 우측곰 손과 빙하 우 경계 비교해서 빙하를 민다.
+			this.wallX -= vx; // 빙하가 좌측으로 이동
+			if (bearImg_leftX >= wallX - 130)// 좌측곰이랑 빙하랑 닿으면
+				bearL_moveLeft();// 좌측곰이 왼쪽으로 밀림
+		}
+	}
+
+	public void aiSpeedUp() {// (미완성)싱글플레이 우측곰 속도 업
+		this.aivx += 2;
+	}
+
+	public void aiSpeedDown() {//(미완성)싱글플레이 우측곰 속도 다운
+		this.aivx -= 2;
+	}
+
 
 	public void draw(Graphics g) {
-		int offsetWall = 100;
-		int offsetX = widthL / 2; // 왼쪽 이미지의 x축 중심점 이동위해서 선언
-		int offsetY = heightL / 2; // 왼쪽 이미지의 y축 중심점 이동위해서 선언
-		int dx1 = (int) (bearImg_leftX - offsetX);
-		int dy1 = (int) (bearImg_leftY - offsetY);
-		int dx2 = (int) (bearImg_leftX + widthL - offsetX);
-		int dy2 = (int) (bearImg_leftY + heightL - offsetY);
 
-		g.drawImage(bearImg_left, dx1, dy1, dx2, dy2, 
-				imgIndexL * widthL, 0, imgIndexL * widthL + widthL, heightL,
+		
+		/* +++++++++++ 빙산 이미지 그리기 +++++++++++++ */
+		
+		int offsetX = 183 / 2; // 빙산 이미지의 x축 중심점 이동위해서 선언
+		int offsetY = 400 / 2; // 빙산 이미지의 y축 중심점 이동위해서 선언
+
+		int dx1 = (int) (wallX - offsetX);
+		int dy1 = (int) (wallY - offsetY);
+		int dx2 = (int) (wallX + 183 - offsetX);
+		int dy2 = (int) (wallY + 400 - offsetY);
+		int wallIndex = 0;
+		int offsetWall = 100;
+//		g.drawImage(wallImg, (int) wallX - offsetWall, (int) wallY, FightCanvas.getInstacne());
+		g.drawImage(wallImg, dx1, dy1 + 150, dx2, dy2 + 200, wallIndex * widthR, 0, wallIndex * widthR + 183, 400,
+				IntroCanvas.getInstance());
+		
+		
+		/* +++++++++++ 좌측 곰 이미지 그리기 +++++++++++++ */
+		
+		offsetX = widthL / 2; // 왼쪽 이미지의 x축 중심점 이동위해서 선언
+		offsetY = heightL / 2; // 왼쪽 이미지의 y축 중심점 이동위해서 선언
+		dx1 = (int) (bearImg_leftX - offsetX);
+		dy1 = (int) (bearImg_leftY - offsetY);
+		dx2 = (int) (bearImg_leftX + widthL - offsetX);
+		dy2 = (int) (bearImg_leftY + heightL - offsetY);
+
+		g.drawImage(bearImg_left, dx1, dy1, dx2, dy2, imgIndexL * widthL, 0, imgIndexL * widthL + widthL, heightL,
 				IntroCanvas.getInstance());
 
+		/* +++++++++++ 우측 곰 이미지 그리기 +++++++++++++ */
+		
 		offsetX = widthR / 2; // 오른쪽 이미지의 x축 중심점 이동위해서 선언
 		offsetY = heightR / 2; // 오른쪽 이미지의 y축 중심점 이동위해서 선언
 
@@ -156,22 +204,24 @@ public class Character implements Movable {
 		dx2 = (int) (bearImg_rightX + widthR - offsetX);
 		dy2 = (int) (bearImg_rightY + heightR - offsetY);
 
-		g.drawImage(bearImg_right, dx1, dy1, dx2, dy2,
-				imgIndexR * widthR, 0, imgIndexR * widthR + widthR, heightR,
+		g.drawImage(bearImg_right, dx1, dy1, dx2, dy2, imgIndexR * widthR, 0, imgIndexR * widthR + widthR, heightR,
 				IntroCanvas.getInstance());
+		
+		/* +++++++++++ 해 이미지 그리기 +++++++++++++ */
 
-		g.drawImage(wallImg, (int) wallX - offsetWall, (int) wallY, FightCanvas.getInstacne());
+		g.drawImage(sunImg, sunX+1130, sunY-200, 	IntroCanvas.getInstance());
 
-		if (wallX - 120 < 180 || bearImg_leftX < 160 || bearImg_leftX > 1350) {// 곰이 빙하밖으로 떨어지면
+		if (bearImg_leftX < 180 || bearImg_leftX > 1250) {// 곰이 빙하밖으로 떨어지면
 			bearImg_leftY++; // 화면 밑으로 사라짐
 			vx = 0;
 		}
-		if (wallX - 120 < 180 || bearImg_rightX < 160 || bearImg_rightX > 1300) {// 곰이 빙하밖으로 떨어지면
+		if (bearImg_rightX < 160 || bearImg_rightX > 1320) {// 곰이 빙하밖으로 떨어지면
 			bearImg_rightY++; // 화면 밑으로 사라짐
 			vx = 0;
 		}
-	}
 
+	}
+	
 	public void update() {
 	}
 

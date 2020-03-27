@@ -27,7 +27,7 @@ public class Present implements Movable { //산타가 던지는 선물 아이템
 	
 	static { //함수 호출과 상관없이 프로그램이 실행되면서 한번 초기화됨 
 		try {
-			image=ImageIO.read(new File("res/present.png"));
+			image=ImageIO.read(new File("res/images/present.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -36,8 +36,6 @@ public class Present implements Movable { //산타가 던지는 선물 아이템
 	
 	
 	public Present() {
-		width=image.getWidth(FightCanvas.getInstacne()); //ImageObserver(this)는 Canvas 클래스내에서 혹은 상속받은 상태에서 가능
-		height=image.getHeight(FightCanvas.getInstacne());
 		
 		x=1430;
 		y=71;
@@ -51,17 +49,22 @@ public class Present implements Movable { //산타가 던지는 선물 아이템
 	}
 
 	public Present(double x) { //산타 있는 x좌표
-		this.x=x;
+		
+		width=image.getWidth(FightCanvas.getInstacne()); //ImageObserver(this)는 Canvas 클래스내에서 혹은 상속받은 상태에서 가능
+		height=image.getHeight(FightCanvas.getInstacne());
+		
+		
+		this.x=x+50;
 		y=71;
 		
-		vx=2;
+//		vx=2;
 		vy=2;
 		imgIndex=0;
 	}
 
 	@Override
 	public void update() {
-		if(y==565) {
+		if(y==565) { //빙하 필드위에 떨어지면 멈춤
 			vy=0;
 			vx=0;
 		}

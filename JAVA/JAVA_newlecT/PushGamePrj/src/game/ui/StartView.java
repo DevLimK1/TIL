@@ -16,7 +16,7 @@ public class StartView implements Movable {
 	public StartView() {
 		try {
 
-			img = ImageIO.read(new File("res/IntroBack.png"));
+			img = ImageIO.read(new File("res/images/IntroBack.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

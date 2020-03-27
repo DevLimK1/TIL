@@ -12,7 +12,7 @@ import game.interFace.Movable;
 import game.item.Character;
 import game.item.Background;
 
-public class MultiCanvas extends Canvas {
+public class MultiCanvas extends Canvas { //하나의 컴퓨터에서 2p 플레이
 
 	private static MultiCanvas fightCanvas;
 

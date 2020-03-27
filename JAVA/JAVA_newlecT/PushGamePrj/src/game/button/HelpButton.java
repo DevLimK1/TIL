@@ -36,7 +36,7 @@ public class HelpButton implements Movable {
 		height = 220;
 		try {
 
-			img = ImageIO.read(new File("res/Intro5.png"));
+			img = ImageIO.read(new File("res/images/Intro5.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

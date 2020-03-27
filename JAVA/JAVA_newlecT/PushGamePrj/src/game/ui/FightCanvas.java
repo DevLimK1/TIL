@@ -1,15 +1,20 @@
 package game.ui;
 
 import java.awt.Canvas;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
+
+import game.button.BackButton;
 import game.interFace.Movable;
 import game.item.Background;
 import game.item.Character;
@@ -19,51 +24,60 @@ import game.item.Santa;
 public class FightCanvas extends Canvas {
 	private Random random;
 
-	private Image pause;
+	private Image img;
+
+	private GameFrame gameFrame;
+	private Frame frame;
 
 	private static FightCanvas fightCanvas;
-
-	private final int P1PUSH = 83;
-	private final int P2PUSH = 40;
-
+	private static IntroCanvas introCanvas;
+	
 	private Character character; // 캐릭터(곰)
 	private Background background; // 배경화면
 	private Santa santa; // 산타클로스
 	private Present present; // 선물
+	private BackButton backButton; // 뒤로가기 버튼
+	
 
 	private Movable[] items;
 
+	private final int P1PUSH = 83;
+	private final int P2PUSH = 40;
+	
 	private int max;
-	private int countdown; // 산타 랜덤 출현 카운트
+	private int santaCnt;// 산타 랜덤 출현 카운트
+	private int presentCnt;// 선물 랜덤 출현 카운트 
 	private int unitIndex = 0;
 
 	public FightCanvas() {
+		random = new Random();
+		
+		try {
+			img=ImageIO.read(new File("res/images/fallbear.png"));//(미완성)물에 빠진 곰 
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		fightCanvas = this;
 
 		items = new Movable[100];
 
 		max = 100;
-		random = new Random();
 
 		background = new Background();
 		character = new Character();
-		santa = new Santa();
-		present = new Present();
-
-		countdown = 700; // 산타 출현 카운트다운
-//		System.out.println(countdown);
-//		countdown=random.nextInt(120)+60; 60초~180초 
-		// 산타가 선물 던지는 거 구현해야함
-		// present = new Present(santa.getX());
+		backButton = new BackButton();
+		
+		santaCnt = 200; // 산타 출현 카운트다운
+ 		presentCnt = random.nextInt(200) + 250;//선물 출현 카운트다운
 
 		items[unitIndex++] = background;
 		items[unitIndex++] = character;
-		items[unitIndex++] = santa;
-		items[unitIndex++] = present;
+		items[unitIndex++] = backButton;
 
 		this.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyPressed(KeyEvent e) {
+			public void keyReleased(KeyEvent e) {
 				int result = e.getKeyCode();
 
 				switch (result) {
@@ -108,14 +122,27 @@ public class FightCanvas extends Canvas {
 			public void mouseClicked(MouseEvent e) {
 				int x = e.getX();
 				int y = e.getY();
-				System.out.println("x : " + x + "   y:  " + y);
+				if ((x > 1350 && x < 1416) && (y > 650 && y < 712))//뒤로가기 버튼
+				{
+					GameFrame.getInstance().changeCanvas(3);
+				}
+			}
+			
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				
 			}
 		});
 
-	} //end public FightCanvas()
-
+	} // end public FightCanvas()
+	
+	public void state(int stateValue) {
+	}
 	public static FightCanvas getInstacne() {
 		return fightCanvas;
+	}
+	public static IntroCanvas getInstance() {
+		return introCanvas;
 	}
 
 	public void start() {
@@ -144,28 +171,38 @@ public class FightCanvas extends Canvas {
 		for (int i = 0; i < unitIndex; i++) {
 			items[i].update(); // 화면의 이동시 변경 후 업데이트 (쓰레드에서 호출됨)
 		}
+		
+		if (unitIndex >= max) {
+			Movable[] temp = new Movable[max + 50];
 
-		if (--countdown == 0) {
+			for (int i = 0; i < unitIndex; i++)
+				temp[i] = items[i];
+
+			items = temp;
+			max += 50;
+		}
+		
+		if (--santaCnt == 0) { //산타 카운트가 0이면 산타 생성
 
 			santa = new Santa(); // 반복적으로 산타 생성
-			present = new Present(santa.getX()); // 반복적으로 선물 생성
-
-			if (unitIndex >= max) {
-				Movable[] temp = new Movable[max + 50];
-
-				for (int i = 0; i < unitIndex; i++) 
-					temp[i] = items[i];
-
-				items = temp;
-				max += 50;
-			}
-
+			
+		
+		
 			items[unitIndex++] = santa;
-//			items[unitIndex++] = present;
-			random = new Random();
-//			countdown = random.nextInt(120) + 60;
-			countdown = 700;
+		
+			santaCnt = 1000;
+
+		} // ~end if
+		
+		if (--presentCnt == 0) { //선물카운트가 0이면 선물 투척
+			
+			items[unitIndex++] = santa.throwPresent(); //산타가 선물 투척
+			
+			presentCnt = random.nextInt(400) + 200;
 		}
+		
+
+
 	}
 
 	@Override
@@ -175,7 +212,7 @@ public class FightCanvas extends Canvas {
 
 	@Override
 	public void paint(Graphics g) {
-		Image buf = createImage(this.getWidth(), this.getHeight()); //더블 버퍼링 구현
+		Image buf = createImage(this.getWidth(), this.getHeight()); // 더블 버퍼링 구현
 		Graphics gg = buf.getGraphics();
 
 		for (int i = 0; i < unitIndex; i++) {

@@ -46,12 +46,13 @@ public class MultiButton implements Movable {
 			buttonColor = COLOR_OFF;
 		} else if (stateValue == STATE_PRESS) {
 			buttonColor = COLOR_PRESS;
+			g.setColor(Color.pink);
+			g.fillRoundRect(x + 5, y + 5, width, height, 100, 100);
 		} else if (stateValue == STATE_RELEASE) {
 			buttonColor = COLOR_RELEASE;
 		} else {
 			buttonColor = COLOR_CLICK;
 		}
-
 		g.setColor(buttonColor);
 		g.fillRoundRect(x, y, width, height, 100, 100);
 		g.setColor(Color.darkGray);

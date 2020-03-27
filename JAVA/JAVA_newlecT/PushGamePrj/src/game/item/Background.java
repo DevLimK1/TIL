@@ -22,8 +22,8 @@ public class Background implements Movable {
 
 	public Background() {
 		try {
-			stadiumImg = ImageIO.read(new File("res/realbackground.png"));
-			cloudImg = ImageIO.read(new File("res/newcloud.png"));
+			stadiumImg = ImageIO.read(new File("res/images/realbackground.png"));
+			cloudImg = ImageIO.read(new File("res/images/newcloud.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
