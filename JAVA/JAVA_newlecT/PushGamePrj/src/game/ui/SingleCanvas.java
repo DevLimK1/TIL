@@ -176,6 +176,7 @@ public class SingleCanvas extends Canvas { //싱글플레이 vs Ai
 			max += 50;
 		}
 		
+//		System.out.println("santaCnt: "+ santaCnt);
 		if (--santaCnt == 0) { //산타 카운트가 0이면 산타 생성
 
 			santa = new Santa(); // 반복적으로 산타 생성
@@ -188,6 +189,7 @@ public class SingleCanvas extends Canvas { //싱글플레이 vs Ai
 
 		} // ~end if
 		
+//		System.out.println("presentCnt: "+ presentCnt);
 		if (--presentCnt == 0) { //선물카운트가 0이면 선물 투척
 			
 			items[unitIndex++] = santa.throwPresent(); //산타가 선물 투척

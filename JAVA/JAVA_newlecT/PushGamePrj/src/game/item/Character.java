@@ -224,6 +224,11 @@ public class Character implements Movable {
 	
 	public void update() {
 	}
+	
+	//선물 줍기
+	public void pickUp() {
+		
+	}
 
 //	public void pause() {// ESC클릭시 캐릭터 이동멈춤
 //	pause = !pause;

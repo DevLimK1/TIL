@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 import game.button.BackButton;
+import game.button.MultiButton;
 import game.interFace.Movable;
 
 public class GameFrame extends Frame { // 라이브러리클래스에 저장된 frame.
@@ -17,6 +18,7 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 	private MultiCanvas multiCanvas;
 	private StartView startView;
 	private BackButton backButton;
+	private MultiButton multiButton;
 	private SingleCanvas singleCanvas;
 	private Frame fram;
 	private Movable[] items;
@@ -27,8 +29,9 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 		gameFrame = this;
 		introCanvas = new IntroCanvas();
 		fightCanvas = new FightCanvas();
-//		singleCanvas=new SingleCanvas();
+		singleCanvas=new SingleCanvas();
 		backButton = new BackButton();
+		multiButton = new MultiButton();
 		
 		items = new Movable[100];
 

@@ -64,7 +64,7 @@ public class Present implements Movable { //산타가 던지는 선물 아이템
 
 	@Override
 	public void update() {
-		if(y==565) { //빙하 필드위에 떨어지면 멈춤
+		if((200<x&&x<1300)&&y==565) { //빙하 필드위에 떨어지면 멈춤
 			vy=0;
 			vx=0;
 		}

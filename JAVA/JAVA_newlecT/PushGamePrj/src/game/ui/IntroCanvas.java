@@ -56,11 +56,18 @@ public class IntroCanvas extends Canvas {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (singleButton.contatins(e.getX(), e.getY())) {
-					singleButton.state(singleButton.STATE_CLICK);
+					singleButton.state(SingleButton.STATE_CLICK);
 					GameFrame.getInstance().changeCanvas(1);
+					Music.clip.close();
+//					introMusic.musicStop();
+					Music SingleMusic = new Music("BGM_Single.wav", true);
+					SingleMusic.musicStart(); //음악 시작
 				} else if (multiButton.contatins(e.getX(), e.getY())) {
-					multiButton.state(multiButton.STATE_CLICK);
+					multiButton.state(MultiButton.STATE_CLICK);
 					GameFrame.getInstance().changeCanvas(2);
+					Music.clip.close();
+					Music MultiMusic = new Music("BGM_Multi2.wav", true);
+					MultiMusic.musicStart(); //음악 시작
 				} else if (exitButton.contatins(e.getX(), e.getY())) {
 					exitButton.state(ExitButton.STATE_CLICK);
 					System.exit(0);
@@ -85,9 +92,9 @@ public class IntroCanvas extends Canvas {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if (singleButton.contatins(e.getX(), e.getY())) {
-					singleButton.state(singleButton.STATE_PRESS);
+					singleButton.state(SingleButton.STATE_PRESS);
 				} else if (multiButton.contatins(e.getX(), e.getY())) {
-					multiButton.state(multiButton.STATE_PRESS);
+					multiButton.state(MultiButton.STATE_PRESS);
 				} else if (exitButton.contatins(e.getX(), e.getY())) {
 					exitButton.state(ExitButton.STATE_PRESS);
 				}
@@ -98,11 +105,11 @@ public class IntroCanvas extends Canvas {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if (singleButton.contatins(e.getX(), e.getY())) {
-					singleButton.state(singleButton.STATE_RELEASE);
+					singleButton.state(SingleButton.STATE_RELEASE);
 
 				}
 				if (multiButton.contatins(e.getX(), e.getY())) {
-					multiButton.state(multiButton.STATE_RELEASE);
+					multiButton.state(MultiButton.STATE_RELEASE);
 				}
 				if (exitButton.contatins(e.getX(), e.getY())) {
 					exitButton.state(ExitButton.STATE_RELEASE);
@@ -119,14 +126,14 @@ public class IntroCanvas extends Canvas {
 				System.out.printf("(%d, %d)\n", e.getX(), e.getY());// 마우스 움직이면 좌표 보여줌
 
 				if (singleButton.contatins(e.getX(), e.getY())) // SingleButton
-					singleButton.state(singleButton.STATE_ON);
+					singleButton.state(SingleButton.STATE_ON);
 				else if (!(singleButton.contatins(e.getX(), e.getY())))
-					singleButton.state(singleButton.STATE_OFF);
+					singleButton.state(SingleButton.STATE_OFF);
 
 				if (multiButton.contatins(e.getX(), e.getY())) // MultiButton
-					multiButton.state(multiButton.STATE_ON);
+					multiButton.state(MultiButton.STATE_ON);
 				else if (!(multiButton.contatins(e.getX(), e.getY())))
-					multiButton.state(multiButton.STATE_OFF);
+					multiButton.state(MultiButton.STATE_OFF);
 
 				if (exitButton.contatins(e.getX(), e.getY())) // ExitButton
 					exitButton.state(ExitButton.STATE_ON);

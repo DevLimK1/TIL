@@ -15,13 +15,14 @@ public class Music {
 	
 	private AudioInputStream stream; 
 	private File file;
-	private Clip clip;
+//	private Clip clip;
+	public  static Clip clip;
 
 	public Music(String name, boolean isLoop) {
 //		this.isLoop = isLoop;
 
 		try {
-			File file = new File("res/music/"+name); // 음악 파일명
+			File file = new File("res/music/bgm/"+name); // 음악 파일명
 			stream = AudioSystem.getAudioInputStream(file);
 			clip = AudioSystem.getClip();
 
