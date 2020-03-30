@@ -14,6 +14,7 @@ import game.ui.FightCanvas;
 public class Santa implements Movable{
 
 	private static Image image;
+	
 	private Present present;
 	
 	private double x;
@@ -40,6 +41,7 @@ public class Santa implements Movable{
 	}
 	
 	public Santa() {
+		
 		timeout=3;
 		Random random=new Random();
 		
@@ -84,6 +86,7 @@ public class Santa implements Movable{
 		int dy1 = (int) (y - offsetY);
 		int dx2 = (int) (x+width - offsetX);
 		int dy2 = (int) (y + height - offsetY);
+		
 //		System.out.println(width);
 //		System.out.println(height);
 		

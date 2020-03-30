@@ -28,9 +28,9 @@ public class MultiButton implements Movable {
 
 	@Override
 	public void update() {
-		x = 600;
+		x = 550;
 		y = 370;
-		width = 450;
+		width = 270;
 		height = 110;
 	}
 
@@ -56,8 +56,8 @@ public class MultiButton implements Movable {
 		g.setColor(buttonColor);
 		g.fillRoundRect(x, y, width, height, 100, 100);
 		g.setColor(Color.darkGray);
-		g.setFont(new Font("시작", Font.BOLD | Font.ITALIC, 60));
-		g.drawString("MULTI PLAY", x + 45, y + 75);
+		g.setFont(new Font("시작", Font.BOLD | Font.ITALIC, 50));
+		g.drawString("같이하기", x + 20, y + 75);
 
 	}
 

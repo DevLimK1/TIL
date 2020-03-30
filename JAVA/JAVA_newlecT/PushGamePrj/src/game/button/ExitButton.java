@@ -28,9 +28,9 @@ public class ExitButton implements Movable {
 
 	@Override
 	public void update() {
-		x = 600;
+		x = 550;
 		y = 500;
-		width = 450;
+		width = 550;
 		height = 100;
 	}
 
@@ -58,7 +58,7 @@ public class ExitButton implements Movable {
 		g.fillRoundRect(x, y, width, height, 100, 100);
 		g.setColor(Color.darkGray);
 		g.setFont(new Font("시작", Font.BOLD | Font.ITALIC, 60));
-		g.drawString("EXIT", x + 155, y + 75);
+		g.drawString("종료....?", x + 160, y + 75);
 	}
 
 	public boolean contatins(int x, int y) {

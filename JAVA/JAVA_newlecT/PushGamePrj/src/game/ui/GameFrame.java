@@ -44,7 +44,7 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 
 			@Override
 			public void windowClosing(WindowEvent e) {
-				int result = JOptionPane.showConfirmDialog(GameFrame.this, "종료?"); // Yes or No가 뜸
+				int result = JOptionPane.showConfirmDialog(GameFrame.this, "종료하시겠습니까?"); // Yes or No가 뜸
 				// GameFrame.this, "종료?" 라고 하면, 게임 프레임 정중앙에 종료 물어보는 창이뜸.
 
 				if (result == 0) { // yes를 누르면. 임.
@@ -60,8 +60,10 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 	}
 
 	public void changeCanvas(int canvasId) {
-		 //메인에서 1번 버튼 선택시 싱글 플레이
-		if (canvasId == 1) {    
+		long start = System.currentTimeMillis();
+		long end = System.currentTimeMillis();
+		// 메인에서 1번 버튼 선택시 싱글 플레이
+		if (canvasId == 1) {
 			if (count == 0) {
 				introCanvas.setVisible(false);
 				singleCanvas = new SingleCanvas();
@@ -80,16 +82,7 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 				fightCanvas.requestFocus(); // 키보드 입력을 위함.
 				this.revalidate(); //
 			}
-			// introCanvas -> fightCanvas
-//			this.remove(introCanvas);
-//			FightCanvas fightCanvas = new FightCanvas();
-//			introCanvas.setVisible(false);
-//			this.add(fightCanvas);
-//			fightCanvas.start();
-//			fightCanvas.setFocusable(true);
-//			fightCanvas.requestFocus(); // 키보드 입력을 위함.
-//			this.revalidate(); //
-		} else if (canvasId == 2) {
+		} else if (canvasId == 2) { // 멀티 플레이
 			this.remove(introCanvas);
 			FightCanvas multiCanvas = new FightCanvas();
 			this.add(multiCanvas);
@@ -97,10 +90,7 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 			multiCanvas.setFocusable(true);
 			multiCanvas.requestFocus(); // 키보드 입력을 위함.
 			this.revalidate(); //
-		} else if (canvasId == 3) {
-//			IntroCanvas introCanvas = new IntroCanvas();
-//			.add(introCanvas);
-//			introCanvas.start();
+		} else if (canvasId == 3) { // 미정 연결은
 			this.remove(fightCanvas);
 			introCanvas.setVisible(true);
 			introCanvas.setFocusable(true);
@@ -110,3 +100,54 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 
 	}
 }
+
+
+/*
+//메인에서 1번 버튼 선택시 싱글 플레이
+if (canvasId == 1) {    
+	if (count == 0) {
+		introCanvas.setVisible(false);
+		fightCanvas = new FightCanvas();
+		this.add(fightCanvas);
+		fightCanvas.start();
+		fightCanvas.setFocusable(true);
+		fightCanvas.requestFocus(); // 키보드 입력을 위함.
+		this.revalidate(); //
+		count++;
+	} else {
+		this.remove(introCanvas);
+		FightCanvas fightCanvas = new FightCanvas();
+		this.add(fightCanvas);
+		fightCanvas.start();
+		fightCanvas.setFocusable(true);
+		fightCanvas.requestFocus(); // 키보드 입력을 위함.
+		this.revalidate(); //
+	}
+	// introCanvas -> fightCanvas
+//	this.remove(introCanvas);
+//	FightCanvas fightCanvas = new FightCanvas();
+//	introCanvas.setVisible(false);
+//	this.add(fightCanvas);
+//	fightCanvas.start();
+//	fightCanvas.setFocusable(true);
+//	fightCanvas.requestFocus(); // 키보드 입력을 위함.
+//	this.revalidate(); //
+} else if (canvasId == 2) {
+	this.remove(introCanvas);
+	FightCanvas multiCanvas = new FightCanvas();
+	this.add(multiCanvas);
+	multiCanvas.start();
+	multiCanvas.setFocusable(true);
+	multiCanvas.requestFocus(); // 키보드 입력을 위함.
+	this.revalidate(); //
+} else if (canvasId == 3) {
+//	IntroCanvas introCanvas = new IntroCanvas();
+//	.add(introCanvas);
+//	introCanvas.start();
+	this.remove(fightCanvas);
+	introCanvas.setVisible(true);
+	introCanvas.setFocusable(true);
+	introCanvas.requestFocus(); // 키보드 입력을 위함.
+	fram.revalidate(); //
+}
+*/

@@ -19,7 +19,7 @@ import game.item.Character;
 import game.item.Present;
 import game.item.Santa;
 
-public class SingleCanvas extends Canvas { //싱글플레이 vs Ai
+public class SingleCanvas extends Canvas { // 싱글플레이 vs Ai
 	private Random random;
 
 	private Image img;
@@ -38,16 +38,30 @@ public class SingleCanvas extends Canvas { //싱글플레이 vs Ai
 	private int randpush;
 	private int max;
 	private int santaCnt;// 산타 랜덤 출현 카운트
-	private int presentCnt;// 선물 랜덤 출현 카운트 
+	private int presentCnt;// 선물 랜덤 출현 카운트
 	private int unitIndex = 0;
+	private int time1 = 4;
+	private int time2 = 10;
+	private Image[] numImg;
 
 	public SingleCanvas() {
+		numImg = new Image[10];
 		try {
-			img = ImageIO.read(new File("res/images/fallbear.png"));
+			numImg[0] = ImageIO.read(new File("res/images/0.png"));
+			numImg[1] = ImageIO.read(new File("res/images/1.png"));
+			numImg[2] = ImageIO.read(new File("res/images/2.png"));
+			numImg[3] = ImageIO.read(new File("res/images/3.png"));
+			numImg[4] = ImageIO.read(new File("res/images/4.png"));
+			numImg[5] = ImageIO.read(new File("res/images/5.png"));
+			numImg[6] = ImageIO.read(new File("res/images/6.png"));
+			numImg[7] = ImageIO.read(new File("res/images/7.png"));
+			numImg[8] = ImageIO.read(new File("res/images/8.png"));
+			numImg[9] = ImageIO.read(new File("res/images/9.png"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+
 		singleCanvas = this;
 
 		items = new Movable[100];
@@ -56,15 +70,18 @@ public class SingleCanvas extends Canvas { //싱글플레이 vs Ai
 
 		background = new Background();
 		character = new Character();
+		santa = new Santa();
+		present = new Present();
 
 		randompush();
 		santaCnt = 200; // 산타 출현 카운트다운
- 		presentCnt = random.nextInt(200) + 250;//선물 출현 카운트다운
-
+		presentCnt = random.nextInt(200) + 250;// 선물 출현 카운트다운
 
 		items[unitIndex++] = background;
 		items[unitIndex++] = character;
-		
+		items[unitIndex++] = santa;
+		items[unitIndex++] = present;
+
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -76,21 +93,9 @@ public class SingleCanvas extends Canvas { //싱글플레이 vs Ai
 					character.bearL_back();
 					break;
 				}
-				case 68: {// D키 p1 오른쪽 이동
+				case KeyEvent.VK_SPACE: {// D키 p1 오른쪽 이동
 					character.bearL_moveRight();
 					character.bearL_front();
-					break;
-				}
-				case 107: {// D키 p1 오른쪽 이동
-					character.aiSpeedUp();
-					break;
-				}
-				case 109: {// D키 p1 오른쪽 이동
-					character.aiSpeedDown();
-					break;
-				}
-				case P1PUSH: {// 1p 밀기 보조키
-					character.bearL_moveRight();
 					break;
 				}
 				} // end switch
@@ -115,17 +120,13 @@ public class SingleCanvas extends Canvas { //싱글플레이 vs Ai
 	public void randompush() {
 		Thread randth = new Thread(new Runnable() {
 			Random rand = new Random();
-			int i=0;
+
 			@Override
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(80);
+						Thread.sleep(120);
 						character.aivx();
-						i++;
-//						if(i>10) {
-//							character.aiSpeedUp();
-//						}
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -165,7 +166,7 @@ public class SingleCanvas extends Canvas { //싱글플레이 vs Ai
 		for (int i = 0; i < unitIndex; i++) {
 			items[i].update(); // 화면의 이동시 변경 후 업데이트 (쓰레드에서 호출됨)
 		}
-		
+
 		if (unitIndex >= max) {
 			Movable[] temp = new Movable[max + 50];
 
@@ -175,29 +176,25 @@ public class SingleCanvas extends Canvas { //싱글플레이 vs Ai
 			items = temp;
 			max += 50;
 		}
-		
+
 //		System.out.println("santaCnt: "+ santaCnt);
-		if (--santaCnt == 0) { //산타 카운트가 0이면 산타 생성
+		if (--santaCnt == 0) { // 산타 카운트가 0이면 산타 생성
 
 			santa = new Santa(); // 반복적으로 산타 생성
-			
-		
-		
+
 			items[unitIndex++] = santa;
-		
+
 			santaCnt = 1000;
 
 		} // ~end if
-		
+
 //		System.out.println("presentCnt: "+ presentCnt);
-		if (--presentCnt == 0) { //선물카운트가 0이면 선물 투척
-			
-			items[unitIndex++] = santa.throwPresent(); //산타가 선물 투척
-			
+		if (--presentCnt == 0) { // 선물카운트가 0이면 선물 투척
+
+			items[unitIndex++] = santa.throwPresent(); // 산타가 선물 투척
+
 			presentCnt = random.nextInt(400) + 200;
 		}
-		
-
 
 	}
 
@@ -217,6 +214,19 @@ public class SingleCanvas extends Canvas { //싱글플레이 vs Ai
 
 		g.drawImage(buf, 0, 0, this);
 
+	}
+
+	public void timer(Graphics g) {
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				for (int i = 4; i <= 0; i--) {
+					for (int j = 9; j <= 0; j--)
+						g.drawImage(numImg[j], 200, 200, SingleCanvas.getInstacne());
+				}
+			}
+		}).start();
 	}
 
 }

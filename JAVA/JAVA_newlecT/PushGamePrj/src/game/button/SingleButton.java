@@ -28,9 +28,9 @@ public class SingleButton implements Movable {
 
 	@Override
 	public void update() {
-		x = 600;
+		x = 550;
 		y = 230;
-		width = 450;
+		width = 550;
 		height = 110;
 	}
 
@@ -57,8 +57,8 @@ public class SingleButton implements Movable {
 		g.setColor(buttonColor);
 		g.fillRoundRect(x, y, width, height, 100, 300);
 		g.setColor(Color.darkGray);
-		g.setFont(new Font("시작", Font.BOLD | Font.ITALIC, 60));
-		g.drawString("SINGLE PLAY", x + 20, y + 75);
+		g.setFont(new Font("시작", Font.BOLD | Font.ITALIC, 45));
+		g.drawString("혼자하기 (feat. 고성능 AI)", x + 10, y + 75);
 
 	}
 

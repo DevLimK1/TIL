@@ -16,7 +16,10 @@ public class Music {
 	private AudioInputStream stream; 
 	private File file;
 //	private Clip clip;
-	public  static Clip clip;
+	public   Clip clip;
+	
+	public static Music singleMusic;
+	public static Music multiMusic;
 
 	public Music(String name, boolean isLoop) {
 //		this.isLoop = isLoop;
@@ -35,6 +38,12 @@ public class Music {
 		} catch (LineUnavailableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		if (name.equals("BGM_Single.wav")) {
+			singleMusic = this;
+		} else if (name.equals("BMG_Multi.wav")) {
+			multiMusic = this;
 		}
 
 	}
@@ -55,6 +64,14 @@ public class Music {
 	public void musicStop() { //음악 끝내기
 		clip.stop();
 		clip.close();
+	}
+	
+	public static Music getSingleInstance() {
+		return singleMusic;
+	}
+
+	public static Music getMultiInstance() {
+		return multiMusic;
 	}
 }
 //		fis=new FileInputStream(file);

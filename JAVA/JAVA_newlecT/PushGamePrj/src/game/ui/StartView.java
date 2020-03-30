@@ -1,5 +1,7 @@
 package game.ui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -33,6 +35,10 @@ public class StartView implements Movable {
 	public void draw(Graphics g) {
 		g.drawImage(img, 0, (int) y, IntroCanvas.getInstance());
 
+		g.setColor(Color.darkGray);
+		g.setFont(new Font("시작", Font.BOLD, 15));
+		g.drawString("ver 3.30", 790, 740);
+		g.drawString("Program by 전완기 임경원 김성령(feat.효은 누나)", 1100, 740);
 	}
 
 }

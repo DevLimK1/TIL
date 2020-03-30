@@ -7,23 +7,30 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 import game.interFace.Movable;
-import game.item.Character;
 import game.item.Background;
+import game.item.Character;
 
 public class MultiCanvas extends Canvas { //하나의 컴퓨터에서 2p 플레이
 
-	private static MultiCanvas fightCanvas;
+	private static MultiCanvas multicanvas;
 
 	private Character character;
 	private Background background;
+	private int result = 0;
+	
+	private ServerSocket serverSocket;
+	private Socket c_socket;
 
 	private Movable[] items;
 	private int unitIndex = 0;
 
 	public MultiCanvas() {
-		fightCanvas = this;
+		multicanvas = this;
 
 		items = new Movable[100];
 
@@ -32,37 +39,85 @@ public class MultiCanvas extends Canvas { //하나의 컴퓨터에서 2p 플레�
 
 		items[unitIndex++] = background;
 		items[unitIndex++] = character;
+		
+		new Thread(
+
+				new Runnable() {
+
+					@Override
+					public void run() {
+						try {
+							serverSocket = new ServerSocket(8888);
+
+							c_socket = serverSocket.accept();
+							if (c_socket != null)
+								System.out.println("상대방 접속완료");
+
+							// 접속자가 등장 함.
+//리시브 스레드
+							new Thread(new Runnable() {
+								// server player1
+								@Override
+								public void run() {
+									while (true) {
+										int value;
+										try {
+											value = c_socket.getInputStream().read();
+											if (value == 32) {
+												character.bearR_moveLeft();
+												character.bearR_back();
+											} else if (value == 39)
+												character.bearR_moveRight();
+											character.bearR_back();
+										} catch (IOException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									}
+								}
+							}).start();
+
+							if (c_socket != null)
+								System.out.println("클라이언트가 접속했습니다.");
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+
+		).start();
+
 
 		this.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				int result = e.getKeyCode();
 
+			@Override
+			public void keyPressed(KeyEvent e) {
+				result = e.getKeyCode();
+
+				try {
+					c_socket.getOutputStream().write(result);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				System.out.println(result);
 				switch (result) {
-				case KeyEvent.VK_LEFT: { // 우측 곰 왼쪽 이동
-					character.bearR_moveLeft();
-					character.bearR_back();
-					break;
-				}
-				case KeyEvent.VK_RIGHT: { // 우측 곰 오른쪽 이동
-					character.bearR_moveRight();
-					character.bearR_front();
-					break;
-				}
-				case 65: { // 좌측 곰 왼쪽 이동
-					character.bearL_moveLeft();
-					character.bearL_back();
-					break;
-				}
-				case 68: { // 좌측 곰 오른쪽 이동
+				case KeyEvent.VK_SPACE: { // 좌측 곰 오른쪽 이동
 					character.bearL_moveRight();
 					character.bearL_front();
+					break;
+				}
+				case KeyEvent.VK_LEFT: { // 좌측 곰 왼쪽 이동
+					character.bearL_moveLeft();
+					character.bearL_back();
 					break;
 				}
 
 				}// end switch
 			}
 		});
+		
 
 		this.addMouseListener(new MouseAdapter() {
 			@Override
@@ -75,8 +130,13 @@ public class MultiCanvas extends Canvas { //하나의 컴퓨터에서 2p 플레�
 	}
 
 	public static MultiCanvas getInstacne() {
-		return fightCanvas;
+		return multicanvas;
 	}
+	
+	public int getResult() {
+		return result;
+	}
+
 
 	public void start() {
 
@@ -87,7 +147,8 @@ public class MultiCanvas extends Canvas { //하나의 컴퓨터에서 2p 플레�
 				// TODO Auto-generated method stub
 				while (true) {
 					update(); // 단위벡터 단위로 움직임
-					fightCanvas.repaint();
+					multicanvas.repaint();
+
 					try {
 						Thread.sleep(17);
 					} catch (InterruptedException e) {

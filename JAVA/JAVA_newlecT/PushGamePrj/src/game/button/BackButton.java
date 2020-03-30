@@ -34,8 +34,8 @@ public class BackButton implements Movable {
 	private double y;
 	
 	private int width;
-	private int stateValue;
 	private int height;
+	private int stateValue;
 	
 
 	

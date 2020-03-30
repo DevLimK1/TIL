@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import game.button.ExitButton;
 import game.button.HelpButton;
 import game.button.MultiButton;
+import game.button.OnlineButton;
 import game.button.SingleButton;
 import game.interFace.Movable;
 import game.main.Music;
@@ -20,10 +21,14 @@ public class IntroCanvas extends Canvas {
 	private static IntroCanvas introCanvas;
 	private StartView startView;
 
+	public static Music singleMusic;
+	public static Music multiMusic;
+
 	private SingleButton singleButton;
 	private MultiButton multiButton;
 	private ExitButton exitButton;
 	private HelpButton helpButton;
+	private OnlineButton onlineButton;
 	
 	private Movable[] items;
 	private int unitIndex = 0;
@@ -43,12 +48,14 @@ public class IntroCanvas extends Canvas {
 		singleButton = new SingleButton();
 		startView = new StartView();
 		multiButton = new MultiButton();
+		onlineButton = new OnlineButton();
 		exitButton = new ExitButton();
 		helpButton = new HelpButton();
 		
 		items[unitIndex++] = startView;
 		items[unitIndex++] = singleButton;
 		items[unitIndex++] = multiButton;
+		items[unitIndex++] = onlineButton;
 		items[unitIndex++] = exitButton;
 		items[unitIndex++] = helpButton;
 
@@ -56,18 +63,23 @@ public class IntroCanvas extends Canvas {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (singleButton.contatins(e.getX(), e.getY())) {
-					singleButton.state(SingleButton.STATE_CLICK);
+					singleButton.state(singleButton.STATE_CLICK);
 					GameFrame.getInstance().changeCanvas(1);
-					Music.clip.close();
-//					introMusic.musicStop();
-					Music SingleMusic = new Music("BGM_Single.wav", true);
-					SingleMusic.musicStart(); //음악 시작
+					introMusic.musicStop();
+					singleMusic = new Music("BGM_Single.wav", true);
+					singleMusic.musicStart(); // 음악 시작
 				} else if (multiButton.contatins(e.getX(), e.getY())) {
-					multiButton.state(MultiButton.STATE_CLICK);
+					multiButton.state(multiButton.STATE_CLICK);
 					GameFrame.getInstance().changeCanvas(2);
-					Music.clip.close();
-					Music MultiMusic = new Music("BGM_Multi2.wav", true);
-					MultiMusic.musicStart(); //음악 시작
+					introMusic.musicStop();
+					multiMusic = new Music("BMG_Multi.wav", true);
+					multiMusic.musicStart(); // 음악 시작
+				} else if (onlineButton.contatins(e.getX(), e.getY())) {
+					onlineButton.state(onlineButton.STATE_CLICK);
+					GameFrame.getInstance().changeCanvas(2);
+					introMusic.musicStop();
+					multiMusic = new Music("BMG_Multi.wav", true);
+					multiMusic.musicStart(); // 음악 시작
 				} else if (exitButton.contatins(e.getX(), e.getY())) {
 					exitButton.state(ExitButton.STATE_CLICK);
 					System.exit(0);
@@ -92,9 +104,11 @@ public class IntroCanvas extends Canvas {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if (singleButton.contatins(e.getX(), e.getY())) {
-					singleButton.state(SingleButton.STATE_PRESS);
+					singleButton.state(singleButton.STATE_PRESS);
 				} else if (multiButton.contatins(e.getX(), e.getY())) {
-					multiButton.state(MultiButton.STATE_PRESS);
+					multiButton.state(multiButton.STATE_PRESS);
+				} else if (onlineButton.contatins(e.getX(), e.getY())) {
+					onlineButton.state(onlineButton.STATE_PRESS);
 				} else if (exitButton.contatins(e.getX(), e.getY())) {
 					exitButton.state(ExitButton.STATE_PRESS);
 				}
@@ -105,11 +119,13 @@ public class IntroCanvas extends Canvas {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if (singleButton.contatins(e.getX(), e.getY())) {
-					singleButton.state(SingleButton.STATE_RELEASE);
-
+					singleButton.state(singleButton.STATE_RELEASE);
 				}
 				if (multiButton.contatins(e.getX(), e.getY())) {
-					multiButton.state(MultiButton.STATE_RELEASE);
+					multiButton.state(multiButton.STATE_RELEASE);
+				}
+				if (onlineButton.contatins(e.getX(), e.getY())) {
+					onlineButton.state(onlineButton.STATE_RELEASE);
 				}
 				if (exitButton.contatins(e.getX(), e.getY())) {
 					exitButton.state(ExitButton.STATE_RELEASE);
@@ -123,21 +139,37 @@ public class IntroCanvas extends Canvas {
 			@Override
 			public void mouseMoved(MouseEvent e) {
 
-				System.out.printf("(%d, %d)\n", e.getX(), e.getY());// 마우스 움직이면 좌표 보여줌
 
-				if (singleButton.contatins(e.getX(), e.getY())) // SingleButton
-					singleButton.state(SingleButton.STATE_ON);
-				else if (!(singleButton.contatins(e.getX(), e.getY())))
-					singleButton.state(SingleButton.STATE_OFF);
+				if (singleButton.contatins(e.getX(), e.getY())) { // SingleButton
+					singleButton.state(singleButton.STATE_ON);
+					Music effectMusic = new Music("Bell3.wav", true); // 버튼 효과음
+					effectMusic.musicStart(); // 음악 시작
+				
+				} else if (!(singleButton.contatins(e.getX(), e.getY())))
+					singleButton.state(singleButton.STATE_OFF);
 
-				if (multiButton.contatins(e.getX(), e.getY())) // MultiButton
-					multiButton.state(MultiButton.STATE_ON);
-				else if (!(multiButton.contatins(e.getX(), e.getY())))
-					multiButton.state(MultiButton.STATE_OFF);
+				if (multiButton.contatins(e.getX(), e.getY())) { // MultiButton
+					multiButton.state(multiButton.STATE_ON);
+					Music effectMusic = new Music("Bell3.wav", true); // 버튼 효과음
+					effectMusic.musicStart(); // 음악 시작
+				
+				} else if (!(multiButton.contatins(e.getX(), e.getY())))
+					multiButton.state(multiButton.STATE_OFF);
 
-				if (exitButton.contatins(e.getX(), e.getY())) // ExitButton
+				if (onlineButton.contatins(e.getX(), e.getY())) { // MultiButton
+					onlineButton.state(onlineButton.STATE_ON);
+					Music effectMusic = new Music("Bell3.wav", true); // 버튼 효과음
+					effectMusic.musicStart(); // 음악 시작
+					
+				} else if (!(onlineButton.contatins(e.getX(), e.getY())))
+					onlineButton.state(onlineButton.STATE_OFF);
+
+				if (exitButton.contatins(e.getX(), e.getY())) { // ExitButton
 					exitButton.state(ExitButton.STATE_ON);
-				else if (!(exitButton.contatins(e.getX(), e.getY())))
+					Music effectMusic = new Music("Bell3.wav", true); // 버튼 효과음
+					effectMusic.musicStart(); // 음악 시작
+					
+				} else if (!(exitButton.contatins(e.getX(), e.getY())))
 					exitButton.state(ExitButton.STATE_OFF);
 
 			}
