@@ -92,7 +92,7 @@ public class Present implements Movable { //산타가 던지는 선물 아이템
 		
 //		System.out.println("Present dx2: "+dx2);
 //		System.out.println("getBearImg_leftDx2 : "+ Character.getBearImg_leftDx2());
-		//좌측 곰 아이템 획득
+		//좌측 곰 아이템 획득시
 		if(((Character.getBearImg_leftDx2()-50<dx2&&dx2<Character.getBearImg_leftDx2()))&&
 				(Character.getBearImg_leftDy1()+45<dy2&&dy2<615)) { //좌측 곰 머리~발 아이템 닿으면
 			visible=false;
@@ -100,11 +100,12 @@ public class Present implements Movable { //산타가 던지는 선물 아이템
 			//아이템 사라짐
 			g.drawImage(image, 0, 0, 0, 0,  
 					imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());
+			Character.getCharacter().bearL_booster();
 		}else if(visible) 
 			g.drawImage(image, dx1, dy1, dx2-45, dy2-45, 
 				imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());	
 		
-		//우측 곰 아이템 획득
+		//우측 곰 아이템 획득시
 		if(((Character.getBearImg_rightDx2()-50<dx2&&dx2<Character.getBearImg_rightDx2()))&&
 				(Character.getBearImg_rightDy1()+45<dy2&&dy2<615)) { //우측 곰 머리~발 아이템 닿으면
 			visible=false;
@@ -112,6 +113,7 @@ public class Present implements Movable { //산타가 던지는 선물 아이템
 			//아이템 사라짐
 			g.drawImage(image, 0, 0, 0, 0, 
 					imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());
+			Character.getCharacter().bearR_booster();
 		}else if(visible) 
 			g.drawImage(image, dx1, dy1, dx2-45, dy2-45, 
 				imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());	

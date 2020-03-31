@@ -21,6 +21,8 @@ import game.item.Character;
 import game.item.IceBerg;
 import game.item.Olaf;
 import game.item.Santa;
+import game.item.Snow;
+import game.item.Sun;
 
 public class FightCanvas extends Canvas {
 	private Random random;
@@ -37,6 +39,8 @@ public class FightCanvas extends Canvas {
 	private Olaf olaf; //올라프
 	private BackButton backButton; // 뒤로가기 버튼
 	private IceBerg iceBerg; //빙하
+	private Sun sun;
+	private Snow snow;
 
 	private Movable[] items;
 
@@ -61,18 +65,25 @@ public class FightCanvas extends Canvas {
 
 		background = new Background();
 		iceBerg=new IceBerg(); //객체 생성 순서 중요함!! 
-		//Character가 먼저 객체 생성한 후 빙산을 객체 생성하면 캐릭터들이 그냥 지나치게 됨
+		sun=new Sun();
 		character = new Character();
+		//Character가 먼저 객체 생성한 후 빙산을 객체 생성하면 캐릭터들이 그냥 지나치게 됨
+		
+		
 //		backButton = new BackButton();
 
 		santaCnt = 200; // 산타 출현 카운트다운
 		olafCnt = 200; // 올라프 출현 카운트다운
 		presentCnt = random.nextInt(200) + 250;// 선물 출현 카운트다운
 		snowCnt=random.nextInt(200) + 250; //눈 출현 카운트다운
+//		snowCnt=800;
 
-		items[unitIndex++] = background;
-		items[unitIndex++] = character;
-		items[unitIndex++] = iceBerg;
+		items[unitIndex++] = background; //배경
+		items[unitIndex++] = character; //곰 캐릭터
+		items[unitIndex++] = iceBerg; //빙산
+		items[unitIndex++] = sun; //해
+//		items[unitIndex++] = olaf;
+		
 //		items[unitIndex++] = backButton;
 
 		this.addKeyListener(new KeyAdapter() {
@@ -217,6 +228,7 @@ public class FightCanvas extends Canvas {
 			items[unitIndex++] = olaf.throwSnow(); // 산타가 선물 투척
 
 			snowCnt = random.nextInt(400) + 200;
+//			snowCnt=0;
 		}
 
 	}

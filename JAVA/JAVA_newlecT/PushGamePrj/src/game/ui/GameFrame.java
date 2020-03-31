@@ -66,11 +66,11 @@ public class GameFrame extends Frame { // 라이브러리클래스에 저장된 
 		if (canvasId == 1) {
 			if (count == 0) {
 				introCanvas.setVisible(false);
-				singleCanvas = new SingleCanvas();
-				this.add(singleCanvas);
-				singleCanvas.start();
-				singleCanvas.setFocusable(true);
-				singleCanvas.requestFocus(); // 키보드 입력을 위함.
+				fightCanvas = new FightCanvas();
+				this.add(fightCanvas);
+				fightCanvas.start();
+				fightCanvas.setFocusable(true);
+				fightCanvas.requestFocus(); // 키보드 입력을 위함.
 				this.revalidate(); //
 				count++;
 			} else {

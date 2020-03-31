@@ -69,7 +69,7 @@ public class IceBerg implements Movable {
 	public void draw(Graphics g) {
 		
 		/* +++++++++++ 빙산 이미지 그리기 +++++++++++++ */
-		System.out.println("iceBergX: "+iceBergX);
+//		System.out.println("iceBergX: "+iceBergX);
 		int offsetX = 183 / 2; // 빙산 이미지의 x축 중심점 이동위해서 선언
 		int offsetY = 400 / 2; // 빙산 이미지의 y축 중심점 이동위해서 선언
 

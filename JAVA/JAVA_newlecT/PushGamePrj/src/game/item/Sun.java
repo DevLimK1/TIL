@@ -1,5 +1,49 @@
 package game.item;
 
-public class Sun {
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import game.interFace.Movable;
+import game.ui.FightCanvas;
+
+public class Sun implements Movable {
+	private static Image sunImg, sunImg2; // 곰 이미지
+	private static Sun sun;
+
+	/* +++++++++++++해 변수++++++++++++++ */
+	private int sunX, sunY;
+
+	static {
+
+		try {
+			sunImg = ImageIO.read(new File("res/images/sunrise.png")); // 해 이미지
+			sunImg2 = ImageIO.read(new File("res/images/sunrise2.png")); // 강사님 이미지
+		} catch (IOException e) {
+			e.printStackTrace();
+		} // 빙산 이미지
+	}
+	
+	public Sun() {
+		sunX = 10;
+		sunY = 10;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		/* +++++++++++ 해 이미지 그리기 +++++++++++++ */
+
+		g.drawImage(sunImg, sunX + 1130, sunY - 200, FightCanvas.getInstance());
+		
+	}
 
 }
