@@ -47,7 +47,7 @@ public class Olaf implements Movable {
 		x=0;
 		y=100;
 		
-		vx=2;
+		vx=5;
 		
 		speed=1;
 		imgIndex=0;

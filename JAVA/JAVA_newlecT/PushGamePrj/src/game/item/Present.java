@@ -100,7 +100,7 @@ public class Present implements Movable { //산타가 던지는 선물 아이템
 			//아이템 사라짐
 			g.drawImage(image, 0, 0, 0, 0,  
 					imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());
-			Character.getCharacter().bearL_booster();
+//			Character.getCharacter().bearL_booster();
 		}else if(visible) 
 			g.drawImage(image, dx1, dy1, dx2-45, dy2-45, 
 				imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());	
@@ -113,7 +113,7 @@ public class Present implements Movable { //산타가 던지는 선물 아이템
 			//아이템 사라짐
 			g.drawImage(image, 0, 0, 0, 0, 
 					imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());
-			Character.getCharacter().bearR_booster();
+//			Character.getCharacter().bearR_booster();
 		}else if(visible) 
 			g.drawImage(image, dx1, dy1, dx2-45, dy2-45, 
 				imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());	

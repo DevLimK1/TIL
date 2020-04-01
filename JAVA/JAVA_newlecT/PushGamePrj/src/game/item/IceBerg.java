@@ -42,10 +42,18 @@ public class IceBerg implements Movable {
 		return iceBergX;
 	}
 
-
-	public void setIceBergX(int iceBergX) {
-		this.iceBergX = iceBergX;
+	public int getIceBergY() {
+		return iceBergY;
 	}
+
+//	public void rIceBergX(int iceBergX) {
+//		this.iceBergX+= iceBergX;
+//	}
+//	public void lIceBergX(int iceBergX) {
+//		this.iceBergX-= iceBergX;
+//	}
+//	
+	
 	
 	public void plusIceBergX(int vx) {
 		this.iceBergX+=vx;
@@ -55,9 +63,6 @@ public class IceBerg implements Movable {
 		this.iceBergX-=vx;
 	}
 
-	public int getIceBergY() {
-		return iceBergY;
-	}
 
 	@Override
 	public void update() {

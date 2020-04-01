@@ -9,6 +9,7 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JOptionPane;
 
+import game.button.BackButton;
 import game.button.ExitButton;
 import game.button.HelpButton;
 import game.button.MultiButton;
@@ -21,12 +22,13 @@ public class IntroCanvas extends Canvas {
 	private static IntroCanvas introCanvas;
 	private StartView startView;
 
-	public static Music singleMusic;
-	public static Music multiMusic;
-
+	private GameFrame frame;
+	private Music music;
+	
 	private SingleButton singleButton;
 	private MultiButton multiButton;
 	private ExitButton exitButton;
+	private BackButton backButton;
 	private HelpButton helpButton;
 	private OnlineButton onlineButton;
 	
@@ -40,9 +42,6 @@ public class IntroCanvas extends Canvas {
 	}
 	
 	public IntroCanvas() {
-		Music introMusic = new Music("introBGM-fortress.wav", true);
-		introMusic.musicStart(); //음악 시작
-		
 		items = new Movable[100];
 
 		singleButton = new SingleButton();
@@ -65,35 +64,31 @@ public class IntroCanvas extends Canvas {
 				if (singleButton.contatins(e.getX(), e.getY())) {
 					singleButton.state(singleButton.STATE_CLICK);
 					GameFrame.getInstance().changeCanvas(1);
-					introMusic.musicStop();
-					singleMusic = new Music("BGM_Single.wav", true);
-					singleMusic.musicStart(); // 음악 시작
 				} else if (multiButton.contatins(e.getX(), e.getY())) {
 					multiButton.state(multiButton.STATE_CLICK);
 					GameFrame.getInstance().changeCanvas(2);
-					introMusic.musicStop();
-					multiMusic = new Music("BMG_Multi.wav", true);
-					multiMusic.musicStart(); // 음악 시작
 				} else if (onlineButton.contatins(e.getX(), e.getY())) {
 					onlineButton.state(onlineButton.STATE_CLICK);
-					GameFrame.getInstance().changeCanvas(2);
-					introMusic.musicStop();
-					multiMusic = new Music("BMG_Multi.wav", true);
-					multiMusic.musicStart(); // 음악 시작
+					GameFrame.getInstance().changeCanvas(3);
 				} else if (exitButton.contatins(e.getX(), e.getY())) {
 					exitButton.state(ExitButton.STATE_CLICK);
 					System.exit(0);
 				} else if (helpButton.contatins(e.getX(), e.getY())) {
 					helpButton.state(HelpButton.STATE_CLICK);
-					JOptionPane.showMessageDialog(IntroCanvas.this, " 　　　　　　　　♬♪ How to Play ♪♬\r\n" + " \n"
-							+ "1. Start 버튼을 누르면 게임 시작을 합니다. \r\n" + "◆ 게임 조작 방법 \r\n"
-							+ "   - Single 버튼 혹은 Multi 버튼을 누릅니다. \r\n" + "  ▶ Single Play \r\n"
-							+ "   - 게임 시간은 45초 입니다.\r\n" + "   - 화살표 키를 이용하여 벽을 상대편 끝까지 밀면 게임을 승리합니다. \r\n"
-							+ "   - 아이템은 랜덤으로 얻을 수 있으며, 즉시 사용됩니다. \r\n" + "   -  \r\n" + "  ▶ Multi Play\r\n"
-							+ "   - 게임 시간은 45초 입니다.\r\n" + "   - Player 1 게임 작동 키는 키보드 화살표로 작동합니다.\r\n"
-							+ "   - Player 2 게임 작동 키는 키보드 a(왼쪽), d(오른쪽)로 작동합니다.\r\n"
-							+ "   - 아이템은 랜덤으로 얻을 수 있으며, 즉시 사용됩니다. \r\n" + "2. Record 버튼을 누르면 랭킹기록을 확인이 가능합니다.\r\n"
-							+ "3. Exit 버튼 누르면 게임이 종료 됩니다.\r\n" + " \n" + "　　　　　　　　　　WISH TO LUCK ! \r\n");
+					JOptionPane.showMessageDialog(IntroCanvas.this, " 　　　　　　　　♬♪ How to Play ♪♬\r\n" + " \n" + "상대편 곰을 빙판 밖으로 밀어서 떨어뜨리면 이기는 게임입니다. \r\n"
+	                           + "◆ 게임 조작 방법 \r\n" + "  ▶ 혼자하기 \r\n" + "   - 게임 시간은 30초 입니다.\r\n"
+	                           + "   -  게임 작동 키는 키보드 a(왼쪽), s&d(오른쪽)로 작동합니다. \r\n"
+	                           + "   - 아이템은 랜덤으로 얻을 수 있으며, 즉시 사용됩니다. \r\n"
+	                           + "   -  산타가 주는 선물은 ...... / 올라프가 던지는 눈은 뒤로 밀려납니다.\r\n" + "  ▶ 같이하기 \r\n"
+	                           + "   - 게임 시간은 30초 입니다.\r\n" + "   - Player 1 게임 작동 키는 키보드 화살표로 작동합니다.\r\n"
+	                           + "   - Player 2 게임 작동 키는 키보드 a(왼쪽), s&d(오른쪽)로 작동합니다.\r\n"
+	                           + "   - 아이템은 랜덤으로 얻을 수 있으며, 즉시 사용됩니다. \r\n"
+	                           + "   -  산타가 주는 선물은 ...... / 올라프가 던지는 눈은 뒤로 밀려납니다.\r\n" + "  ▶ 온라인 같이하기 \r\n"
+	                           + "   - 게임 시간은 30초 입니다.\r\n" + "   - Player 1 게임 작동 키는 키보드 화살표로 작동합니다.\r\n"
+	                           + "   - Player 2 게임 작동 키는 키보드 a(왼쪽), s&d(오른쪽)로 작동합니다.\r\n"
+	                           + "   - 아이템은 랜덤으로 얻을 수 있으며, 즉시 사용됩니다. \r\n"
+	                           + "   - 산타가 주는 선물은 ...... / 올라프가 던지는 눈은 뒤로 밀려납니다.\r\n" + "Exit 버튼 누르면 게임이 종료 됩니다.\r\n"
+	                           + " \n" + "　　　　　　　　　　WISH TO LUCK ! \r\n");
 					return;
 				}
 
@@ -142,33 +137,21 @@ public class IntroCanvas extends Canvas {
 
 				if (singleButton.contatins(e.getX(), e.getY())) { // SingleButton
 					singleButton.state(singleButton.STATE_ON);
-					Music effectMusic = new Music("Bell3.wav", true); // 버튼 효과음
-					effectMusic.musicStart(); // 음악 시작
-				
 				} else if (!(singleButton.contatins(e.getX(), e.getY())))
 					singleButton.state(singleButton.STATE_OFF);
 
 				if (multiButton.contatins(e.getX(), e.getY())) { // MultiButton
 					multiButton.state(multiButton.STATE_ON);
-					Music effectMusic = new Music("Bell3.wav", true); // 버튼 효과음
-					effectMusic.musicStart(); // 음악 시작
-				
 				} else if (!(multiButton.contatins(e.getX(), e.getY())))
 					multiButton.state(multiButton.STATE_OFF);
 
 				if (onlineButton.contatins(e.getX(), e.getY())) { // MultiButton
 					onlineButton.state(onlineButton.STATE_ON);
-					Music effectMusic = new Music("Bell3.wav", true); // 버튼 효과음
-					effectMusic.musicStart(); // 음악 시작
-					
 				} else if (!(onlineButton.contatins(e.getX(), e.getY())))
 					onlineButton.state(onlineButton.STATE_OFF);
 
 				if (exitButton.contatins(e.getX(), e.getY())) { // ExitButton
 					exitButton.state(ExitButton.STATE_ON);
-					Music effectMusic = new Music("Bell3.wav", true); // 버튼 효과음
-					effectMusic.musicStart(); // 음악 시작
-					
 				} else if (!(exitButton.contatins(e.getX(), e.getY())))
 					exitButton.state(ExitButton.STATE_OFF);
 
@@ -181,9 +164,7 @@ public class IntroCanvas extends Canvas {
 		});
 	}
 
-	public static IntroCanvas getInstance() {
-		return introCanvas;
-	}
+	
 
 	public void start() {
 		Thread gameThread = new Thread(new Runnable() {
@@ -191,7 +172,7 @@ public class IntroCanvas extends Canvas {
 			@Override
 			public void run() { // gameThread.start() 호출하면 실행됨
 				while (true) {
-					update(); // 단위벡터 단위의 움직임, 점진적인 업데이트
+					moveUpdate(); // 단위벡터 단위의 움직임, 점진적인 업데이트
 					repaint();
 
 					try {
@@ -207,7 +188,7 @@ public class IntroCanvas extends Canvas {
 
 	}
 
-	public void update() {
+	public void moveUpdate() {
 		for (int i = 0; i < unitIndex; i++)
 			items[i].update();
 	}
@@ -228,6 +209,10 @@ public class IntroCanvas extends Canvas {
 
 		// 모든그림이 다그려지면 한번만 화면 버퍼에 그리자.
 		g.drawImage(buf, 0, 0, this);
+	}
+	
+	public static IntroCanvas getInstance() {
+		return introCanvas;
 	}
 
 }

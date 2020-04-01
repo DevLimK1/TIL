@@ -61,7 +61,7 @@ public class Snow implements Movable {
 		y = 71;
 
 //		vx=2;
-		vy = 2;
+		vy = 3;
 		imgIndex = 0;
 
 	}

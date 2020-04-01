@@ -37,8 +37,8 @@ public class StartView implements Movable {
 
 		g.setColor(Color.darkGray);
 		g.setFont(new Font("시작", Font.BOLD, 15));
-		g.drawString("ver 3.30", 790, 740);
-		g.drawString("Program by 전완기 임경원 김성령(feat.효은 누나)", 1100, 740);
+		g.drawString("ver 4.02", 790, 740);
+		g.drawString("Program by 전완기 임경원 김성령 ", 1170, 740);
 	}
 
 }

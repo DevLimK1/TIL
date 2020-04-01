@@ -6,15 +6,18 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 import game.interFace.Movable;
 import game.main.Music;
 import game.ui.FightCanvas;
+import game.ui.GameFrame;
 import game.ui.IntroCanvas;
 
 public class Character implements Movable {
 	private Image bearImg_left, bearImg_right; //곰 캐릭터 이미지
 	private static Character character;
+	private IntroCanvas introCanvas;
 
 	/* +++++++++++++좌측 곰 변수++++++++++++++ */
 	private int bearImg_leftX, bearImg_leftY; // 좌측 곰 x,y좌표
@@ -37,24 +40,28 @@ public class Character implements Movable {
 
 	private int rVx;// 우측 곰 이동할 단위
 	private int lVx; //좌측 곰 이동할 단위 
+
+	private int timeoutForMove;
 	
-	public double aivx = 10;// 이동할 단위 위치
+//	public double aiVx = 20;// Ai이동할 단위 위치
 
 
 	private static int cnt = 0;
+	private static int cntt = 1;
 	public static boolean change = false;
 	Music EffectMusic;
 
 	private boolean LfreezingFlag=false; //좌측 곰 프리징 유무
 	private boolean RfreezingFlag=false; //우측 곰 프리징 유무
 	
+	private static boolean bearDrop=false;
 	private boolean visible=true;
 	
 	public Character() {
 		character=this;
 		
 		iceBerg = IceBerg.getIceBerg(); //생성된 객체 불러오기
-		
+		timeoutForMove = 7;
 
 		try {
 			bearImg_left = ImageIO.read(new File("res/images/BBear-freezing.png")); // 왼쪽 곰 이미지
@@ -71,8 +78,9 @@ public class Character implements Movable {
 		bearImg_leftY = 480; // 좌측 곰 시작점 y축
 		widthL = 166; // 좌측 곰 너비
 		heightL = 256; // 좌측 곰 높이
+		lVx=15; //좌측 곰 이동단위
 		imgIndexL = 0; // 좌측 곰 이미지인덱스
-
+		
 		/* +++++++++++++우측 곰 초기화 설정++++++++++++++ */
 		bearImg_rightX = 1050; // 우측 곰 시작점 x축
 		bearImg_rightY = 480; // 우측 곰 시작점 y축
@@ -81,9 +89,9 @@ public class Character implements Movable {
 //		widthR = (bearImg_right.getWidth(FightCanvas.getInstacne())) / 7;
 //		heightR = bearImg_right.getHeight(FightCanvas.getInstacne());
 		imgIndexR = 0; // 우측 곰 이미지인덱스
-		rVx = 10;// 이동단위
-		lVx=10;
-		vx=10;
+		rVx = 15;// 우측 곰 이동단위
+	
+		vx=15;//빙산 이동단위
 
 	}
 
@@ -167,22 +175,22 @@ public class Character implements Movable {
 	public void bearL_freezing() { // 좌측 곰 프리징
 		imgIndexL++;
 		imgIndexL = (imgIndexL % 4) + 7;
-		this.bearImg_leftX=bearImg_leftX-100;
+		this.bearImg_leftX-=80;
 	}
 	
 	public void bearR_freezing() { //우측 곰 프리징
 		imgIndexR++;
 		imgIndexR = (imgIndexR % 4) + 7;
-		this.bearImg_rightX=bearImg_rightX+100;
+		this.bearImg_rightX+=80;
 	}
 	
-	public void bearL_booster() {
-		lVx += 1;
-	}
-
-	public void bearR_booster() {
-		rVx += 2;
-	}
+//	public void bearL_booster() {
+//		iceBerg.rIceBergX(10);
+//	}
+//	
+//	public void bearR_booster() {
+//		iceBerg.lIceBergX(10);
+//	}
 	
 	
 
@@ -197,13 +205,13 @@ public class Character implements Movable {
 		}
 	}
 
-	public void aiSpeedUp() {// (미완성)싱글플레이 우측곰 속도 업
-		this.aivx += 2;
-	}
-
-	public void aiSpeedDown() {// (미완성)싱글플레이 우측곰 속도 다운
-		this.aivx -= 2;
-	}
+//	public void aiSpeedUp() {// (미완성)싱글플레이 우측곰 속도 업
+//		this.aivx += 2;
+//	}
+//
+//	public void aiSpeedDown() {// (미완성)싱글플레이 우측곰 속도 다운
+//		this.aivx -= 2;
+//	}
 
 	public void draw(Graphics g) {
 
@@ -235,76 +243,100 @@ public class Character implements Movable {
 		g.drawImage(bearImg_right, bearImg_rightDx1, bearImg_rightDy1, bearImg_rightDx2, bearImg_rightDy2,
 				imgIndexR * widthR, 0, imgIndexR * widthR + widthR, heightR, FightCanvas.getInstance());
 
-
-		/* +++++++++++ 눈 맞을 때 +++++++++++++ */
 		
-		//좌측 곰 눈덩이 맞을 때
-//		if(((bearImg_leftDx1-15<snow.getDx1()&&snow.getDx1()<bearImg_leftDx1-15+126))
-//				&&(bearImg_leftDy1+30<snow.getDy2()-140&&snow.getDy2()-140<615)) { //좌측 곰 머리~발 아이템 닿으면
-//			snow.setVisible(false);
-
-			//			visible=false;
-			//아이템 사라짐
-//			g.drawImage(image, 0, 0, 0, 0,  
-//					imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());
-//		}	
-		
-		//우측 곰 눈덩이 맞을 때
-//		if(((bearImg_rightDx1+15<snow.getDx1()&&snow.getDx1()<bearImg_rightDx1+125))
-//				&&(bearImg_rightDy1+15<snow.getDy2()-140&&snow.getDy2()-124<615)) { //우측 곰 머리~발 아이템 닿으면
-//			snow.setVisible(false);
-
-			
-			//아이템 사라짐
-//			g.drawImage(image, 0, 0, 0, 0, 
-//					imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());
-//		}	
-		
-		
-		
+		// 왼곰이 빙하밖으로 떨어지면
 		if (bearImg_leftX < 180 || bearImg_leftX > 1250) {
-			// 왼곰이 빙하밖으로 떨어지면
+			bearDrop=true;
+			
 			bearImg_leftY++; // 화면 밑으로 사라짐
-			lVx = 0;
-			cnt++;
-
-			if (cnt == 1) { // (싱글에서는 노래 나오나, 멀티에서 안나옴)
-				Thread th1 = new Thread(new Runnable() {
-
-					@Override
-					public void run() {
-						Music.getSingleInstance().musicStop();
-						Music EffectMusic = new Music("wooo.wav", true);
-						EffectMusic.musicStart();
-					}
-				});
+			vx = 0; //빙하 멈춤
+			lVx=0; //좌측 곰 멈춤
+			rVx=0; //우측 곰 멈춤
+			
+			if (GameFrame.canvasId == 1) {
 				cnt++;
-				th1.start();
+
+				if (cnt == 1) { // 싱글-왼곰이 빙하 밖 떨어지면 음악재생
+					Thread th1 = new Thread(new Runnable() {
+						@Override
+						public void run() {
+
+							Music.getSingleInstance().musicStop();
+							Music EffectMusic = new Music("wooo.wav", true);
+							EffectMusic.musicStart();
+						}
+					});
+					cnt++;
+					th1.start();
+				}
 			}
+
+			if (GameFrame.canvasId == 2) {
+				cntt++;
+				if (cntt == 2) { // 멀티-곰이 빙하 밖 떨어지면 음악재생
+					Thread th2 = new Thread(new Runnable() {
+						@Override
+						public void run() {
+							introCanvas.multiMusic.musicStop();
+//							Music.getMultiInstance().musicStop();
+							Music EffectMusic = new Music("wooo.wav", true);
+							EffectMusic.musicStart();
+						}
+					});
+					cntt++;
+					th2.start();
+				}
+			}
+
 		}
 
-		if (bearImg_rightX < 160 || bearImg_rightX > 1320) {// 오른곰이 빙하밖으로 떨어지면
+		// 오른곰이 빙하밖으로 떨어지면
+		if (bearImg_rightX < 160 || bearImg_rightX > 1320) {
+			bearDrop=true;
+			
 			bearImg_rightY++; // 화면 밑으로 사라짐
-			rVx = 0;
-			cnt++;
-
-			if (cnt == 1) {// (싱글에서는 노래 나오나, 멀티에서 안나옴)
-				Thread th1 = new Thread(new Runnable() {
-
-					@Override
-					public void run() {
-						Music.getSingleInstance().musicStop();
-						// Music.getMultiInstance().musicStop();
-						Music EffectMusic = new Music("wooo.wav", true);
-						EffectMusic.musicStart();
-					}
-				});
+			vx = 0; //빙하 멈춤
+			lVx=0; //좌측 곰 멈춤
+			rVx=0; //우측 곰 멈춤
+			
+			if (GameFrame.canvasId == 1) {
 				cnt++;
-				th1.start();
+
+				if (cnt == 1) { // 싱글-오른곰이 빙하 밖 떨어지면 음악재생
+					Thread th1 = new Thread(new Runnable() {
+						@Override
+						public void run() {
+
+							Music.getSingleInstance().musicStop();
+							Music EffectMusic = new Music("wooo.wav", true);
+							EffectMusic.musicStart();
+						}
+					});
+					cnt++;
+					th1.start();
+				}
 			}
+
+			if (GameFrame.canvasId == 2) {
+				cntt++;
+				if (cntt == 2) { // 멀티-오른곰이 빙하 밖 떨어지면 음악재생
+					Thread th2 = new Thread(new Runnable() {
+						@Override
+						public void run() {
+							introCanvas.multiMusic.musicStop();
+//							Music.getMultiInstance().musicStop();
+							Music EffectMusic = new Music("wooo.wav", true);
+							EffectMusic.musicStart();
+						}
+					});
+					cntt++;
+					th2.start();
+				}
+			}//end if 
+
 		}
 		
-	}
+	}//end draw
 	
 	
 	public void setbearImg_rightX(int x) {
@@ -315,13 +347,6 @@ public class Character implements Movable {
 		this.lVx=lVx;
 	}
 	
-	public void update() {
-	}
-
-	// 선물 줍기
-	public void pickUp() {
-
-	}
 
 	public static int getBearImg_leftDx2() { // 좌측곰 dx2축 반환
 		return bearImg_leftDx2;
@@ -374,6 +399,21 @@ public class Character implements Movable {
 	public boolean getLfreezing() {
 		return LfreezingFlag;
 	}
+
+	public void bearsStop() {
+		rVx=0;
+		lVx=0;
+	}
+	
+	public static boolean isBearDrop() {
+		return bearDrop;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}  
 
 	
 
