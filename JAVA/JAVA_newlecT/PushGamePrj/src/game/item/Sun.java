@@ -9,11 +9,13 @@ import javax.imageio.ImageIO;
 
 import game.interFace.Movable;
 import game.ui.FightCanvas;
+import game.ui.SingleCanvas;
 
 public class Sun implements Movable {
 	private static Image sunImg, sunImg2; // 곰 이미지
 	private static Sun sun;
-
+	public static boolean contain;
+	
 	/* +++++++++++++해 변수++++++++++++++ */
 	private int sunX, sunY;
 
@@ -30,6 +32,7 @@ public class Sun implements Movable {
 	public Sun() {
 		sunX = 10;
 		sunY = 10;
+		contain = false;
 	}
 
 	@Override
@@ -41,9 +44,11 @@ public class Sun implements Movable {
 	@Override
 	public void draw(Graphics g) {
 		/* +++++++++++ 해 이미지 그리기 +++++++++++++ */
+		if (sun.contain == true)
+			g.drawImage(sunImg2, sunX + 1130, sunY - 200, FightCanvas.getInstacne());
 
-		g.drawImage(sunImg, sunX + 1130, sunY - 200, FightCanvas.getInstance());
-		
+		else
+			g.drawImage(sunImg, sunX + 1130, sunY - 200, FightCanvas.getInstacne());
 	}
 
 }

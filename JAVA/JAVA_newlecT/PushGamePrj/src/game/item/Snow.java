@@ -18,10 +18,9 @@ public class Snow implements Movable {
 	private double y;
 	private double vx; // 이동할 단위 위치
 	private double vy;
+	
 	private int width;
 	private int height;
-//	private double dx; //목적지 위치
-//	private double dy;
 
 	private int dx1;// 이미지 화면에 출력 될 x축
 	private int dy1;// 이미지 화면에 출력 될 y축
@@ -32,7 +31,6 @@ public class Snow implements Movable {
 
 	private int timeout;
 	private int imgIndex;
-	private int speed;
 
 	private boolean visible = true;
 
@@ -60,7 +58,6 @@ public class Snow implements Movable {
 		this.x = x - 50;
 		y = 71;
 
-//		vx=2;
 		vy = 3;
 		imgIndex = 0;
 
@@ -70,9 +67,6 @@ public class Snow implements Movable {
 		return snow;
 	}
 
-//	public static Snow getSnow() {
-//		return snow;
-//	}
 
 	@Override
 	public void update() {
@@ -96,27 +90,6 @@ public class Snow implements Movable {
 
 	@Override
 	public void draw(Graphics g) {
-
-//		if(visible)  
-//			g.drawImage(image, dx1, dy1, dx2-124, dy2-124, 
-//					imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());	
-//		else //눈에 맞았을 때  
-//			g.drawImage(image, 0, 0, 0, 0, 
-//					imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());
-//		
-
-//		System.out.println(width);
-//		System.out.println(height);
-//		System.out.printf("Snow (dx1,dx2) : (%d,%d)\n",dx1,dx2);		
-
-//		System.out.println("getBearImg_rightDy1 : "+ Character.getBearImg_rightDy1());
-//		System.out.println("getBearImg_rightDy2 : "+ Character.getBearImg_rightDy2());
-
-//		System.out.println("getBearImg_leftDx1 : "+ Character.getBearImg_leftDx1());
-//		System.out.println("getBearImg_leftDx2 : "+ Character.getBearImg_leftDx2());
-
-//		System.out.println("getBearImg_rightDx1 : "+ Character.getBearImg_rightDx1());
-//		System.out.println("getBearImg_rightDx2 : "+ Character.getBearImg_rightDx2());
 
 		// 좌측 곰 눈덩이 맞을 때
 		if (((Character.getBearImg_leftDx1() - 15 < dx1 && dx1 < Character.getBearImg_leftDx1() - 15 + 126))
@@ -184,10 +157,4 @@ public class Snow implements Movable {
 		this.visible = visible;
 	}
 	
-	
-
 }
-//&&
-//(Character.getBearImg_leftDy1()<dy2-140&&dy2-140<615)
-//&&
-//(Character.getBearImg_rightDy1()<dy2-140&&dy2-124<615)

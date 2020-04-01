@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -15,20 +14,14 @@ public class Santa implements Movable{
 
 	private static Image image;
 	
-	private Present present;
-	
 	private double x;
 	private double y;
 	private double vx; //이동할 단위 위치
-	private double vy;
-	private double dx; //목적지 위치
-	private double dy;
 	
 	private int width;
 	private int height;
 	private int timeout;
 	private int imgIndex;
-	private int speed;
 	
 	
 	static { //함수 호출과 상관없이 프로그램이 실행되면서 한번 초기화됨 
@@ -43,19 +36,16 @@ public class Santa implements Movable{
 	public Santa() {
 		
 		timeout=3;
-		Random random=new Random();
 		
-//		width=(image.getWidth(FightCanvas.getInstacne()))/7; //ImageObserver(this)는 Canvas 클래스내에서 혹은 상속받은 상태에서 가능
-		height=image.getHeight(FightCanvas.getInstacne());
+//		width=(image.getWidth(FightCanvas.getInstacne()))/7; 
+		height=image.getHeight(FightCanvas.getInstacne());//ImageObserver(this)는 Canvas 클래스내에서 혹은 상속받은 상태에서 가능
 		width=324;
 		
 		x=1300;
 		y=100;
 		
-//		vy=random.nextInt(5)+1;
 		vx=2;
 		
-		speed=1;
 		imgIndex=0;
 	}
 	

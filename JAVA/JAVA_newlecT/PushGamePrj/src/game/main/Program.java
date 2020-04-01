@@ -10,7 +10,8 @@ public class Program {
 		Frame frame = new GameFrame();
 		frame.setVisible(true);
 		frame.setSize(1450, 800 );
-		frame.setTitle("Bingsan");
+		frame.setResizable(false);
+		frame.setTitle("Server");
 		frame.setFocusable(true);
 	}
 

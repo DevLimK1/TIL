@@ -47,8 +47,8 @@ public class SingleCanvas extends Canvas { // 싱글플레이 vs Ai
 	private Sun sun; // 해
 	private Snow snow; // 눈덩이
 
-	private int frontTime; // 시간 카운트 앞숫자
-	private int backTime; // 시간 카운트 뒷숫자
+	private  int frontTime; // 시간 카운트 앞숫자
+	private  int backTime; // 시간 카운트 뒷숫자
 	private int fx, fy; // 카운트 앞자리 수
 	private int bx, by; // 카운트 뒷자리 수
 
@@ -59,9 +59,10 @@ public class SingleCanvas extends Canvas { // 싱글플레이 vs Ai
 	private int snowCnt; // 눈 랜덤 출현 카운트
 
 	private int unitIndex = 0;
-	private static boolean isStop;
+	private boolean isStop;
 	
 	public SingleCanvas() {
+		System.out.println("hi");
 		random = new Random();
 
 		isStop=true; 
@@ -313,6 +314,7 @@ public class SingleCanvas extends Canvas { // 싱글플레이 vs Ai
 
 		System.out.println("backTime: " + backTime);
 		System.out.println("frontTime: " + frontTime);
+		System.out.println("isStop: " + isStop);
 		
 		gg.drawImage(numImg[backTime], bx, by, SingleCanvas.getInstacne()); // 카운트 다운 뒤에 숫자
 		gg.drawImage(numImg[frontTime], fx, fy, SingleCanvas.getInstacne()); // 카운트 다운 앞에 숫자
@@ -322,12 +324,16 @@ public class SingleCanvas extends Canvas { // 싱글플레이 vs Ai
 			isStop=false;
 			backTime = 0;
 			frontTime = 0;
-			GameFrame.music.ahStop();
-			GameFrame.music.singleStop();
 		}
 
 		g.drawImage(buf, 0, 0, this);
 
+	}
+	
+	public void setInit() {
+		this.isStop=true;
+		this.backTime=1;
+		this.frontTime=3;
 	}
 
 	public static SingleCanvas getInstacne() {

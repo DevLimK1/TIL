@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -14,19 +13,14 @@ import game.ui.FightCanvas;
 public class Olaf implements Movable {
 	private static Image olafImage; //올라프 이미지
 	
-	
 	private double x; //올라프 이동 위치
 	private double y;
 	private double vx; //이동할 단위 위치
-	private double vy;
-	private double dx; //목적지 위치
-	private double dy;
 	
 	private int width;
 	private int height;
 	private int timeout;
 	private int imgIndex;
-	private int speed;
 	
 	static {
 		try {
@@ -39,7 +33,6 @@ public class Olaf implements Movable {
 	
 	public Olaf() {
 		timeout=3;
-		Random random=new Random();
 		
 		width=(olafImage.getWidth(FightCanvas.getInstacne())); //ImageObserver(this)는 Canvas 클래스내에서 혹은 상속받은 상태에서 가능
 		height=olafImage.getHeight(FightCanvas.getInstacne());
@@ -49,7 +42,6 @@ public class Olaf implements Movable {
 		
 		vx=5;
 		
-		speed=1;
 		imgIndex=0;
 		
 	}
@@ -75,8 +67,6 @@ public class Olaf implements Movable {
 		int dy1 = (int) (y - offsetY);
 		int dx2 = (int) (x+width - offsetX);
 		int dy2 = (int) (y + height - offsetY);
-//		System.out.println(width);
-//		System.out.println(height);
 		
 		g.drawImage(olafImage, dx1, dy1, dx2, dy2, 
 				imgIndex*width, 0, imgIndex*width+width, 0+height, FightCanvas.getInstacne());

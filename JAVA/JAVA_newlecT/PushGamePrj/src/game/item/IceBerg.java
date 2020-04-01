@@ -24,6 +24,7 @@ public class IceBerg implements Movable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} // 빙산 이미지
+		
 	}
 	
 	public IceBerg() {
@@ -46,15 +47,6 @@ public class IceBerg implements Movable {
 		return iceBergY;
 	}
 
-//	public void rIceBergX(int iceBergX) {
-//		this.iceBergX+= iceBergX;
-//	}
-//	public void lIceBergX(int iceBergX) {
-//		this.iceBergX-= iceBergX;
-//	}
-//	
-	
-	
 	public void plusIceBergX(int vx) {
 		this.iceBergX+=vx;
 	}

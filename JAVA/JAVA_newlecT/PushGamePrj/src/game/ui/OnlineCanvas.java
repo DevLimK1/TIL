@@ -152,7 +152,6 @@ public class OnlineCanvas extends Canvas {
 										character.bearR_moveRight();
 									character.bearR_back();
 								} catch (IOException e) {
-									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
 							}
@@ -190,7 +189,6 @@ public class OnlineCanvas extends Canvas {
 						Thread.sleep(1000);
 					}
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -206,7 +204,6 @@ public class OnlineCanvas extends Canvas {
 					OutputStream os = c_socket.getOutputStream();
 					os.write(result);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
