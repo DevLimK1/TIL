@@ -30,7 +30,7 @@ public class MemberService {
 		ResultSet resultSet = statement.executeQuery();
 		
 
-		if(resultSet.next()) {
+		while(resultSet.next()) {
 			member=new Member();
 			member.setId(resultSet.getString("ID"));
 			member.setPwd(resultSet.getString("PWD"));
