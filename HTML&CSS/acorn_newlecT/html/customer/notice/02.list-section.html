@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <header>
+        <!-- body의 header임, h1을 가지고 있어야함-->
+        <h1>뉴렉처 온라인</h1>
+
+        <section>
+            <h1>헤더</h1>
+
+            <section>
+                <!-- section 안에는 제목이 h1 태그여야 한다.-->
+                <!-- main은 2번쓰면 안된다. 문서에 한번만 body 안에만 쓸 수 있다.-->
+                <h1>메인메뉴</h1>
+                <ul>
+                    <li>학습가이드</li>
+                    <li>강좌선택</li>
+                    <li>AnswerIs</li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>강좌검색 폼</h1>
+                <form>과정검색</form>
+            </section>
+
+            <section>
+                <h1>회원메뉴</h1>
+                <ul>
+                    <li>HOME</li>
+                    <li>로그인</li>
+                    <li>회원가입</li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>자주 사용하는 메뉴</h1>
+                <ul>
+                    <li>마이페이지</li>
+                    <li>고객센터</li>
+                </ul>
+            </section>
+        </section>
+    </header>
+    <!--h2 헤더 /div-->
+
+    <div>
+        <section>
+            <h1>고객센터</h1>
+
+            <section>
+                <h1>고객센터메뉴</h1>
+                <ul>
+                    <li> 공지사항</li>
+                    <li> 자주하는 질문</li>
+                    <li> 수강문의</li>
+                    <li> 이벤트</li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>협력업체</h1>
+                <ul>
+                    <li>노트펍스</li>
+                    <li>나무랩연구소</li>
+                    <li>한빛미디어</li>
+                </ul>
+            </section>
+        </section>
+    </div>
+
+
+    <main>
+        <!-- body main 이 가능! section안에 main이 있으면 안됨-->
+        <section>
+            <h1>공지사항</h1>
+
+            <section>
+                <h1>경로</h1>
+                <ol>
+                    <li>home</li>
+                    <li>고객센터</li>
+                    <li> 공지사항</li>
+                </ol>
+            </section>
+
+            <section>
+                <h1>공지사항 목록</h1>
+                <table>
+                    <tr>
+                        <td>번호</td>
+                        <td>제목</td>
+                        <td>작성자</td>
+                        <td>작성일</td>
+                        <td>조회수</td>
+                    </tr>
+
+                    <tr>
+                        <td>12</td>
+                        <td>2020년 2월 모집 안내입니다.</td>
+                        <td>newlec</td>
+                        <td> 2019-12-14</td>
+                        <td>1514</td>
+                    </tr>
+
+                    <tr>
+                        <td>11</td>
+                        <td> 현재 좋은 인재를 찾고 계신가요?</td>
+                        <td>newlec</td>
+                        <td>2019-11-10</td>
+                        <td>1015</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h1>현재 페이지번호</h1>
+                <div>1 / 1 pages</div>
+            </section>
+
+            <section>
+                <h1>페이저</h1>
+                <div>
+                    <!-- 이전  이렇게만 쓰면 안된다. 블럭 단위 안에는 감싸야한다.-->
+                    <div>이전</div>
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                    </ul>
+                    <div>다음</div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+
+    <footer>
+        <section>
+            <!-- 의미론적으로는 정보를 의미한다. header보다 위에 있어도 상관은 없다-->
+            <h1>회사정보</h1>
+
+            <section>
+                <h1>소유자정보</h1>
+                <dl>
+                    <dt>주소:</dt>
+                    <dd>서울특별시 마포구 토정로35길 11, 인우빌딩 5층 266호</dd>
+                    <dt>관리자메일:</dt>
+                    <dd>admin@newlecture.com</dd>
+                    <dt>사업자 등록번호:</dt>
+                    <dd>132-18-46763</dd>
+                    <dt>통신 판매업:</dt>
+                    <dd> 신고제 2013-서울강동-0969 호</dd>
+                    <dt> 상호:</dt>
+                    <dd>뉴렉처</dd>
+                    <dt>대표:</dt>
+                    <dd>박용우</dd>
+                    <dt>전화번호:</dt>
+                    <dd> 070-4206-4084</dd>
+                </dl>
+            </section>
+
+            <section>
+                <h1>저작권자정보</h1>
+                <div>
+                    Copyright ⓒ newlecture.com 2012-2014 All Right Reserved. Contact admin@newlecture.com for more
+                    information
+                </div>
+            </section>
+        </section>
+    </footer>
+
+</body>
+
+</html>
