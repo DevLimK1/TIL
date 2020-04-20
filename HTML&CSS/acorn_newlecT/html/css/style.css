@@ -1,0 +1,19 @@
+#header {
+    height: 70px;
+    overflow: visible;
+}
+
+#visual {
+    height: 171px;
+    background-color: green;
+}
+
+#body {
+    height: 300px;
+    background-color: yellow;
+}
+
+#footer {
+    height: 100px;
+    background-color: red;
+}

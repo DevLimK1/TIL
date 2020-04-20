@@ -7,22 +7,14 @@
     <title>Document</title>
     <!-- 스타일 -> 스타일 속성을 style=""으로 설정하기 -->
     <!-- 선택자 -> 스타일의 집중화를 위해서 -->
-    <style>
-        #menu-section h1 {
-            color: blue;
-        }
+    <link rel="stylesheet" href="../../css/style.css" type="text/css">
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css">
 
-        /* + : 바로 밑에  */
-        /* ~ : 밑에 다 */
-        #main-menu li:first-child~li {
-            color: red;
-        }
-    </style>
 </head>
 
 <body>
 
-    <header>
+    <header id="header">
         <!-- body의 header임, h1을 가지고 있어야함-->
         <h1><img src="../../images/logo.png" alt=""></h1>
 
@@ -76,124 +68,132 @@
 
     <!-- main contents와 관련없는건 aside -->
     <!-- section은 아웃라인의 영역을 주는 요소 -->
+    <!-- ================================================================================================================ -->
+    <div id="visual">
 
-    <aside>
-        <h1>고객센터</h1>
+    </div>
+    <!-- ================================================================================================================ -->
+    <!-- 방을 만들어주기 위해 div로 묶어준다 -->
+    <div id="body">
+        <aside>
+            <h1>고객센터</h1>
 
-        <nav>
-            <h1>고객센터메뉴</h1>
-            <ul>
-                <li><a href="detail.html">공지사항</a></li>
-                <li><a href="">자주하는 질문</a></li>
-                <li><a href="">수강문의</a></li>
-                <li><a href="">이벤트</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <h1>고객센터메뉴</h1>
+                <ul>
+                    <li><a href="detail.html">공지사항</a></li>
+                    <li><a href="">자주하는 질문</a></li>
+                    <li><a href="">수강문의</a></li>
+                    <li><a href="">이벤트</a></li>
+                </ul>
+            </nav>
 
-        <nav>
-            <header>
-                <h1>협력업체</h1>
-            </header>
+            <nav>
+                <header>
+                    <h1>협력업체</h1>
+                </header>
 
-            <ul>
-                <li><a href="">노트펍스</a></li>
-                <li><a href="">나무랩연구소</a></li>
-                <li><a href="">한빛미디어</a></li>
-            </ul>
-        </nav>
-    </aside>
+                <ul>
+                    <li><a href="">노트펍스</a></li>
+                    <li><a href="">나무랩연구소</a></li>
+                    <li><a href="">한빛미디어</a></li>
+                </ul>
+            </nav>
+        </aside>
 
 
 
-    <main>
-        <!-- body main 이 가능! section안에 main이 있으면 안됨-->
-        <section>
-            <h1>공지사항</h1>
-
+        <main>
+            <!-- body main 이 가능! section안에 main이 있으면 안됨-->
             <section>
-                <h1>경로</h1>
-                <ol>
-                    <li>home</li>
-                    <li>고객센터</li>
-                    <li> 공지사항</li>
-                </ol>
+                <h1>공지사항</h1>
+
+                <section>
+                    <h1>경로</h1>
+                    <ol>
+                        <li>home</li>
+                        <li>고객센터</li>
+                        <li> 공지사항</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h1>공지사항검색폼</h1>
+                    <form>
+                        <fieldset>
+                            <legend>공지검색필드</legend>
+                            <label for="">검색분류</label>
+
+                            <select name="" id="">
+                                <option value="">제목</option>
+                                <option value="">작성자</option>
+                                <option value="">내용</option>
+                            </select>
+
+                            <label for="">검색어</label>
+                            <input type="text">
+                            <input type="submit" value="검색">
+
+                        </fieldset>
+                    </form>
+                </section>
+
+                <section>
+                    <h1>공지사항 목록</h1>
+                    <table>
+                        <tr>
+                            <td>번호</td>
+                            <td>제목</td>
+                            <td>작성자</td>
+                            <td>작성일</td>
+                            <td>조회수</td>
+                        </tr>
+
+                        <tr>
+                            <td>12</td>
+                            <td><a href="detail.html"> 2020년 2월 모집 안내입니다.</a></td>
+                            <td>newlec</td>
+                            <td> 2019-12-14</td>
+                            <td>1514</td>
+                        </tr>
+
+                        <tr>
+                            <td>11</td>
+                            <td> 현재 좋은 인재를 찾고 계신가요?</td>
+                            <td>newlec</td>
+                            <td>2019-11-10</td>
+                            <td>1015</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h1>현재 페이지번호</h1>
+                    <div>1 / 1 pages</div>
+                </section>
+
+                <section>
+                    <h1>페이저</h1>
+                    <div>
+                        <!-- 이전  이렇게만 쓰면 안된다. 블럭 단위 안에는 감싸야한다.-->
+                        <div>이전</div>
+                        <ul>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                        </ul>
+                        <div>다음</div>
+                    </div>
+                </section>
             </section>
+        </main>
+    </div>
 
-            <section>
-                <h1>공지사항검색폼</h1>
-                <form>
-                    <fieldset>
-                        <legend>공지검색필드</legend>
-                        <label for="">검색분류</label>
+    <!-- ================================================================================================================ -->
 
-                        <select name="" id="">
-                            <option value="">제목</option>
-                            <option value="">작성자</option>
-                            <option value="">내용</option>
-                        </select>
-
-                        <label for="">검색어</label>
-                        <input type="text">
-                        <input type="submit" value="검색">
-
-                    </fieldset>
-                </form>
-            </section>
-
-            <section>
-                <h1>공지사항 목록</h1>
-                <table>
-                    <tr>
-                        <td>번호</td>
-                        <td>제목</td>
-                        <td>작성자</td>
-                        <td>작성일</td>
-                        <td>조회수</td>
-                    </tr>
-
-                    <tr>
-                        <td>12</td>
-                        <td><a href="detail.html"> 2020년 2월 모집 안내입니다.</a></td>
-                        <td>newlec</td>
-                        <td> 2019-12-14</td>
-                        <td>1514</td>
-                    </tr>
-
-                    <tr>
-                        <td>11</td>
-                        <td> 현재 좋은 인재를 찾고 계신가요?</td>
-                        <td>newlec</td>
-                        <td>2019-11-10</td>
-                        <td>1015</td>
-                    </tr>
-                </table>
-            </section>
-
-            <section>
-                <h1>현재 페이지번호</h1>
-                <div>1 / 1 pages</div>
-            </section>
-
-            <section>
-                <h1>페이저</h1>
-                <div>
-                    <!-- 이전  이렇게만 쓰면 안된다. 블럭 단위 안에는 감싸야한다.-->
-                    <div>이전</div>
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                    </ul>
-                    <div>다음</div>
-                </div>
-            </section>
-        </section>
-    </main>
-
-
-    <footer>
+    <footer id="footer">
         <section>
             <!-- 의미론적으로는 정보를 의미한다. header보다 위에 있어도 상관은 없다-->
             <h1>회사정보</h1>
