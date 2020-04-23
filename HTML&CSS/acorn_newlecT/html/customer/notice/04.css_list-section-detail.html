@@ -15,18 +15,18 @@
 <body>
 
     <header id="header">
-        <!-- body의 header임, h1을 가지고 있어야함-->
+        <div class="content-container">
+            <!-- body의 header임, h1을 가지고 있어야함-->
 
-        <h1><img src="../../images/logo.png" alt=""></h1>
+            <!-- <h1><img src="../../images/logo.png" alt=""></h1>
 
-        <!-- content block이 section이라서 id를 갖는다-->
-        <section id="menu-section">
+            
+          <section id="menu-section"> 
 
             <h1 class="h1">헤더</h1>
 
             <nav id="main-menu">
-                <!-- section 안에는 제목이 h1 태그여야 한다.-->
-                <!-- main은 2번쓰면 안된다. 문서에 한번만 body 안에만 쓸 수 있다.-->
+             
                 <h1>메인메뉴</h1>
                 <ul>
                     <li><a href="" class="h1">학습가이드</a></li>
@@ -63,7 +63,8 @@
                     <li><a href="03.list-section-detail.html">고객센터</a> </li>
                 </ul>
             </nav>
-        </section>
+          </section>  -->
+        </div>
     </header>
     <!--h2 헤더 /div-->
 
@@ -71,12 +72,14 @@
     <!-- section은 아웃라인의 영역을 주는 요소 -->
     <!-- ================================================================================================================ -->
     <div id="visual">
-
+        <div class="content-container"></div>
     </div>
     <!-- ================================================================================================================ -->
     <!-- 방을 만들어주기 위해 div로 묶어준다 -->
     <div id="body">
-        <aside>
+        <div class="content-container">
+
+            <!-- <aside>
             <h1>고객센터</h1>
 
             <nav>
@@ -100,103 +103,105 @@
                     <li><a href="">한빛미디어</a></li>
                 </ul>
             </nav>
-        </aside>
+            </aside>
 
 
 
-        <main>
-            <!-- body main 이 가능! section안에 main이 있으면 안됨-->
-            <section>
-                <h1>공지사항</h1>
+            <main>
 
                 <section>
-                    <h1>경로</h1>
-                    <ol>
-                        <li>home</li>
-                        <li>고객센터</li>
-                        <li> 공지사항</li>
-                    </ol>
+                    <h1>공지사항</h1>
+
+                    <section>
+                        <h1>경로</h1>
+                        <ol>
+                            <li>home</li>
+                            <li>고객센터</li>
+                            <li> 공지사항</li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <h1>공지사항검색폼</h1>
+                        <form>
+                            <fieldset>
+                                <legend>공지검색필드</legend>
+                                <label for="">검색분류</label>
+
+                                <select name="" id="">
+                                    <option value="">제목</option>
+                                    <option value="">작성자</option>
+                                    <option value="">내용</option>
+                                </select>
+
+                                <label for="">검색어</label>
+                                <input type="text">
+                                <input type="submit" value="검색">
+
+                            </fieldset>
+                        </form>
+                    </section>
+
+                    <section>
+                        <h1>공지사항 목록</h1>
+                        <table>
+                            <tr>
+                                <td>번호</td>
+                                <td>제목</td>
+                                <td>작성자</td>
+                                <td>작성일</td>
+                                <td>조회수</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td><a href="detail.html"> 2020년 2월 모집 안내입니다.</a></td>
+                                <td>newlec</td>
+                                <td> 2019-12-14</td>
+                                <td>1514</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td> 현재 좋은 인재를 찾고 계신가요?</td>
+                                <td>newlec</td>
+                                <td>2019-11-10</td>
+                                <td>1015</td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h1>현재 페이지번호</h1>
+                        <div>1 / 1 pages</div>
+                    </section>
+
+                    <section>
+                        <h1>페이저</h1>
+                        <div>
+
+                            <div>이전</div>
+                            <ul>
+                                <li>1</li>
+                                <li>2</li>
+                                <li>3</li>
+                                <li>4</li>
+                                <li>5</li>
+                            </ul>
+                            <div>다음</div>
+                        </div>
+                    </section>
                 </section>
-
-                <section>
-                    <h1>공지사항검색폼</h1>
-                    <form>
-                        <fieldset>
-                            <legend>공지검색필드</legend>
-                            <label for="">검색분류</label>
-
-                            <select name="" id="">
-                                <option value="">제목</option>
-                                <option value="">작성자</option>
-                                <option value="">내용</option>
-                            </select>
-
-                            <label for="">검색어</label>
-                            <input type="text">
-                            <input type="submit" value="검색">
-
-                        </fieldset>
-                    </form>
-                </section>
-
-                <section>
-                    <h1>공지사항 목록</h1>
-                    <table>
-                        <tr>
-                            <td>번호</td>
-                            <td>제목</td>
-                            <td>작성자</td>
-                            <td>작성일</td>
-                            <td>조회수</td>
-                        </tr>
-
-                        <tr>
-                            <td>12</td>
-                            <td><a href="detail.html"> 2020년 2월 모집 안내입니다.</a></td>
-                            <td>newlec</td>
-                            <td> 2019-12-14</td>
-                            <td>1514</td>
-                        </tr>
-
-                        <tr>
-                            <td>11</td>
-                            <td> 현재 좋은 인재를 찾고 계신가요?</td>
-                            <td>newlec</td>
-                            <td>2019-11-10</td>
-                            <td>1015</td>
-                        </tr>
-                    </table>
-                </section>
-
-                <section>
-                    <h1>현재 페이지번호</h1>
-                    <div>1 / 1 pages</div>
-                </section>
-
-                <section>
-                    <h1>페이저</h1>
-                    <div>
-                        <!-- 이전  이렇게만 쓰면 안된다. 블럭 단위 안에는 감싸야한다.-->
-                        <div>이전</div>
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
-                        </ul>
-                        <div>다음</div>
-                    </div>
-                </section>
-            </section>
-        </main>
+            </main> -->
+        </div>
     </div>
 
     <!-- ================================================================================================================ -->
 
     <footer id="footer">
-        <section>
-            <!-- 의미론적으로는 정보를 의미한다. header보다 위에 있어도 상관은 없다-->
+        <div class="content-container">
+            <!-- <section>
+            
             <h1>회사정보</h1>
 
             <section>
@@ -226,7 +231,8 @@
                     information
                 </div>
             </section>
-        </section>
+        </section> -->
+        </div>
     </footer>
 
 </body>
