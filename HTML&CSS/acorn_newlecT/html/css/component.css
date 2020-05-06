@@ -1,7 +1,16 @@
-.d-none {
-    display: none;
-}
-
 .main-menu>ul {
     display: flex;
+
+    font-family: "맑은 고딕";
+    font-weight: bold;
+    font-size: 15px;
+    color: #000;
+    text-decoration: none;
+
 }
+
+.main-menu a {
+    color: #000;
+}
+
+.main-menu a:ho
