@@ -6,7 +6,7 @@
 <%@page import="java.text.NumberFormat.Style"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%-- <%
 	NoticeService service =new NoticeService();
@@ -185,7 +185,26 @@
 
 						<tbody>
 
-							<%
+
+							<c:forEach var="n" items="${list }" varStatus="st">
+								<%-- <%
+							지역변수 n으로 사용하고 싶으면
+								NoticeView n=(NoticeView)pageContext.getAttribute("n");
+								n.getTitle();
+							%> --%>
+								<tr>
+									<td>${n.id }</td>
+									<td class="title indent text-align-left"><a
+										href="detail?id=${n.id}">${n.title }</a></td>
+									<td>${n.writerId }</td>
+									<td>${n.regdate }</td>
+									<td>${n.hit }</td>
+
+								</tr>
+							</c:forEach>
+
+
+							<%-- 	<%
 							List<NoticeView> list=(List<NoticeView>)request.getAttribute("list");
 							for(NoticeView n : list){
 							%>
@@ -200,10 +219,7 @@
 							</tr>
 							<%
 								}
-							%>
-
-
-
+							%> --%>
 						</tbody>
 					</table>
 				</div>
@@ -224,8 +240,9 @@
 
 					</div>
 					<ul class="-list- center">
-						<li><a class="-text- orange bold" href="?p=1&t=&q=">1</a></li>
-
+						<c:forEach var="i" begin="1" end="5" >
+							<li><a class="-text- orange bold" href="?p=1&t=&q=">${i}</a></li>
+						</c:forEach>
 					</ul>
 					<div>
 
