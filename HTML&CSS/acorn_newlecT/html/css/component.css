@@ -1,7 +1,36 @@
+.content-container {
+    display: flex;
+    /* border: 1px solid black; */
+}
+
+#header .content-container {
+    /* display: flex; */
+    /* border: 1px solid black; */
+    align-items: center;
+    /* justify-content: space-evenly; */
+}
+
+#menu-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid blue; */
+    /* background-color: yellow; */
+}
+
+
+
+/* 컨탠츠블록(가구)은 꼭 inline-block으로 해줘야한다. */
+.main-menu {
+    display: inline-block;
+    border: 1px solid red;
+    margin-left: 20px;
+}
+
 .main-menu>ul {
     display: flex;
 
-    font-family: "맑은 고딕";
+    font-family: "맑은 고딕", "고딕", Arial, sans-serif;
     font-weight: bold;
     font-size: 15px;
     color: #000;
@@ -9,8 +38,48 @@
 
 }
 
-.main-menu a {
-    color: #000;
+
+.main-menu li {
+    padding-left: 24px;
+    background: url('../images/bg-main-menu-vsp.png') 12px no-repeat;
 }
 
-.main-menu a:ho
+.main-menu li:first-child {
+    padding-left: 0px;
+    background: none;
+}
+
+.main-menu a {
+    color: #000;
+    /* background: blue; */
+}
+
+.search-form {
+    /* border: 1px solid black; */
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.content-container_container {
+    margin-left: 20px;
+}
+
+.member-menu {
+    font-size: 13px;
+    /* border: 1px solid black; */
+    /* display: inline-block; */
+}
+
+.member-menu ul {
+    display: flex;
+}
+
+.favorite-menu {
+    /* border: 3px solid black; */
+    /* display: inline-block; */
+    font-size: 12px;
+}
+
+.favorite-menu ul {
+    display: flex;
+}
