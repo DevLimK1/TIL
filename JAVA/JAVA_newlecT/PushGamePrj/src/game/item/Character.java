@@ -6,13 +6,14 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 import game.interFace.Movable;
 import game.main.Music;
 import game.ui.FightCanvas;
 import game.ui.GameFrame;
 import game.ui.IntroCanvas;
+import game.ui.OnlineCanvas;
+import game.ui.SingleCanvas;
 
 public class Character implements Movable {
 	private Image bearImg_left, bearImg_right; //곰 캐릭터 이미지
@@ -52,11 +53,13 @@ public class Character implements Movable {
 	private boolean LfreezingFlag=false; //좌측 곰 프리징 유무
 	private boolean RfreezingFlag=false; //우측 곰 프리징 유무
 	
-	private static boolean bearDrop=false;
+	private static boolean bearDrop;
 	private boolean visible=true;
 	
 	public Character() {
 		character=this;
+		
+		bearDrop=false;
 		
 		iceBerg = IceBerg.getIceBerg(); //생성된 객체 불러오기
 		timeoutForMove = 7;
@@ -76,7 +79,7 @@ public class Character implements Movable {
 		bearImg_leftY = 480; // 좌측 곰 시작점 y축
 		widthL = 166; // 좌측 곰 너비
 		heightL = 256; // 좌측 곰 높이
-		lVx=15; //좌측 곰 이동단위
+		lVx=20; //좌측 곰 이동단위
 		imgIndexL = 0; // 좌측 곰 이미지인덱스
 		
 		/* +++++++++++++우측 곰 초기화 설정++++++++++++++ */
@@ -85,9 +88,9 @@ public class Character implements Movable {
 		widthR = 160; // 우측 곰 너비
 		heightR = 256; // 우측 곰 높이
 		imgIndexR = 0; // 우측 곰 이미지인덱스
-		rVx = 15;// 우측 곰 이동단위
+		rVx = 20;// 우측 곰 이동단위
 	
-		vx=15;//빙산 이동단위
+		vx=20;//빙산 이동단위
 
 	}
 
@@ -171,13 +174,13 @@ public class Character implements Movable {
 	public void bearL_freezing() { // 좌측 곰 프리징
 		imgIndexL++;
 		imgIndexL = (imgIndexL % 4) + 7;
-		this.bearImg_leftX-=50;
+		this.bearImg_leftX-=40;
 	}
 	
 	public void bearR_freezing() { //우측 곰 프리징
 		imgIndexR++;
 		imgIndexR = (imgIndexR % 4) + 7;
-		this.bearImg_rightX+=50;
+		this.bearImg_rightX+=40;
 	}
 	
 
@@ -195,28 +198,82 @@ public class Character implements Movable {
 
 		/* +++++++++++ 좌측 곰 이미지 그리기 +++++++++++++ */
 
-		int offsetX = widthL / 2; // 왼쪽 이미지의 x축 중심점 이동위해서 선언
-		int offsetY = heightL / 2; // 왼쪽 이미지의 y축 중심점 이동위해서 선언
-		bearImg_leftDx1 = (int) (bearImg_leftX - offsetX);
-		bearImg_leftDy1 = (int) (bearImg_leftY - offsetY);
-		bearImg_leftDx2 = (int) (bearImg_leftX + widthL - offsetX);
-		bearImg_leftDy2 = (int) (bearImg_leftY + heightL - offsetY);
+	
+		
+		if(GameFrame.canvasId==1) {
+			int offsetX = widthL / 2; // 왼쪽 이미지의 x축 중심점 이동위해서 선언
+			int offsetY = heightL / 2; // 왼쪽 이미지의 y축 중심점 이동위해서 선언
+			bearImg_leftDx1 = (int) (bearImg_leftX - offsetX);
+			bearImg_leftDy1 = (int) (bearImg_leftY - offsetY);
+			bearImg_leftDx2 = (int) (bearImg_leftX + widthL - offsetX);
+			bearImg_leftDy2 = (int) (bearImg_leftY + heightL - offsetY);
+			
+			g.drawImage(bearImg_left, bearImg_leftDx1, bearImg_leftDy1, bearImg_leftDx2, bearImg_leftDy2,
+					imgIndexL * widthL, 0, imgIndexL * widthL + widthL, heightL, SingleCanvas.getInstacne());
+			
+			offsetX = widthR / 2; // 오른쪽 이미지의 x축 중심점 이동위해서 선언
+			offsetY = heightR / 2; // 오른쪽 이미지의 y축 중심점 이동위해서 선언
 
-		g.drawImage(bearImg_left, bearImg_leftDx1, bearImg_leftDy1, bearImg_leftDx2, bearImg_leftDy2,
-				imgIndexL * widthL, 0, imgIndexL * widthL + widthL, heightL, FightCanvas.getInstance());
+			bearImg_rightDx1 = (int) (bearImg_rightX - offsetX);
+			bearImg_rightDy1 = (int) (bearImg_rightY - offsetY);
+			bearImg_rightDx2 = (int) (bearImg_rightX + widthR - offsetX);
+			bearImg_rightDy2 = (int) (bearImg_rightY + heightR - offsetY);
+
+			g.drawImage(bearImg_right, bearImg_rightDx1, bearImg_rightDy1, bearImg_rightDx2, bearImg_rightDy2,
+					imgIndexR * widthR, 0, imgIndexR * widthR + widthR, heightR, SingleCanvas.getInstacne());
+			
+		}else if(GameFrame.canvasId==2) {
+			int offsetX = widthL / 2; // 왼쪽 이미지의 x축 중심점 이동위해서 선언
+			int offsetY = heightL / 2; // 왼쪽 이미지의 y축 중심점 이동위해서 선언
+			bearImg_leftDx1 = (int) (bearImg_leftX - offsetX);
+			bearImg_leftDy1 = (int) (bearImg_leftY - offsetY);
+			bearImg_leftDx2 = (int) (bearImg_leftX + widthL - offsetX);
+			bearImg_leftDy2 = (int) (bearImg_leftY + heightL - offsetY);
+			
+			g.drawImage(bearImg_left, bearImg_leftDx1, bearImg_leftDy1, bearImg_leftDx2, bearImg_leftDy2,
+					imgIndexL * widthL, 0, imgIndexL * widthL + widthL, heightL, FightCanvas.getInstacne());
+			
+			offsetX = widthR / 2; // 오른쪽 이미지의 x축 중심점 이동위해서 선언
+			offsetY = heightR / 2; // 오른쪽 이미지의 y축 중심점 이동위해서 선언
+
+			bearImg_rightDx1 = (int) (bearImg_rightX - offsetX);
+			bearImg_rightDy1 = (int) (bearImg_rightY - offsetY);
+			bearImg_rightDx2 = (int) (bearImg_rightX + widthR - offsetX);
+			bearImg_rightDy2 = (int) (bearImg_rightY + heightR - offsetY);
+
+			g.drawImage(bearImg_right, bearImg_rightDx1, bearImg_rightDy1, bearImg_rightDx2, bearImg_rightDy2,
+					imgIndexR * widthR, 0, imgIndexR * widthR + widthR, heightR, FightCanvas.getInstacne());
+		}else if(GameFrame.canvasId==3) {
+			if(OnlineCanvas.c_socket!=null) {
+				int offsetX = widthR / 2; // 오른쪽 이미지의 x축 중심점 이동위해서 선언
+				int offsetY = heightR / 2; // 오른쪽 이미지의 y축 중심점 이동위해서 선언
+
+				bearImg_rightDx1 = (int) (bearImg_rightX - offsetX);
+				bearImg_rightDy1 = (int) (bearImg_rightY - offsetY);
+				bearImg_rightDx2 = (int) (bearImg_rightX + widthR - offsetX);
+				bearImg_rightDy2 = (int) (bearImg_rightY + heightR - offsetY);
+
+				g.drawImage(bearImg_right, bearImg_rightDx1, bearImg_rightDy1, bearImg_rightDx2, bearImg_rightDy2,
+						imgIndexR * widthR, 0, imgIndexR * widthR + widthR, heightR, OnlineCanvas.getInstacne());
+			}
+			int offsetX = widthL / 2; // 왼쪽 이미지의 x축 중심점 이동위해서 선언
+			int offsetY = heightL / 2; // 왼쪽 이미지의 y축 중심점 이동위해서 선언
+			bearImg_leftDx1 = (int) (bearImg_leftX - offsetX);
+			bearImg_leftDy1 = (int) (bearImg_leftY - offsetY);
+			bearImg_leftDx2 = (int) (bearImg_leftX + widthL - offsetX);
+			bearImg_leftDy2 = (int) (bearImg_leftY + heightL - offsetY);
+			
+			g.drawImage(bearImg_left, bearImg_leftDx1, bearImg_leftDy1, bearImg_leftDx2, bearImg_leftDy2,
+					imgIndexL * widthL, 0, imgIndexL * widthL + widthL, heightL, OnlineCanvas.getInstacne());
+			
+			
+		}
+
+		
 
 		/* +++++++++++ 우측 곰 이미지 그리기 +++++++++++++ */
 
-		offsetX = widthR / 2; // 오른쪽 이미지의 x축 중심점 이동위해서 선언
-		offsetY = heightR / 2; // 오른쪽 이미지의 y축 중심점 이동위해서 선언
-
-		bearImg_rightDx1 = (int) (bearImg_rightX - offsetX);
-		bearImg_rightDy1 = (int) (bearImg_rightY - offsetY);
-		bearImg_rightDx2 = (int) (bearImg_rightX + widthR - offsetX);
-		bearImg_rightDy2 = (int) (bearImg_rightY + heightR - offsetY);
-
-		g.drawImage(bearImg_right, bearImg_rightDx1, bearImg_rightDy1, bearImg_rightDx2, bearImg_rightDy2,
-				imgIndexR * widthR, 0, imgIndexR * widthR + widthR, heightR, FightCanvas.getInstance());
+		
 
 		
 		// 왼곰이 빙하밖으로 떨어지면

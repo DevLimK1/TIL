@@ -188,10 +188,30 @@ public class FightCanvas extends Canvas {// 같은 PC에서 2P
 
 				int x = e.getX();
 				int y = e.getY();
-				if ((x > 1278 && x < 1384) && (y > 650 && y < 716))
-					GameFrame.music.wooStop();
+				
+				if ((backButton.contains(x, y))&&(x > 1350 && x < 1416) && (y > 650 && y < 712)) {
 					GameFrame.getInstance().changeCanvas(5);
+					GameFrame.music.wooStop();
+				}
 			}
+		});
+		
+		this.addMouseMotionListener(new MouseAdapter() {
+
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				int x = e.getX();
+				int y = e.getY();
+				if ((x > 1244 && x < 1416) && (y > 14 && y < 216)) {
+					sun.contain = true;
+					GameFrame.music.ahStart();
+				} else {
+					sun.contain = false;
+					
+				}
+
+			}
+
 		});
 
 	} // end public FightCanvas()
@@ -239,7 +259,7 @@ public class FightCanvas extends Canvas {// 같은 PC에서 2P
 
 			items[unitIndex++] = santa;
 
-			santaCnt = 1000;
+			santaCnt = 500;
 
 		} // ~end if
 
@@ -247,7 +267,9 @@ public class FightCanvas extends Canvas {// 같은 PC에서 2P
 
 			items[unitIndex++] = santa.throwPresent(); // 산타가 선물 투척
 
-			presentCnt = random.nextInt(400) + 200;
+//			presentCnt = random.nextInt(400) + 200;
+			presentCnt = 400;
+			
 		}
 
 		if (--olafCnt == 0) { // 올라프카운트가 0이면 올라프 생성
@@ -267,8 +289,9 @@ public class FightCanvas extends Canvas {// 같은 PC에서 2P
 			} else if (frontTime == 1) {
 				snowCnt = random.nextInt(50) + 20;
 			} else {
-				snowCnt = random.nextInt(30) + 1;
+				snowCnt = random.nextInt(50) + 1;
 			}
+			
 
 		}
 
@@ -288,6 +311,10 @@ public class FightCanvas extends Canvas {// 같은 PC에서 2P
 			items[i].draw(gg);
 		}
 
+		System.out.println("backTime: " + backTime);
+		System.out.println("frontTime: " + frontTime);
+		System.out.println("isStop: " + isStop);
+		
 		gg.drawImage(numImg[backTime], bx, by, FightCanvas.getInstacne()); // 카운트 다운 뒤에 숫자
 		gg.drawImage(numImg[frontTime], fx, fy, FightCanvas.getInstacne()); // 카운트 다운 앞에 숫자
 

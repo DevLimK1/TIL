@@ -176,9 +176,10 @@ public class SingleCanvas extends Canvas { // 싱글플레이 vs Ai
 			public void mouseReleased(MouseEvent e) {
 				int x = e.getX();
 				int y = e.getY();
-				if ((x > 1278 && x < 1384) && (y > 650 && y < 716))
+				if ((backButton.contains(x, y))&&(x > 1350 && x < 1416) && (y > 650 && y < 712)) {
+					GameFrame.getInstance().changeCanvas(4);
 					GameFrame.music.wooStop();
-				GameFrame.getInstance().changeCanvas(4);
+				}
 			}
 		});
 		
@@ -330,11 +331,6 @@ public class SingleCanvas extends Canvas { // 싱글플레이 vs Ai
 
 	}
 	
-	public void setInit() {
-		this.isStop=true;
-		this.backTime=1;
-		this.frontTime=3;
-	}
 
 	public static SingleCanvas getInstacne() {
 		return singleCanvas;

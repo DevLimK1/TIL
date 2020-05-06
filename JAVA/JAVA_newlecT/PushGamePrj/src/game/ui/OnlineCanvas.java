@@ -14,6 +14,7 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Random;
+import java.util.Timer;
 
 import javax.imageio.ImageIO;
 
@@ -36,7 +37,7 @@ public class OnlineCanvas extends Canvas {
 
 	private static OnlineCanvas onlineCanvas;
 	private ServerSocket serverSocket;
-	private Socket c_socket;
+	public static Socket c_socket;
 
 	private Movable[] items;
 
@@ -130,8 +131,10 @@ public class OnlineCanvas extends Canvas {
 					serverSocket = new ServerSocket(8888);
 					// 서버
 					c_socket = serverSocket.accept();
-					if (c_socket != null)
+					if (c_socket != null) {
+						Timer();
 						System.out.println("상대방 접속완료");
+					}
 
 					// 접속자가 등장 함.
 //리시브 스레드
@@ -168,31 +171,7 @@ public class OnlineCanvas extends Canvas {
 
 		).start();
 
-		new Thread(new Runnable() { // 시간 초 쓰레드
-
-			@Override
-			public void run() {
-				try {
-					while (isStop) {
-						backTime--;
-
-						if (backTime == -1) { // 시간 카운트 뒷숫자
-							backTime = 9;
-							frontTime--;
-							if (frontTime == -1)
-								frontTime = 0;
-						}
-						if (backTime == 0 && frontTime == 0) { // 시간 초가 0초되면 캐릭터 멈춤
-							isStop = false;
-							character.bearsStop();
-						}
-						Thread.sleep(1000);
-					}
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}).start();
+		
 
 		this.addKeyListener(new KeyAdapter() {
 
@@ -229,13 +208,63 @@ public class OnlineCanvas extends Canvas {
 
 				int x = e.getX();
 				int y = e.getY();
-				if ((x > 1350 && x < 1416) && (y > 650 && y < 712))// 뒤로가기 버튼
+				if ((backButton.contains(x, y)) && (x > 1350 && x < 1416) && (y > 650 && y < 712))// 뒤로가기 버튼
 				{
-					GameFrame.music.wooStop();
 					GameFrame.getInstance().changeCanvas(6);
+					GameFrame.music.wooStop();
 				}
 			}
 		});
+
+		this.addMouseMotionListener(new MouseAdapter() {
+
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				int x = e.getX();
+				int y = e.getY();
+				if ((x > 1244 && x < 1416) && (y > 14 && y < 216)) {
+					sun.contain = true;
+					GameFrame.music.ahStart();
+				} else {
+					sun.contain = false;
+
+				}
+
+			}
+
+		});
+
+	}
+
+	public void Timer() {
+		new Thread(new Runnable() { // 시간 초 쓰레드
+
+			@Override
+			public void run() {
+				try {
+					while (isStop) {
+						if (c_socket != null) {
+							backTime--;
+
+							if (backTime == -1) { // 시간 카운트 뒷숫자
+								backTime = 9;
+								frontTime--;
+								if (frontTime == -1)
+									frontTime = 0;
+							}
+							if (backTime == 0 && frontTime == 0) { // 시간 초가 0초되면 캐릭터 멈춤
+								isStop = false;
+								character.bearsStop();
+							}
+							Thread.sleep(1000);
+						}
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+
 	}
 
 	public void start() {
@@ -291,7 +320,7 @@ public class OnlineCanvas extends Canvas {
 
 			items[unitIndex++] = santa.throwPresent(); // 산타가 선물 투척
 
-			presentCnt = random.nextInt(400) + 200;
+			presentCnt = 400;
 		}
 
 		if (--olafCnt == 0) { // 올라프카운트가 0이면 올라프 생성
@@ -307,11 +336,11 @@ public class OnlineCanvas extends Canvas {
 			items[unitIndex++] = olaf.throwSnow(); // 산타가 선물 투척
 
 			if (frontTime == 2) {
-				snowCnt = random.nextInt(100) + 50;
+				snowCnt = 100;
 			} else if (frontTime == 1) {
-				snowCnt = random.nextInt(50) + 20;
+				snowCnt = 50;
 			} else {
-				snowCnt = random.nextInt(30) + 1;
+				snowCnt = 30;
 			}
 		}
 
