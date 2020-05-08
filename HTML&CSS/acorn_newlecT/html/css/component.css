@@ -1,85 +1,157 @@
-.content-container {
-    display: flex;
-    /* border: 1px solid black; */
-}
+/* .content-container { */
+/* display: flex; */
+/* border: 1px solid black; */
+/* } */
 
 #header .content-container {
-    /* display: flex; */
-    /* border: 1px solid black; */
-    align-items: center;
-    /* justify-content: space-evenly; */
+  /* display: flex; */
+  /* border: 1px solid black; */
+  align-items: center;
+  /* justify-content: space-evenly; */
 }
 
 .menu-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* border: 1px solid blue; */
-    /* background-color: yellow; */
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  /* border: 1px solid blue; */
+  /* background-color: yellow; */
 }
-
-
 
 /* 컨탠츠블록(가구)은 꼭 inline-block으로 해줘야한다. */
 .main-menu {
-    display: inline-block;
-    border: 1px solid red;
-    margin-left: 20px;
+  display: inline-block;
+  /* border: 1px solid red; */
+  margin-left: 20px;
 }
 
-.main-menu>ul {
-    display: flex;
+.main-menu > ul {
+  display: flex;
 
-    font-family: "맑은 고딕", "고딕", Arial, sans-serif;
-    font-weight: bold;
-    font-size: 15px;
-    color: #000;
-    text-decoration: none;
-
+  font-family: "맑은 고딕", "고딕", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  text-decoration: none;
 }
-
 
 .main-menu li {
-    padding-left: 24px;
-    background: url('../images/bg-main-menu-vsp.png') 12px no-repeat;
+  padding-left: 24px;
+  background: url("../images/bg-main-menu-vsp.png") 12px no-repeat;
 }
 
 .main-menu li:first-child {
-    padding-left: 0px;
-    background: none;
+  padding-left: 0px;
+  background: none;
 }
 
 .main-menu a {
-    color: #000;
-    /* background: blue; */
-}
-
-.search-form {
-    /* border: 1px solid black; */
-    display: inline-block;
-    margin-left: 20px;
-}
-
-.content-container_container {
-    margin-left: 20px;
+  color: #000;
+  /* background: blue; */
 }
 
 .member-menu {
-    font-size: 13px;
-    /* border: 1px solid black; */
-    /* display: inline-block; */
+  font-size: 10px;
+
+  border: 1px solid black;
+  display: inline-block;
 }
 
 .member-menu ul {
-    display: flex;
+  display: flex;
+  /* border: 1px solid black; */
+  /* width: 150px; */
+}
+
+.member-menu li {
+  padding-left: 9px;
+  background: url("../images/bg-main-menu-vsp.png") 4px no-repeat;
+  /* border: 1px solid black; */
+}
+
+.member-menu li:first-child {
+  padding-left: 0px;
+  background: none;
+}
+
+.lecture-search {
+  display: inline-block;
+}
+
+.lecture-search-form {
+  /* border: 1px solid black; */
+  /* display: inline-block; */
+  width: 308px;
+  height: 25px;
+  border: 5px solid #8cba34;
+
+  /* margin-left: 20px; */
+}
+
+.lecture-search-form div {
+  display: flex;
+  /* align-items: center; */
+  /* background-color: #979797; */
+}
+
+.lecture-search-form label {
+  /* width: 58px; */
+  color: #979797;
+  font-size: 11px;
+  font-family: "돋움", "Arial", sans-serif;
+  padding: 0px 5px;
+  height: 25px;
+  line-height: 25px;
+}
+
+.lecture-search-form input[type="submit"] {
+  width: 31px;
+  height: 25px;
+  background: url(../images/btn-zoom.png) no-repeat center;
+  border: 0px;
+  border-left: 1px solid #8cba34;
+  /* 글자를 없애는 방법 */
+  text-indent: -999px;
+}
+
+.lecture-search-form input[type="text"] {
+  /* 빈공간 다 차지해서 양쪽 끝으로 밀어붙이기 */
+  flex-grow: 1;
+}
+
+.content-container_container {
+  margin-left: 20px;
 }
 
 .favorite-menu {
-    /* border: 3px solid black; */
-    /* display: inline-block; */
-    font-size: 12px;
+  /* border: 3px solid black; */
+  /* display: inline-block; */
+  font-size: 12px;
 }
 
 .favorite-menu ul {
-    display: flex;
+  display: flex;
+}
+
+/* -----------------------notice-search-----------------*/
+.notice-search {
+  border: 3px solid green;
+  display: inline-block;
+}
+.notice-search .select {
+  height: 21px;
+  border: 1px solid #cbcbcb;
+}
+
+.notice-search input[type="text"] {
+  width: 150px;
+  height: 20px;
+  border: 1px solid #8cba34;
+}
+
+.notice-search input[type="submit"] {
+  width: 49px;
+  height: 23px;
+  background: url(../images/btn-search.png);
+  text-indent: -999px;
 }

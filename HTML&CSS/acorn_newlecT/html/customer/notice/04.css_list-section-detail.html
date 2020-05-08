@@ -35,36 +35,38 @@
                     </ul>
                 </nav>
 
-                <section class="search-form">
+                <section class="lecture-search">
                     <h1 class="d-none">강좌검색 폼</h1>
-                    <form>
+                    <form class="lecture-search-form">
                         <fieldset>
-                            <!-- <legend>입력</legend> -->
-                            <label>과정검색</label>
-                            <input type="text" name="query">
-                            <input type="submit" value="검색">
+                            <div>
+                                <legend class="d-none">입력</legend>
+                                <label>과정검색</label>
+                                <input type="text" name="query">
+                                <input type="submit" value="검색">
+                            </div>
                         </fieldset>
                     </form>
                 </section>
 
-                <div class="content-container_container">
-                    <nav class="member-menu">
-                        <h1 class="d-none">회원메뉴</h1>
-                        <ul>
-                            <li><a href="../../index.html">HOME</a> </li>
-                            <li><a href="../../member/login.html">로그인</a></li>
-                            <li><a href="../../member/signup-agree.html">회원가입</a> </li>
-                        </ul>
-                    </nav>
 
-                    <nav class="favorite-menu">
-                        <h1 class="d-none">자주 사용하는 메뉴</h1>
-                        <ul>
-                            <li><a href="../../member/home.html">마이페이지</a></li>
-                            <li><a href="03.list-section-detail.html">고객센터</a> </li>
-                        </ul>
-                    </nav>
-                </div>
+                <nav class="member-menu">
+                    <h1 class="d-none">회원메뉴</h1>
+                    <ul>
+                        <li><a href="../../index.html">HOME</a> </li>
+                        <li><a href="../../member/login.html">로그인</a></li>
+                        <li><a href="../../member/signup-agree.html">회원가입</a> </li>
+                    </ul>
+                </nav>
+
+                <nav class="favorite-menu">
+                    <h1 class="d-none">자주 사용하는 메뉴</h1>
+                    <ul>
+                        <li><a href="../../member/home.html">마이페이지</a></li>
+                        <li><a href="03.list-section-detail.html">고객센터</a> </li>
+                    </ul>
+                </nav>
+
             </section>
         </div>
     </header>
@@ -109,8 +111,8 @@
 
             <main class="main">
 
-                <!-- <section>
-                    <h1>공지사항</h1>
+                <section>
+                    <!-- <h1>공지사항</h1>
 
                     <section>
                         <h1>경로</h1>
@@ -119,16 +121,16 @@
                             <li>고객센터</li>
                             <li> 공지사항</li>
                         </ol>
-                    </section>
+                    </section> -->
 
-                    <section>
-                        <h1>공지사항검색폼</h1>
-                        <form>
+                    <section class="notice-search">
+                        <h1 class="d-none">공지사항검색폼</h1>
+                        <form class="notice-search-form">
                             <fieldset>
-                                <legend>공지검색필드</legend>
-                                <label for="">검색분류</label>
+                                <legend class="d-none">공지검색필드</legend>
+                                <label class="d-none" for="">검색분류</label>
 
-                                <select name="" id="">
+                                <select name="" class="select">
                                     <option value="">제목</option>
                                     <option value="">작성자</option>
                                     <option value="">내용</option>
@@ -142,7 +144,7 @@
                         </form>
                     </section>
 
-                    <section>
+                    <!-- <section>
                         <h1>공지사항 목록</h1>
                         <table>
                             <tr>
@@ -190,8 +192,8 @@
                             </ul>
                             <div>다음</div>
                         </div>
-                    </section>
-                </section>-->
+                    </section> -->
+                </section>
             </main>
         </div>
     </div>
