@@ -2,21 +2,24 @@ package com.newlecture.web.entity;
 
 import java.util.Date;
 
-public class NoticeView extends Notice{
+public class NoticeView extends Notice {
 	private String writerName;
 	private int cmtCount;
 
-	public NoticeView(){
-		
-	}
+	public NoticeView(int id, String title, String writerId,
+			// String content,
+			Date regdate, int hit, String files, boolean pub) {
+		super(id, title, writerId, null, regdate, hit, files, pub);
 
-	public NoticeView(int id, String title, String writerId,  Date regdate, int hit, 
-			String files,Boolean pub,
-			String writerName,int cmtCount) {
-		super(id, title, writerId, null, regdate, hit, files,pub);
-		this.writerName=writerName;
-		this.cmtCount=cmtCount;
 	}
+//	public NoticeView(int id, String title, String writerId,  Date regdate, int hit, 
+//			String files,Boolean pub
+//			//String writerName,int cmtCount
+//			) {
+//		super(id, title, writerId, null, regdate, hit, files,pub);
+////		this.writerName=writerName;
+////		this.cmtCount=cmtCount;
+//	}
 
 	public String getWriterName() {
 		return writerName;
@@ -40,11 +43,4 @@ public class NoticeView extends Notice{
 				+ "]";
 	}
 
-	
-	
-	
-
-	
-	
-	
 }

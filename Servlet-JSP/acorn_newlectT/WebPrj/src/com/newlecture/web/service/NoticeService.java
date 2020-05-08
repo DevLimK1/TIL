@@ -17,21 +17,21 @@ public class NoticeService {
 		
 		Notice notice  = null;
 
-		String sql = "SELECT * FROM NOTICE WHERE ID=?"; 
+		String sql = "SELECT * FROM Notice WHERE ID=?"; 
 
 //		String url = "jdbc:oracle:thin:@112.223.37.243:1521/xepdb1";
-		String url = "jdbc:mysql:thin:@dev.notepubs.com:9898/newlecture?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
+		String url = "jdbc:mysql://dev.notepubs.com:9898/newlecture?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
 		
 //		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Class.forName("com.mysql.cj.jdbc.Driver"); //최신버전의 드라이버명이다. 하위버전의 mysql에서는 드라이버 클래스가 달라져야함
-		Connection con = DriverManager.getConnection(url, "newlec", "111");
+		Connection con = DriverManager.getConnection(url, "newlecture", "111");
 		PreparedStatement st = con.prepareStatement(sql);
 		 st.setInt(1, id);
 
 		ResultSet rs = st.executeQuery();
 
 		if (rs.next()) {
-			notice= new Notice(rs.getInt("ID"), rs.getString("TITLE"), rs.getString("WRITER_ID"),
+			notice= new Notice(rs.getInt("ID"), rs.getString("TITLE"), rs.getString("WRITERID"),
 					 rs.getString("CONTENT"),
 					rs.getDate("REGDATE"), rs.getInt("HIT"), rs.getString("FILES"),rs.getBoolean("PUB")
 			);
@@ -50,24 +50,28 @@ public class NoticeService {
 //		NoticeView[] list = new NoticeView[10];
 		List<NoticeView> list = new ArrayList<>();
 
-		String sql = "SELECT * FROM NOTICE_VIEW WHERE NUM BETWEEN 1 AND 10"; // Notice_VIEW에 정렬이 되어있음
+		String sql = "SELECT * FROM Notice;"; //_VIEW WHERE NUM BETWEEN 1 AND 10"; // Notice_VIEW에 정렬이 되어있음
 
-		String url = "jdbc:oracle:thin:@192.168.0.79:1521/xepdb1";
-
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection(url, "LEC", "111");
+//		String url = "jdbc:oracle:thin:@112.223.37.243:1521/xepdb1";
+		String url = "jdbc:mysql://dev.notepubs.com:9898/newlecture?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
+		
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Class.forName("com.mysql.cj.jdbc.Driver"); //최신버전의 드라이버명이다. 하위버전의 mysql에서는 드라이버 클래스가 달라져야함
+		Connection con = DriverManager.getConnection(url, "newlecture", "111");
 		PreparedStatement st = con.prepareStatement(sql);
 		// st.setString(1, id);
 
 		ResultSet rs = st.executeQuery();
 
 		while (rs.next()) {
-			NoticeView noticeView = new NoticeView(rs.getInt("ID"), rs.getString("TITLE"), rs.getString("WRITER_ID"),
+			NoticeView noticeView = new NoticeView(rs.getInt("ID"), rs.getString("TITLE"), rs.getString("writerId"),
 					// rs.getString("CONTENT"),
-					rs.getDate("REGDATE"), rs.getInt("HIT"), rs.getString("FILES"),rs.getBoolean("PUB"), rs.getString("WRITER_NAME"),
-					rs.getInt("CMT_COUNT")
+					rs.getDate("REGDATE"), rs.getInt("HIT"), rs.getString("FILES"),rs.getBoolean("PUB")
+					);
+//					rs.getString("WRITER_NAME"),
+//					rs.getInt("CMT_COUNT")
 
-			);
+			
 			list.add(noticeView);
 		}
 
