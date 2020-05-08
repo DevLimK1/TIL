@@ -240,10 +240,27 @@
 
 					</div>
 					<ul class="-list- center">
-						<c:forEach var="i" begin="1" end="5" >
-							<li><a class="-text- orange bold" href="?p=1&t=&q=">${i}</a></li>
+						<c:forEach var="i" begin="1" end="5">
+							<c:set var="orange" />
+							<c:if test="${i==1 }">
+								<c:set var="orange" value="-text- orange bold"></c:set>
+							</c:if>
+
+							<li><a class="${orange }" href="?p=1&t=&q=">${i}</a></li>
 						</c:forEach>
 					</ul>
+					<%-- 	<ul class="-list- center">
+						<c:forEach var="i" begin="1" end="5">
+
+							<c:if test="${i==1 }">
+								<li><a class="-text- orange bold" href="?p=1&t=&q=">${i}</a></li>
+							</c:if>
+							<c:if test="${i!=1 }">
+								<li><a class="" href="?p=1&t=&q=">${i}</a></li>
+							</c:if>
+							
+						</c:forEach>
+					</ul> --%>
 					<div>
 
 

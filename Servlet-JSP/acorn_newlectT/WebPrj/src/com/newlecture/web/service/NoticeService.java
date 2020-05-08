@@ -19,10 +19,12 @@ public class NoticeService {
 
 		String sql = "SELECT * FROM NOTICE WHERE ID=?"; 
 
-		String url = "jdbc:oracle:thin:@192.168.0.79:1521/xepdb1";
-
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection(url, "LEC", "111");
+//		String url = "jdbc:oracle:thin:@112.223.37.243:1521/xepdb1";
+		String url = "jdbc:mysql:thin:@dev.notepubs.com:9898/newlecture?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
+		
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Class.forName("com.mysql.cj.jdbc.Driver"); //최신버전의 드라이버명이다. 하위버전의 mysql에서는 드라이버 클래스가 달라져야함
+		Connection con = DriverManager.getConnection(url, "newlec", "111");
 		PreparedStatement st = con.prepareStatement(sql);
 		 st.setInt(1, id);
 
