@@ -1,0 +1,17 @@
+/* global */
+
+.d-none {
+    display: none;
+}
+
+/* ******* sub-header ********* */
+
+#main .sub-header {
+    border: 1px solid black;
+}
+
+/* ******** review-board **************** */
+
+#main .review-board {
+    border: 1px solid black;
+}
