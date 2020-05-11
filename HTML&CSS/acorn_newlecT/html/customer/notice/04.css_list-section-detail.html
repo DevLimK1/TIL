@@ -86,7 +86,7 @@
             <aside class="aside">
                 <!-- <h1>고객센터</h1>
 
-            <nav>
+             <nav>
                 <h1>고객센터메뉴</h1>
                 <ul>
                     <li><a href="detail.html">공지사항</a></li>
@@ -94,9 +94,9 @@
                     <li><a href="">수강문의</a></li>
                     <li><a href="">이벤트</a></li>
                 </ul>
-            </nav>
+             </nav>
 
-            <nav>
+             <nav>
                 <header>
                     <h1>협력업체</h1>
                 </header>
@@ -106,7 +106,7 @@
                     <li><a href="">나무랩연구소</a></li>
                     <li><a href="">한빛미디어</a></li>
                 </ul>
-            </nav>-->
+              </nav> -->
             </aside>
 
             <main class="main">
@@ -148,22 +148,25 @@
                     </div>
 
                     <section class="notice-board">
-                        <h1>공지사항 목록</h1>
+                        <h1 class="d-none">공지사항 목록</h1>
                         <table class="notice-table">
                             <thead>
                                 <tr>
-                                    <td>번호</td>
-                                    <td>제목</td>
-                                    <td>작성자</td>
-                                    <td>작성일</td>
-                                    <td>조회수</td>
+                                    <td class="col-num">번호</td>
+                                    <td class="col-exp">제목</td>
+                                    <td class="col-text">작성자</td>
+                                    <td class="col-text">작성일</td>
+                                    <td class="col-num">조회수</td>
                                 </tr>
                             </thead>
 
+                            <!-- 상단고정 tbody -->
                             <tbody>
                                 <tr>
                                     <td>12</td>
-                                    <td>2020년 2월 모집 안내입니다.</a></td>
+                                    <td class="title">2020년 2월 모집 안내입니다.
+                                        동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리 나라만세이예이에이이에에이이에이에우하사 우리 나라만세이예이에이이에에이이에이에우하사 우리 나라만세이예이에이이에에이이에이에
+                                        </a></td>
                                     <td>newlec</td>
                                     <td> 2019-12-14</td>
                                     <td>1514</td>
@@ -171,18 +174,17 @@
 
                                 <tr>
                                     <td>11</td>
-                                    <td> 현재 좋은 인재를 찾고 계신가요?</td>
+                                    <td class="title"> 현재 좋은 인재를 찾고 계신가요?</td>
                                     <td>newlec</td>
                                     <td>2019-11-10</td>
                                     <td>1015</td>
                                 </tr>
-
                             </tbody>
 
                             <tbody>
                                 <tr>
                                     <td>10</td>
-                                    <td> 현재 좋은 인재를 찾고 계신가요?</td>
+                                    <td class="title"> 현재 좋은 인재를 찾고 계신가요?</td>
                                     <td>newlec</td>
                                     <td>2019-11-10</td>
                                     <td>1015</td>
@@ -190,7 +192,7 @@
 
                                 <tr>
                                     <td>9</td>
-                                    <td> 현재 좋은 인재를 찾고 계신가요?</td>
+                                    <td class="title"> 현재 좋은 인재를 찾고 계신가요?</td>
                                     <td>newlec</td>
                                     <td>2019-11-10</td>
                                     <td>1015</td>
@@ -198,7 +200,7 @@
 
                                 <tr>
                                     <td>8</td>
-                                    <td> 현재 좋은 인재를 찾고 계신가요?</td>
+                                    <td class="title"> 현재 좋은 인재를 찾고 계신가요?</td>
                                     <td>newlec</td>
                                     <td>2019-11-10</td>
                                     <td>1015</td>
@@ -207,9 +209,11 @@
                         </table>
                     </section>
 
-                    <section>
-                        <h1>현재 페이지번호</h1>
-                        <div>1 / 1 pages</div>
+                    <section class="page-index">
+                        <h1 class="d-none">현재 페이지번호</h1>
+                        <div>
+                            <span class="text-highlight">1</span> / 1 pages
+                        </div>
                     </section>
 
                     <section>

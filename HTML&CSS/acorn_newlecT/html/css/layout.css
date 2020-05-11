@@ -68,7 +68,7 @@
     /* 박스에 크기를 할당해준다.  */
     box-sizing: border-box;
     flex-grow: 1;
-    /* width: 755px; */
+    width: 755px;
     min-height: inherit;
     padding-top: 45px;
     padding-left: 35px;
