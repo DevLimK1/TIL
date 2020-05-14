@@ -11,3 +11,12 @@ body {
 .d-none {
     display: none;
 }
+
+.text-highlight{
+    color: #ff6a00;
+    font-weight: bold;
+}
+
+.font-weight{
+    font-weight: bold;
+}
