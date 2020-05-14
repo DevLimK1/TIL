@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tiles.TilesContainer;
+import org.apache.tiles.access.TilesAccess;
+
 import com.newlecture.web.entity.NoticeView;
 import com.newlecture.web.service.NoticeService;
 
@@ -35,6 +38,7 @@ public class ListController extends HttpServlet{
 		
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("list.jsp").forward(request,response);
+		TilesContainer container = TilesAccess.getContainer(request.getSession().getServletContext());
+		container.render("admin.board.notice.list", request, response);
 	}
 }

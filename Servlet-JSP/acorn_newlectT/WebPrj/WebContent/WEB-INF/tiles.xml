@@ -4,16 +4,18 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name="notice.list" template="/inc/layout.jsp">
-		<put-attribute name="header" value="/inc/header.jsp" />
-		<put-attribute name="aside" value="/inc/aside.jsp" />
-		<put-attribute name="main" value="/notice/list.jsp" />
-		<put-attribute name="footer" value="/inc/footer.jsp" />
+	<definition name="admin.*.*.*" template="/WEB-INF/view/inc/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+		<put-attribute name="aside" value="/WEB-INF/view/admin/inc/aside.jsp" />
+		<put-attribute name="main" value="/WEB-INF/view/admin/{1}/{2}/{3}.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
 	</definition>
-	<definition name="notice.detail" template="/inc/layout.jsp">
-		<put-attribute name="header" value="/inc/header.jsp" />
-		<put-attribute name="aside" value="/inc/aside.jsp" />
-		<put-attribute name="main" value="/notice/detail.jsp" />
-		<put-attribute name="footer" value="/inc/footer.jsp" />
+
+	<definition name="notice.*" template="/WEB-INF/view/inc/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+		<put-attribute name="aside" value="/WEB-INF/view/inc/aside.jsp" />
+		<put-attribute name="main" value="/WEB-INF/view/notice/{1}.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
 	</definition>
+
 </tiles-definitions>

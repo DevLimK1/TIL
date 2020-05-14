@@ -1,5 +1,0 @@
-[버그해결]
-ListController 클래스가 같은게 있어서, JSP가 우선순위 가지고 있기 때문에 url 맵핑을 해결해주기 위해 추가한 파일임
-여기서 실행시키면  http://localhost:8080/admin/board/notice/list 성공적으로 홈페이지가 나옴
-
-이 내용이 보이면 망한 것임.
