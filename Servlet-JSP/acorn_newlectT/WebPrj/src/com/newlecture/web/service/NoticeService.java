@@ -118,6 +118,24 @@ public class NoticeService {
 		return result;
 	}
 
+	public int deleteNotice(int id) throws SQLException, ClassNotFoundException {
+		int result=0;
+		
+		String sql = "DELETE FROM Notice WHERE id=?";
+		String url = "jdbc:mysql://dev.notepubs.com:9898/newlecture?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
+
+		Class.forName("com.mysql.cj.jdbc.Driver"); // 최신버전의 드라이버명이다. 하위버전의 mysql에서는 드라이버 클래스가 달라져야함
+		Connection con = DriverManager.getConnection(url, "newlecture", "111");
+		PreparedStatement st = con.prepareStatement(sql);
+
+		st.setInt(1, id);
+
+
+		result = st.executeUpdate();
+		
+		return result;
+	}
+
 //	public List<Notice> getNoticeList() throws SQLException, ClassNotFoundException {
 //
 ////		NoticeView[] list = new NoticeView[10];
