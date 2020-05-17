@@ -8,6 +8,10 @@ body {
     color: #979797;
 }
 
+a{
+    color: #979797;
+}
+
 .d-none {
     display: none;
 }
@@ -20,3 +24,12 @@ body {
 .font-weight{
     font-weight: bold;
 }
+
+.margin-top{
+    margin-top: 10px;
+}
+
+.margin-main-top{
+    margin-top: 23px;
+}
+
