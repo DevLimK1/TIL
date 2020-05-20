@@ -15,41 +15,66 @@
         alert("Hello Javascript");
     </script> -->
     <script>
-        var x = new Number(2);
-        var y = new Number(3);
+      var nums=new Array(5,10,21,'hello');
 
-        document.write(typeof x + '<br>');
-        document.write("x+y=" + (x + y) + '<br>');
-        document.write('내용을넣어주세요<br>여기는 다음줄 입니다. <br>');
-
-        var nums = new Array();
-        nums[0] = 30;
-        nums[1] = 20;
-
-        var nums = new Array();
-        nums[0] = 5;
-        alert(nums);
-        nums[1] = 10;
-        alert(nums);
-        nums[2] = 15;
-        alert(nums);
-
-        var nums = new Array();
-        nums[3] = 5;
-        document.write(nums);
+      document.write(nums);
         document.write('<br>');
+      var nums2=new Array(2,3,4,5);
+    //   var c=nums.concat(nums2);
+    nums.splice(2,0,nums2);
+      document.write(nums);
+      console.log(nums);
 
-        document.write(nums.length);
+       var exam=new Object();
+       exam.kor=30;
+       exam.eng=70;
+       exam.math=80;
 
-        document.write('<br>');
+    //    alert(exam.kor+exam.eng); 
+       console.log(exam);
+       
+       var obj=new Object();
+       obj["border-width"]=3;
+       obj["x"]=2;
 
-        var nums = new Array(3);
-        document.write(nums.length);
+        console.log(obj);
+       console.log(obj.x);
 
-        document.write('<br>');
+        var notice=new Object();
+        notice.id=1;
+        notice.title="hello";
+        notice.writerId="newlec";
 
-        var nums = new Array(2, 3, 4, 5, 1);
-        document.write(nums.length);
+        var notice={};
+        notice.id=1;
+        notice.title="hello2";
+        notice.writerId="newlec";
+        console.log(notice.title);
+
+//JSON
+        var notice={"id":1, "title":"hello", "writerId":"newlec"};
+        var notice={id:1,title:"hello",writerId:"newlec"};
+        console.log(notice.title);
+
+        // var notice=eval('({"id":1, "title":"hello", "writerId":"newlec"})');
+        // console.log(notice.title);
+       
+        var notice=JSON.parse('{"id":1, "title":"hello", "writerId":"newlec"}');
+        console.log(notice.title);
+
+        var nums=[3,4,5,6];
+
+        // for(var i=0;i<nums.length;i++)
+        //     console.log(nums[i]);
+
+        for(var i in nums)
+            console.log(nums[i]);
+            
+          var notice={id:1,title:"hello"};
+
+          for(var k in notice)
+              console.log(k)
+          
     </script>
 </body>
 
