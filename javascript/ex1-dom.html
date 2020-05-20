@@ -2,80 +2,77 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script>
         alert("Hello Javascript");
     </script> -->
-    <title>Document</title>
+  <title>Document</title>
 </head>
 
 <body>
-    <!-- <script>
-        alert("Hello Javascript");
-    </script> -->
-    <script>
-      var nums=new Array(5,10,21,'hello');
+  <script>
+    var notice = {
+      id: 1,
+      title: "hello"
+    };
 
-      document.write(nums);
-        document.write('<br>');
-      var nums2=new Array(2,3,4,5);
-    //   var c=nums.concat(nums2);
-    nums.splice(2,0,nums2);
-      document.write(nums);
-      console.log(nums);
+    for (var k in notice)
+      console.log(notice[k])
 
-       var exam=new Object();
-       exam.kor=30;
-       exam.eng=70;
-       exam.math=80;
+    var add = new Function("x,y", "return x+y;");
+    console.log(add(3, 4));
 
-    //    alert(exam.kor+exam.eng); 
-       console.log(exam);
-       
-       var obj=new Object();
-       obj["border-width"]=3;
-       obj["x"]=2;
+    var add = function (x, y) {
+      return x + y;
+    }
 
-        console.log(obj);
-       console.log(obj.x);
+    function add(x, y) {
+      return x + y;
+    }
 
-        var notice=new Object();
-        notice.id=1;
-        notice.title="hello";
-        notice.writerId="newlec";
+    function add(x, y, z) {
+      alert(typeof arguments[4]);
+      alert(z);
+      return arguments[0] + arguments[8];
+    };
 
-        var notice={};
-        notice.id=1;
-        notice.title="hello2";
-        notice.writerId="newlec";
-        console.log(notice.title);
+    var sum = add(2, 3);
+    var sum2 = add(2, 3, "hello", 3, 4, 5, 6, 7, 87);
+    console.log(sum2);
 
-//JSON
-        var notice={"id":1, "title":"hello", "writerId":"newlec"};
-        var notice={id:1,title:"hello",writerId:"newlec"};
-        console.log(notice.title);
+    var x = 30;
+    var x = 20;
 
-        // var notice=eval('({"id":1, "title":"hello", "writerId":"newlec"})');
-        // console.log(notice.title);
-       
-        var notice=JSON.parse('{"id":1, "title":"hello", "writerId":"newlec"}');
-        console.log(notice.title);
+    //x=30; //전역객체(window)에 붙어버림
+    var x = 20;
 
-        var nums=[3,4,5,6];
+    function test() {
+      var x = 30;
+      console.log(x);
+    }
+    test();
+    // console.log(window.x); //결과 : 30이 나옴
 
-        // for(var i=0;i<nums.length;i++)
-        //     console.log(nums[i]);
+    alert(a);
 
-        for(var i in nums)
-            console.log(nums[i]);
-            
-          var notice={id:1,title:"hello"};
+    {
+      a = 10;
+    }
 
-          for(var k in notice)
-              console.log(k)
-          
-    </script>
+    function f1() {
+      var a = 1;
+
+      return function f2() { //클로저: outer변수를 물고있는 함수다.
+        return a;
+      }
+    }
+
+    var f = f1();
+    var a = f();
+    alert(a);
+    
+  </script>
 </body>
 
 </html>
