@@ -8,71 +8,127 @@
         alert("Hello Javascript");
     </script> -->
   <title>Document</title>
+
+  <script>
+    //-------------------준비물
+    // window.open("http://www.daum.net"); //새창으로 다음사이트로 이동함
+    // window.close(); //창을 여는 즉시 닫음
+    //window.location.href="http://www.daum.net"; //다음사이트로 이동함
+
+    // window.document.write("hello");
+  </script>
 </head>
 
 <body>
+
+  <section id="s1">
+    <h1>hello</h1>
+    <div>
+      <label>x:</label><input class="x-input">
+      <label>y:</label><input class="y-input"><br>
+      <input type="button" value="더하기" onclick="buttonClick();">
+      <input class="result-input">
+    </div>
+  </section>
+
+  <nav id="some-menu">
+    <h1>무슨메뉴</h1>
+    <ul>
+      <li>짜장면</li>
+      <li>짬뽕</li>
+      <li>탕수육</li>
+    </ul>
+  </nav>
+
   <script>
-    var notice = {
-      id: 1,
-      title: "hello"
-    };
-
-    for (var k in notice)
-      console.log(notice[k])
-
-    var add = new Function("x,y", "return x+y;");
-    console.log(add(3, 4));
-
-    var add = function (x, y) {
-      return x + y;
+    function buttonClick() {
+      var section = document.querySelector("#s1");
+      //console.log(section.innerText);
+      var xInput = section.querySelector(".x-input");
+      var yInput = section.querySelector(".y-input");
+      var resultInput = section.querySelector(".result-input");
+      console.log(xInput.value);
+      console.log(yInput.value);
+      resultInput.value = parseInt(xInput.value) + parseInt(yInput.value);
+      // resultInput.value=eval(xInput.value+yInput.value);
     }
 
-    function add(x, y) {
-      return x + y;
-    }
+    // console.log(xInput.value);
+    // alert(xInput.value);
+    // var ul = section.querySelector("ul");
+    // // var next=first.nextSibling;
+    // var first = ul.firstElementChild;
+    // first.innerText = "굳굳";
+    // var next = first.nextElementSibling;
+    // next.innerText = "찾았다";
 
-    function add(x, y, z) {
-      alert(typeof arguments[4]);
-      alert(z);
-      return arguments[0] + arguments[8];
-    };
 
-    var sum = add(2, 3);
-    var sum2 = add(2, 3, "hello", 3, 4, 5, 6, 7, 87);
-    console.log(sum2);
+    // //노드 순회하기
+    // var section = document.querySelector("#some-menu");
+    // //console.log(section.innerText);
 
-    var x = 30;
-    var x = 20;
+    // var ul = section.querySelector("ul");
+    // // var next=first.nextSibling;
+    // var first = ul.firstElementChild;
+    // first.innerText = "굳굳";
+    // var next = first.nextElementSibling;
+    // next.innerText = "찾았다";
 
-    //x=30; //전역객체(window)에 붙어버림
-    var x = 20;
 
-    function test() {
-      var x = 30;
-      console.log(x);
-    }
-    test();
-    // console.log(window.x); //결과 : 30이 나옴
+    //노드 선택방법 5: Selectors API를 이용하여 선택하기
+    // var test=document.querySelector("#s1 input");
+    // test.value="진짜?  css 선택자를 사용가능??";
 
-    alert(a);
+    // =========예제==================================
+    //짜장면 메뉴를 삼선짜장으로 변경하시오.
 
-    {
-      a = 10;
-    }
+    // var section =document.querySelector("#some-menu");
+    // var menuItem=section.querySelector("li:first-child");
+    // menuItem.innerText="양장피";
 
-    function f1() {
-      var a = 1;
+    // var menuItem= document.querySelector("#some-menu ul li:first-child");
+    // menuItem.innerText="삼선짜장";
 
-      return function f2() { //클로저: outer변수를 물고있는 함수다.
-        return a;
-      }
-    }
+    // var menuItems= document.querySelectorAll("#some-menu ul li");
+    // menuItems[0].innerText="삼선짜장";
 
-    var f = f1();
-    var a = f();
-    alert(a);
-    
+
+    //노드 선택방법 4: 클래스,name 속성, 태그명을 이용한 선택
+    // var s1 = document.getElementById("s1");
+    // var tests = s1.getElementsByClassName("test"); //클래스명
+    // var tests2=s1.getElementsByTagName("input"); //태그명
+    // tests2[0].value= "잘 된다";
+    // tests[0].value = "굳굳";
+    // var test=document.getElementsByClassName("test");
+    // test[0].value="오잉 진짜?";
+
+
+    //노드 선택방법 3: 엘리먼트에 이름(식별자)를 부여해서 순회하는 방식
+    // var noticeTitle=document.getElementById("notice-title");
+    // noticeTitle.value="오잉 진짜?";
+
+    //노드 선택방법 2: 엘리먼트 노드만을 순회하는 방식
+    // window
+    //   .document
+    //   .body
+    //   .children[0]
+    //   .children[1]
+    //   .children[0].value = "엘리먼트 찾았당";
+
+    //노드 선택방법 1: 노드를 순회하는 방식
+    // window
+    //   .document
+    //   .body
+    //   .childNodes[1] //section
+    //   .childNodes[3] //div
+    //   .childNodes[0].value = "나 찾았어?"; //input
+
+    // alert(window
+    //   .document
+    //   .body
+    //   .childNodes[3].nodeType);
   </script>
+
 </body>
 
 </html>
