@@ -22,12 +22,47 @@
 <body>
 
   <section id="s1">
+    <style>
+      #s1 .container {
+
+        width: 700px;
+        height: 400px;
+        border: 1px solid #979797;
+        position: relative;
+      }
+
+      #s1 .container .box {
+        width: 100px;
+        height: 100px;
+        background: blueviolet;
+        border: 1px solid black;
+        position: absolute;
+        transition: 1s;
+      }
+
+      #s1 .container .box:first-child {
+        left: 0px;
+        top: 0px;
+      }
+
+      #s1 .container .box:nth-child(2) {
+        top: 100px;
+        left: 100px;
+      }
+    </style>
+
     <h1>hello</h1>
     <div>
       <label>x:</label><input class="x-input">
       <label>y:</label><input class="y-input"><br>
       <input type="button" value="더하기" onclick="buttonClick();">
+      <input class="mov-button" type="button" value="이동">
       <input class="result-input">
+      <label for="">color:</label><input class="color-input">
+      <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+      </div>
     </div>
   </section>
 
@@ -41,17 +76,54 @@
   </nav>
 
   <script>
-    function buttonClick() {
-      var section = document.querySelector("#s1");
-      //console.log(section.innerText);
-      var xInput = section.querySelector(".x-input");
-      var yInput = section.querySelector(".y-input");
-      var resultInput = section.querySelector(".result-input");
-      console.log(xInput.value);
-      console.log(yInput.value);
-      resultInput.value = parseInt(xInput.value) + parseInt(yInput.value);
-      // resultInput.value=eval(xInput.value+yInput.value);
+    var section = document.querySelector("#s1");
+    var xInput = section.querySelector(".x-input");
+    var yInput = section.querySelector(".y-input");
+    var movButton = section.querySelector(".mov-button")
+    var colorInput = section.querySelector(".color-input");
+    var box = section.querySelectorAll(".box");
+
+    <input type="button" value="더하기" onclick="buttonClick();"> " 
+    onclick="buttonClick(); 은 아래와 같이 됨
+    movButton.onclick=function(){buttonClick();};
+
+    movButton.onclick = movButtonClick; //함수가 참조되는거임
+
+    function movButtonClick() {
+
+      console.log(box);
+      box[0].style.left = xInput.value + "px";
+      box[0].style.top = yInput.value + "px";
+
+      //다음 스타일 속성은 오류를 유발한다.
+      //box[0].style.background-color=colorInput.value;
+      //해결방법1 : javascript 카멜케이스방식 제공
+      // box[0].style.backgroundColor=colorInput.value;
+      //해결방법2
+      box[0].style["background-color"] = colorInput.value;
+      // box[0]["style"]["background-color"]=colorInput.value;
+
+
+
+      // box[1].style.left=xInput.value+"px";
+      // box[1].style.top=yInput.value+"px";
     }
+
+    // function buttonClick() {
+    //   var section = document.querySelector("#s1");
+    //   //console.log(section.innerText);
+    //   var xInput = section.querySelector(".x-input");
+    //   var yInput = section.querySelector(".y-input");
+    //   var resultInput = section.querySelector(".result-input");
+
+    //   console.log(xInput.value);
+    //   console.log(yInput.value);
+
+    //  var x=  parseInt(xInput.value);
+    //  var y= parseInt(yInput.value);      
+    //   resultInput.value = x + y;
+    //   // resultInput.value=eval(xInput.value+yInput.value);
+    // }
 
     // console.log(xInput.value);
     // alert(xInput.value);
