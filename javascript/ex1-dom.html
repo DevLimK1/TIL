@@ -9,17 +9,307 @@
     </script> -->
   <title>Document</title>
 
-  <script>
-    //-------------------준비물
-    // window.open("http://www.daum.net"); //새창으로 다음사이트로 이동함
-    // window.close(); //창을 여는 즉시 닫음
-    //window.location.href="http://www.daum.net"; //다음사이트로 이동함
-
-    // window.document.write("hello");
-  </script>
+  <script src="ex1-dom.js"></script>
 </head>
 
 <body>
+
+  <section id="s6">
+    <h1>스타일을 적용하는 방법6</h1>
+    <style>
+      #s6 .container {
+        height: 200px;
+        border: 1px solid gray;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #s6 .container .box {
+        position: absolute;
+        /* float: left; */
+        width: 100px;
+        height: 100px;
+        background-color: blueviolet;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        line-height: 100px;
+        transition: 2s;
+        /* left: 0px; */
+        /* top:0px; */
+      }
+
+      #s6 .container .box .description {
+        position: absolute;
+        left: 0px;
+        line-height: initial;
+        /* top: 0px; */
+        /* height: 100px; */
+        border: 1px solid blue;
+        font-size: 12px;
+        font-weight: normal;
+        bottom: 0px;
+        background: pink;
+        color: red;
+        top:100%;
+        overflow: hidden;
+        
+      }
+
+      #s6 .container .box .description.slide-up {
+        top:0%;
+        transition: 2s;
+      }
+
+      /* .slide-up{
+        top:0%;
+        transition: 3s;
+      } */
+
+      
+    </style>
+
+    <div>
+      <input type="button" name="rotate-button" value="오른쪽 회전">
+      <input type="button" name="goback-button" value="귀환">
+    </div>
+    <div class="container">
+      <div class="box pos0">
+        <span>박스1</span>
+        <span class="description">
+          설명 : 이 상품에 대한 설명
+        </span>
+      </div>
+      <div class="box pos1">
+        <span>박스2</span>
+        <span class="description">
+          설명 : 이 상품에 대한 설명
+        </span>
+      </div>
+      <div class="box pos2">
+        <span>박스3</span>
+        <span class="description">
+          설명 : 이 상품에 대한 설명
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section id="s5">
+    <h1>스타일을 적용하는 방법5</h1>
+    <style>
+      #s5 .container {
+        height: 200px;
+        border: 1px solid gray;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #s5 .container .box {
+        position: absolute;
+        /* float: left; */
+        width: 100px;
+        height: 100px;
+        background-color: blueviolet;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        line-height: 100px;
+        transition: 2s;
+        /* left: 0px; */
+        /* top:0px; */
+      }
+
+      #s5 .container .box .description {
+        position: absolute;
+        left: 0px;
+        line-height: initial;
+        /* top: 0px; */
+        /* height: 100px; */
+        border: 1px solid blue;
+        font-size: 12px;
+        font-weight: normal;
+        bottom: 0px;
+        background: pink;
+        color: red;
+      }
+
+      .d-none {
+        display: none;
+      }
+    </style>
+
+    <div>
+      <input type="button" name="rotate-button" value="오른쪽 회전">
+      <input type="button" name="goback-button" value="귀환">
+    </div>
+    <div class="container">
+      <div class="box pos0">
+        <span>박스1</span>
+        <span class="description d-none">
+          설명 : 이 상품에 대한 설명
+        </span>
+      </div>
+      <div class="box pos1">
+        <span>박스2</span>
+        <span class="description d-none">
+          설명 : 이 상품에 대한 설명
+        </span>
+      </div>
+      <div class="box pos2">
+        <span>박스3</span>
+        <span class="description d-none">
+          설명 : 이 상품에 대한 설명
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section id="s4">
+    <h1>스타일을 적용하는 방법4</h1>
+    <style>
+      #s4 .container {
+        height: 200px;
+        border: 1px solid gray;
+        /* position: relative; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #s4 .container .box {
+        position: absolute;
+        /* float: left; */
+        width: 100px;
+        height: 100px;
+        background-color: blueviolet;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        line-height: 100px;
+        transition: 2s;
+        /* left: 0px; */
+        /* top:0px; */
+      }
+
+      #s4 .container .pos0 {
+        transform: translateX(-200px) scale(1);
+        background: red;
+        z-index: 0;
+        opacity: 0.5;
+      }
+
+      #s4 .container .pos1 {
+        transform: translateX(200px) scale(1);
+        background: blue;
+        z-index: 0;
+        opacity: 0.5;
+      }
+
+      #s4 .container .pos2 {
+        transform: translateX(0px) scale(1.5);
+        background: green;
+        opacity: 1;
+        z-index: 1;
+      }
+    </style>
+
+    <div>
+      <input type="button" name="rotate-button" value="오른쪽 회전">
+    </div>
+    <div class="container">
+      <div class="box pos0">박스1</div>
+      <div class="box pos1">박스2</div>
+      <div class="box pos2">박스3</div>
+    </div>
+  </section>
+
+  <section id="s3">
+    <h1>스타일을 적용하는 방법3</h1>
+    <style>
+      #s3 .container {
+        height: 200px;
+        border: 1px solid gray;
+        position: relative;
+      }
+
+      #s3 .container .box {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: blueviolet;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        line-height: 100px;
+        transition: 2s;
+        left: 0px;
+        top: 0px;
+      }
+
+      #s3 .container .pos0 {
+        left: 100px;
+        top: 0px;
+
+      }
+
+      #s3 .container .pos1 {
+        left: 400px;
+        top: 0px;
+      }
+
+      #s3 .container .pos2 {
+        left: 250px;
+        top: 100px;
+      }
+    </style>
+
+    <div>
+      <input type="button" name="rotate-button" value="오른쪽 회전">
+    </div>
+    <div class="container">
+      <div class="box">박스1</div>
+      <div class="box">박스2</div>
+      <div class="box">박스3</div>
+    </div>
+  </section>
+
+  <section id="s2">
+    <style>
+      #s2 .container {
+        height: 200px;
+        border: 1px solid gray;
+      }
+
+      #s2 .container .box {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: blueviolet;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        line-height: 100px;
+      }
+    </style>
+
+    <div>
+      <input class="range-input" max="255" type="range">
+      <input class="x-input" type="checkbox"><label for="">x좌표</label>
+      <input type="checkbox" class="width-input"><label for="">너비</label>
+      <input type="radio" name="bg-color" class="r-input color-input" value="빨강"><label for="">빨강</label>
+      <input type="radio" name="bg-color" class="g-input color-input" value="녹색"><label for="">녹색</label>
+      <input type="radio" name="bg-color" class="b-input color-input" value="파랑"><label for="">파랑</label>
+
+    </div>
+    <div class="container">
+      <div class="box">박스</div>
+    </div>
+  </section>
 
   <section id="s1">
     <style>
@@ -75,131 +365,6 @@
     </ul>
   </nav>
 
-  <script>
-    var section = document.querySelector("#s1");
-    var xInput = section.querySelector(".x-input");
-    var yInput = section.querySelector(".y-input");
-    var movButton = section.querySelector(".mov-button")
-    var colorInput = section.querySelector(".color-input");
-    var box = section.querySelectorAll(".box");
-
-    <input type="button" value="더하기" onclick="buttonClick();"> " 
-    onclick="buttonClick(); 은 아래와 같이 됨
-    movButton.onclick=function(){buttonClick();};
-
-    movButton.onclick = movButtonClick; //함수가 참조되는거임
-
-    function movButtonClick() {
-
-      console.log(box);
-      box[0].style.left = xInput.value + "px";
-      box[0].style.top = yInput.value + "px";
-
-      //다음 스타일 속성은 오류를 유발한다.
-      //box[0].style.background-color=colorInput.value;
-      //해결방법1 : javascript 카멜케이스방식 제공
-      // box[0].style.backgroundColor=colorInput.value;
-      //해결방법2
-      box[0].style["background-color"] = colorInput.value;
-      // box[0]["style"]["background-color"]=colorInput.value;
-
-
-
-      // box[1].style.left=xInput.value+"px";
-      // box[1].style.top=yInput.value+"px";
-    }
-
-    // function buttonClick() {
-    //   var section = document.querySelector("#s1");
-    //   //console.log(section.innerText);
-    //   var xInput = section.querySelector(".x-input");
-    //   var yInput = section.querySelector(".y-input");
-    //   var resultInput = section.querySelector(".result-input");
-
-    //   console.log(xInput.value);
-    //   console.log(yInput.value);
-
-    //  var x=  parseInt(xInput.value);
-    //  var y= parseInt(yInput.value);      
-    //   resultInput.value = x + y;
-    //   // resultInput.value=eval(xInput.value+yInput.value);
-    // }
-
-    // console.log(xInput.value);
-    // alert(xInput.value);
-    // var ul = section.querySelector("ul");
-    // // var next=first.nextSibling;
-    // var first = ul.firstElementChild;
-    // first.innerText = "굳굳";
-    // var next = first.nextElementSibling;
-    // next.innerText = "찾았다";
-
-
-    // //노드 순회하기
-    // var section = document.querySelector("#some-menu");
-    // //console.log(section.innerText);
-
-    // var ul = section.querySelector("ul");
-    // // var next=first.nextSibling;
-    // var first = ul.firstElementChild;
-    // first.innerText = "굳굳";
-    // var next = first.nextElementSibling;
-    // next.innerText = "찾았다";
-
-
-    //노드 선택방법 5: Selectors API를 이용하여 선택하기
-    // var test=document.querySelector("#s1 input");
-    // test.value="진짜?  css 선택자를 사용가능??";
-
-    // =========예제==================================
-    //짜장면 메뉴를 삼선짜장으로 변경하시오.
-
-    // var section =document.querySelector("#some-menu");
-    // var menuItem=section.querySelector("li:first-child");
-    // menuItem.innerText="양장피";
-
-    // var menuItem= document.querySelector("#some-menu ul li:first-child");
-    // menuItem.innerText="삼선짜장";
-
-    // var menuItems= document.querySelectorAll("#some-menu ul li");
-    // menuItems[0].innerText="삼선짜장";
-
-
-    //노드 선택방법 4: 클래스,name 속성, 태그명을 이용한 선택
-    // var s1 = document.getElementById("s1");
-    // var tests = s1.getElementsByClassName("test"); //클래스명
-    // var tests2=s1.getElementsByTagName("input"); //태그명
-    // tests2[0].value= "잘 된다";
-    // tests[0].value = "굳굳";
-    // var test=document.getElementsByClassName("test");
-    // test[0].value="오잉 진짜?";
-
-
-    //노드 선택방법 3: 엘리먼트에 이름(식별자)를 부여해서 순회하는 방식
-    // var noticeTitle=document.getElementById("notice-title");
-    // noticeTitle.value="오잉 진짜?";
-
-    //노드 선택방법 2: 엘리먼트 노드만을 순회하는 방식
-    // window
-    //   .document
-    //   .body
-    //   .children[0]
-    //   .children[1]
-    //   .children[0].value = "엘리먼트 찾았당";
-
-    //노드 선택방법 1: 노드를 순회하는 방식
-    // window
-    //   .document
-    //   .body
-    //   .childNodes[1] //section
-    //   .childNodes[3] //div
-    //   .childNodes[0].value = "나 찾았어?"; //input
-
-    // alert(window
-    //   .document
-    //   .body
-    //   .childNodes[3].nodeType);
-  </script>
 
 </body>
 
