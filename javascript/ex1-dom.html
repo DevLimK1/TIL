@@ -53,14 +53,23 @@
         bottom: 0px;
         background: pink;
         color: red;
-        top:100%;
+        top:0%;
         overflow: hidden;
-        
+        /* 색깔이 500ms 후에 바뀌고 transform500ms 지연된 후 실행*/
+        transition: 1s transform 500ms steps(3,start), 500ms background;
+
+        /* transition-property: transform,background; */
+        transform-origin: left top;
       }
 
       #s6 .container .box .description.slide-up {
         top:0%;
-        transition: 2s;
+      }
+
+      #s6 .container .box:hover .description {
+        /* top:0%; */
+        transform:skew(45deg) scaleY(0.7);
+        background: blue;
       }
 
       /* .slide-up{
