@@ -37,7 +37,9 @@ public class MbRegController extends HttpServlet {
 		String pwd=request.getParameter("pwd");
 		String name=request.getParameter("name");
 		String gender=request.getParameter("gender");
-		String birthday=request.getParameter("birthday");
+		String y=request.getParameter("y");
+		String m=request.getParameter("m");
+		String d=request.getParameter("d");
 		String phone=request.getParameter("phone");
 		String email=request.getParameter("email");
 		
@@ -51,7 +53,7 @@ public class MbRegController extends HttpServlet {
 		member.setPwd(pwd);
 		member.setName(name);
 		member.setGender(gender);
-		member.setBirthday(birthday);
+		member.setBirthday(y+"-"+m+"-"+d);
 		member.setPhone(phone);
 		member.setEmail(email);
 //		notice.setTitle(title);

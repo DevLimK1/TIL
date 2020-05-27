@@ -44,12 +44,12 @@ public class NoticeService {
 
 	}
 
-	public List<NoticeView> getNoticeViewList() throws SQLException, ClassNotFoundException {
+	public List<NoticeView> getNoticeViewList(int page) throws SQLException, ClassNotFoundException {
 
 //		NoticeView[] list = new NoticeView[10];
 		List<NoticeView> list = new ArrayList<>();
 
-		String sql = "SELECT * FROM Notice;"; // _VIEW WHERE NUM BETWEEN 1 AND 10"; // Notice_VIEW에 정렬이 되어있음
+		String sql = "SELECT * FROM Notice ORDER BY regdate DESC LIMIT 10 OFFSET ?"; // _VIEW WHERE NUM BETWEEN 1 AND 10"; // Notice_VIEW에 정렬이 되어있음
 
 //		String url = "jdbc:oracle:thin:@112.223.37.243:1521/xepdb1";
 		String url = "jdbc:mysql://dev.notepubs.com:9898/newlecture?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
@@ -59,6 +59,7 @@ public class NoticeService {
 		Connection con = DriverManager.getConnection(url, "newlecture", "111");
 		PreparedStatement st = con.prepareStatement(sql);
 		// st.setString(1, id);
+		st.setInt(1, (page-1)*10); //1->0,2->10,3->20,30,40...
 
 		ResultSet rs = st.executeQuery();
 

@@ -135,3 +135,6 @@
 
 	</div>
 </main>
+<!--src는 브라우저 기준으로 찾는거다.  -->
+<script src="../js/utils.js" type="text/javascript"></script>
+<script src="../js/notice/list.js" type="text/javascript"></script>

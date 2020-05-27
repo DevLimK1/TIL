@@ -44,7 +44,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="list" items="${list}">
-				<%-- 	<c:set var="pubState" value=""></c:set>
+					<%-- 	<c:set var="pubState" value=""></c:set>
 				
 					<c:if test="${list.pub==true}">
 						<c:set var="pubState" value="checked"></c:set>
@@ -58,7 +58,8 @@
 						<td>${list.writerId}</td>
 						<td>${list.regdate }</td>
 						<td>${list.hit }</td>
-						<td><input type="checkbox" name="open" ${list.pub ? 'checked' : ''}></td>
+						<td><input type="checkbox" name="open"
+							${list.pub ? 'checked' : ''}></td>
 						<td><input type="checkbox" name="del"></td>
 					</tr>
 				</c:forEach>
@@ -102,3 +103,4 @@
 
 	</div>
 </main>
+
