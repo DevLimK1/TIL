@@ -1,4 +1,4 @@
-package com.newlecture.web.controller.notice;
+package com.newlecture.web.controller.admin.board.notice;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.newlecture.web.entity.NoticeView;
 import com.newlecture.web.service.NoticeService;
 
-@WebServlet("/notice/list-data") //Restful data-> xml,csv,"json"
+@WebServlet("/admin/board/notice/list-data") //Restful data-> xml,csv,"json"
 public class ListRestController extends HttpServlet {
 
 	@Override

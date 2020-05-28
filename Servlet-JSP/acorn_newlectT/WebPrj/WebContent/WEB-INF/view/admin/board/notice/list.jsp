@@ -79,7 +79,7 @@
 	<div class="text-align-right margin-top">
 		<input type="submit" class="btn-text btn-default" value="일괄공개">
 		<input type="submit" class="btn-text btn-default" value="일괄삭제">
-		<a class="btn-text btn-default" href="reg">글쓰기</a>
+		<a class="btn-text btn-default reg-button" href="reg">글쓰기</a>
 	</div>
 
 	<div class="margin-top align-center pager">
@@ -91,9 +91,17 @@
 
 		</div>
 		<ul class="-list- center">
-			<li><a class="-text- orange bold" href="?p=1&t=&q=">1</a></li>
+			<c:forEach var="i" begin="1" end="5">
+				<c:set var="orange" />
+				<c:if test="${i==1 }">
+					<c:set var="orange" value="-text- orange bold"></c:set>
+				</c:if>
+
+				<li><a class="${orange }" href="?p=1&t=&q=">${i}</a></li>
+			</c:forEach>
 
 		</ul>
+
 		<div>
 
 
@@ -103,4 +111,5 @@
 
 	</div>
 </main>
-
+<script src="../../../js/utils.js"></script>
+<script src="../../../js/admin/board/notice/list.js"></script>

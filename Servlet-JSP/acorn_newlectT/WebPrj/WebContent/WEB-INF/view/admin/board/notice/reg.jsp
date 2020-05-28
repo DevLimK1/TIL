@@ -49,5 +49,3 @@
 	</form>
 
 </main>
-</div>
-</div>

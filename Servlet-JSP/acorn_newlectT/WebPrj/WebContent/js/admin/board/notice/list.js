@@ -3,21 +3,57 @@
 window.addEventListener("load", function () {
   
 	
+	
 	var notices = [
     { id: 1, title: "hello", writerId: "newlec" },
     { id: 2, title: "hi~", writerId: "newlec" },
   ];
+	
+ 
 
   var section = document.querySelector(".notice");
   var table = section.querySelector(".table");
   var pager = document.querySelector(".pager");
   var ul = pager.querySelector("ul");
   var nums = ul.querySelectorAll("a");
+   
+  var shield=new Shield(".main");
+  var regButton=document.querySelector(".main .reg-button");
+// console.log("shield:"+shield);
 
 // var section = document.querySelector(".pager");
 // var ul = section.querySelector("ul");
 // var nums = ul.querySelectorAll("a");
+  regButton.onclick=regButtonClick;
   
+  function regButtonClick(e){
+	  e.preventDefault();
+	  if (e.target.nodeName != "A") return;
+	  // 부분 페이지 요청
+	  var xhr = new XMLHttpRequest();
+	    xhr.open('GET', 'reg', true); // 비동기 옵션
+	    // 비동기옵션 true : 비동기요청 false:동기형
+	    xhr.onload = function () {
+//	    	  alert(xhr.responseText.trim());
+	    	  
+	    	  var oldMain=document.querySelector(".main");
+	    	  
+	    	  var aside=oldMain.previousElementSibling;
+	    	  var div=document.createElement("div");
+//	    	  div.innerHTML=xhr.responseText.trim(); //문자열을 dom으로 변경
+	    	  
+	    	  var newMain=div.firstElementChild;
+	    	  
+	    	  oldMain.remove();
+//	    	  aside.insertAdjacentElement("afterend",newMain);
+	    	  aside.insertAdjacentHTML("afterend",xhr.responseText.trim());
+	    	  
+	    	  shield.hide();
+	    	  
+	    };
+	    xhr.send(null);
+	    shield.show();
+  }
   
   ul.onclick = pagerClick;
 
@@ -54,38 +90,41 @@ window.addEventListener("load", function () {
     xhr.onload = function () {
     	  notices=JSON.parse(xhr.responseText);
     	  bind();
-    	  removeShield(".main");
+    	  shield.hide();
+// removeShield(".main");
     	  
     };
     xhr.send(null);
     
-    showShield(".main");
+// var shield=showShield(".main");
+    shield.show();
     
-//    var main = document.querySelector(".main");
-//    var shield=document.createElement("div");
-//    shield.className="shield";
-//    //body의 막내로 쉴드를 추가하고
-//    //크기는 화면 크기로
-//    //배경색은 검은색 opacity는 0.5
-//    main.style.position="relative";
-//    shield.style.backgroundColor="black";
-//    shield.style.opacity=0.5;
-//    shield.style.position="absolute";
-//    shield.style.left="0px";
-//    shield.style.top="0px";
-//    shield.style.width="100%";
-//    shield.style.height="100%";
-//    shield.style.display="flex";
-//    shield.style.justifyContent="center";
-//    shield.style.alignItems="center";
+
+// var main = document.querySelector(".main");
+// var shield=document.createElement("div");
+// shield.className="shield";
+// //body의 막내로 쉴드를 추가하고
+// //크기는 화면 크기로
+// //배경색은 검은색 opacity는 0.5
+// main.style.position="relative";
+// shield.style.backgroundColor="black";
+// shield.style.opacity=0.5;
+// shield.style.position="absolute";
+// shield.style.left="0px";
+// shield.style.top="0px";
+// shield.style.width="100%";
+// shield.style.height="100%";
+// shield.style.display="flex";
+// shield.style.justifyContent="center";
+// shield.style.alignItems="center";
 // 
 //    
-//    var icon = document.createElement("img");
-//    icon.src="../images/ajax-loader.gif";
-//    //shield.appendChild(icon) 은 TextNode...
-//    shield.append(icon);
+// var icon = document.createElement("img");
+// icon.src="../images/ajax-loader.gif";
+// //shield.appendChild(icon) 은 TextNode...
+// shield.append(icon);
 //
-//    main.appendChild(shield);
+// main.appendChild(shield);
    
    
     

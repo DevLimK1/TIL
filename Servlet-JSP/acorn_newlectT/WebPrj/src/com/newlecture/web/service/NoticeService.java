@@ -12,6 +12,9 @@ import com.newlecture.web.entity.Notice;
 import com.newlecture.web.entity.NoticeView;
 
 public class NoticeService {
+	
+	
+	
 
 	public Notice getNotice(int id) throws ClassNotFoundException, SQLException {
 
@@ -43,6 +46,9 @@ public class NoticeService {
 		return notice;
 
 	}
+	
+	
+	
 
 	public List<NoticeView> getNoticeViewList(int page) throws SQLException, ClassNotFoundException {
 
