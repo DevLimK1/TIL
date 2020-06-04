@@ -2,23 +2,20 @@ window.addEventListener("load", function(){
     var section = document.querySelector("#s1");
     var container=section.querySelector(".container");
     var box = container.querySelector(".box");
-
-    
     
     var isDragging=false;
     var offset={x:0,y:0};
     
-    //1번째 방법
     var left= container.offsetLeft;
     var top= container.offsetTop;
-    
-    //2번째 방법
-    // var clientRect=container.getBoundingClientRect();
-    // var left2=clientRect.left;
-    // var top2=clientRect.top;
-    // this.console.log(clientRect);
-
     var current=null;
+
+    container.firstElementChild.onmouseenter=function(e){
+        console.log("enter 1");
+    }
+    container.firstElementChild.onmouseenter=function(e){
+        console.log("enter 1");
+    }
     
     container.onmousedown= function(e){
         isDragging=true;
@@ -27,6 +24,22 @@ window.addEventListener("load", function(){
         offset.y=e.offsetY;
         console.log("offset.x ="+offset.x);
         console.log("offset.y ="+offset.y);
+        
+        var currentStyle=window.getComputedStyle(current);
+
+        var width = currentStyle.getPropertyValue("width");
+        var height=currentStyle.getPropertyValue("height")
+
+        current.style.position="absolute";
+
+        var placeHolder =document.createElement("div");
+        
+        placeHolder.style.width= width;
+        placeHolder.style.height= height;
+        placeHolder.style.background="gray";
+        current.parentElement.append(placeHolder);
+        
+
       };
     
     container.onmouseup= function(e){
@@ -40,12 +53,11 @@ window.addEventListener("load", function(){
     
     //안버버벅 방식
     if(current==null)return;
+   
     current.style.left=e.x-offset.x-left+"px"
     current.style.top=e.y-offset.y-top+"px"
     
-    
-    
-    
+
        //버버벅 방식
     //    if(!e.target.classList.contains("box")) return;
     //    console.log(isDragging);

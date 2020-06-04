@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="switch.js"></script>
+</head>
+<body>
+    <section id="s1">
+        <style>
+            html,body,#s1{
+                height: 100%;
+            }
+
+            #s1 .container{
+                height: 100%;
+                background:yellow;
+                border:1px solid gray;
+                overflow: hidden;
+                position: relative;
+                display: flex;
+            }
+
+            #s1>.container>div{
+                /* width:20px; */
+                --border-right:1px solid gray;
+                margin:4px;
+            }
+
+            #s1 .box{                               
+                width:250px;
+                height: 100px;
+                border-radius: 5px;
+                background: pink;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                --position:absolute;
+                cursor: move;
+            }
+        </style>
+        <h1>드래깅</h1>
+        <div class="container">
+            <div>
+                <div class="box">박스1</div>
+            </div>
+            <div>
+                <div class="box">박스2</div>
+            </div>
+            <div>
+                <div class="box">박스3</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
