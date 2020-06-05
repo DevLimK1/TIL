@@ -44,10 +44,12 @@
 				</tr>
 				<tr>
 					<th>첨부파일</th>
-					<td colspan="3"><c:forTokens var="fname"
+					<td colspan="3">
+					
+					<%-- <c:forTokens var="fname"
 							items="file1.zip,file2.gif" delims=",">
-							<a href="">${ fname}</a>
-						</c:forTokens> <%-- ${n.files } --%> <!-- file1.zip,file2.gif --> <!-- <a href="">file1.zip</a>
+							<a href="../../../upload/${n.files}">${fname}</a>
+					</c:forTokens>  --%><%-- ${n.files } --%> <!-- file1.zip,file2.gif --> <!-- <a href="">file1.zip</a>
 										<a href="">file2.gif</a> --></td>
 				</tr>
 				<tr class="content">

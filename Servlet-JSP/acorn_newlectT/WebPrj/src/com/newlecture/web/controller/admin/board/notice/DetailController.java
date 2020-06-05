@@ -39,6 +39,7 @@ public class DetailController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		System.out.println(notice);
 		//3.View에게 전달
 		request.setAttribute("n", notice);
 		

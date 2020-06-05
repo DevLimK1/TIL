@@ -50,12 +50,14 @@ public class ListRestController extends HttpServlet {
 
 //		request.setAttribute("list", list);
 		
-//		Gson gson = new Gson();
+		Gson gson = new Gson();
 //		String json= gson.toJson(list);
 		
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd")
-				.create(); // 날짜 포맷 설정방법
+//		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm")
+//				.create(); // 날짜 포맷 설정방법
 		String json = gson.toJson(list);
+		
+		System.out.println(json);
 		
 		try {
 			Thread.sleep(3000);

@@ -38,6 +38,8 @@ public class NoticeService {
 					rs.getString("CONTENT"), rs.getDate("REGDATE"), rs.getInt("HIT"), rs.getString("FILES"),
 					rs.getBoolean("PUB"));
 		}
+		
+//		System.out.println(notice);
 
 		rs.close();
 		st.close();
@@ -90,7 +92,7 @@ public class NoticeService {
 
 		int result = 0;
 
-		String sql = "INSERT INTO Notice(title,writerId,content) VALUES(?,?,?)";
+		String sql = "INSERT INTO Notice(title,writerId,content,files) VALUES(?,?,?,?)";
 		String url = "jdbc:mysql://dev.notepubs.com:9898/newlecture?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
 
 		Class.forName("com.mysql.cj.jdbc.Driver"); // 최신버전의 드라이버명이다. 하위버전의 mysql에서는 드라이버 클래스가 달라져야함
@@ -100,6 +102,7 @@ public class NoticeService {
 		st.setString(1, notice.getTitle());
 		st.setString(2, notice.getWriterId());
 		st.setString(3, notice.getContent());
+		st.setString(4, notice.getFiles());
 
 		result = st.executeUpdate();
 
