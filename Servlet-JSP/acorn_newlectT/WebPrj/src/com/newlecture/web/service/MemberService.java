@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.newlecture.web.entity.Member;
-import com.newlecture.web.entity.Notice;
 
 public class MemberService {
 	
@@ -70,6 +69,40 @@ public class MemberService {
 		result = st.executeUpdate();
 
 		return result;
+	}
+
+
+	public boolean isValid(String uid, String pwd) throws SQLException, ClassNotFoundException {
+		Member member =null;
+
+		String sql = "SELECT * FROM Member WHERE uid=?";
+		String url = "jdbc:mysql://dev.notepubs.com:9898/newlecture?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
+
+		Class.forName("com.mysql.cj.jdbc.Driver"); // 최신버전의 드라이버명이다. 하위버전의 mysql에서는 드라이버 클래스가 달라져야함
+		Connection con = DriverManager.getConnection(url, "newlecture", "111");
+		PreparedStatement st = con.prepareStatement(sql);
+
+		st.setString(1, uid);
+
+		ResultSet rs = st.executeQuery();
+		
+		if (rs.next()) {
+			member= new Member();
+			member.setId(rs.getInt("id"));
+			member.setUid(rs.getString("uid"));
+			member.setPwd(rs.getString("pwd"));
+		}
+		
+		rs.close();
+		st.close();
+		con.close();
+		
+		if(member==null) //회원이 없음
+			return false;
+		else if(!member.getPwd().equals(pwd)) //비번 체크!
+			return false;
+
+		return true;
 	}
 	
 	
