@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style>
+	.d-none{
+		display: none;
+	}
+	.html-area {
+		min-height: 400px;
+		border: 1px solid #797979;
+	}	
+	</style>
+	<script src="editor.js"></script>
+</head>
+<body>
+	<div class="editor">
+		<div class="toolbar">
+			<button class="btn-bold">B</button>
+			<button class="btn-italic">I</button>
+			<button class="btn-img">Img</button>
+			<input type="file" class="d-none btn-file" >
+		</div>
+		<div class="html-area" contenteditable="true"></div>
+		<textarea class="content" name="content"></textarea>
+	</div>
+</body>
+</html>
