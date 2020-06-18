@@ -19,7 +19,7 @@ import com.newlecture.web.entity.NoticeView;
 public class JdbcNoticeDao implements NoticeDao {
 
 	@Override
-	public List<NoticeView> getList() throws ClassNotFoundException, SQLException {
+	public List<NoticeView> getList(int p,String query,String field) throws ClassNotFoundException, SQLException {
 		int page=1;
 		List<NoticeView> list = new ArrayList<>();
 		int index = 0;
