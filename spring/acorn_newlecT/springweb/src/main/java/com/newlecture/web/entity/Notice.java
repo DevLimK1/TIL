@@ -17,18 +17,6 @@ public class Notice {
 		
 	}
 
-	public Notice(int id, String title, String writerId, String content, Date regdate, int hit, String files, boolean pub) {
-		this.id = id;
-		this.title = title;
-		this.writerId = writerId;
-		this.content = content;
-		this.regdate = regdate;
-		this.hit = hit;
-		this.files = files;
-		this.pub = pub;
-	}
-	
-
 	public int getId() {
 		return id;
 	}

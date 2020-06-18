@@ -14,8 +14,8 @@ import com.newlecture.web.dao.NoticeDao;
 import com.newlecture.web.entity.Notice;
 import com.newlecture.web.entity.NoticeView;
 
-
-@Repository //Dao라서 @Repository 이도 저도 아니면 @Component로한다.->컨테이너에 담긴다.
+//@Repository를 주석처리하면 ioc에 담지 않게 된다.
+//@Repository //Dao라서 @Repository 이도 저도 아니면 @Component로한다.->컨테이너에 담긴다.
 public class JdbcNoticeDao implements NoticeDao {
 
 	@Override
@@ -37,21 +37,19 @@ public class JdbcNoticeDao implements NoticeDao {
 		
 		ResultSet rs = st.executeQuery();
 				
-		while (rs.next()) {
-			NoticeView noticeView = new NoticeView(		
-						rs.getInt("ID"),
-						rs.getString("TITLE"),
-						rs.getString("writerId"),
-						//rs.getString("CONTENT"),
-						rs.getDate("REGDATE"),
-						rs.getInt("HIT"),
-						rs.getString("FILES"),
-						rs.getBoolean("PUB")
-						//rs.getString("WRITER_NAME"),
-						//rs.getInt("CMT_COUNT")						
-					);
-			list.add(noticeView);		
-		}
+		   while (rs.next()) {
+		         NoticeView noticeView = new NoticeView();
+		         noticeView.setId(rs.getInt("ID"));
+		         noticeView.setTitle(rs.getString("TITLE"));
+		         noticeView.setWriterId(rs.getString("writerId"));
+		         noticeView.setRegdate(rs.getDate("REGDATE"));
+		         noticeView.setHit(rs.getInt("HIT"));
+		         noticeView.setFiles(rs.getString("FILES"));
+		         noticeView.setPub(rs.getBoolean("PUB"));
+		         
+		         list.add(noticeView);      
+		      }
+
 
 		rs.close();
 		st.close();

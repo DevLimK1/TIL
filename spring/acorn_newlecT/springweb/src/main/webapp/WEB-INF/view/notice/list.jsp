@@ -99,7 +99,7 @@
 		<c:if test="${i==1}">
 			<c:set var="orange" value="-text- orange bold" />
 		</c:if>		
-		<li><a class="${orange}" href="?p=1&t=&q=" >${i}</a></li>
+		<li><a class="${orange}" href="?p=${i}&t=&q=" >${i}</a></li>
 		</c:forEach>
 	</ul>
 	<%-- <ul class="-list- center">
