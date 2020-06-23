@@ -1,0 +1,316 @@
+<!-- 200524 detail.jsp->html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../../css/board/review/layout.css">
+    <link rel="stylesheet" href="../../../../css/board/review/detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <!-- <link
+	href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+	rel="stylesheet"> -->
+</head>
+
+<body>
+
+    <!-- ************** header ************** -->
+    <header class="header">
+        <div class="box">
+            <nav class="navbar flex">
+                <div class="navbar-logo flex">
+                    <a href="/main">라면모아</a>
+                </div>
+                <ul class="navbar-menu flex">
+                    <li><a href="">라면 소개</a></li>
+                    <li><a href="list">후기 게시판</a></li>
+                    <li><a href="">라면 토론장</a></li>
+                    <li><a href="">레시피 공유</a></li>
+                </ul>
+                <ul class="navbar-member flex">
+                    <li><a class="member-first " href="">로그인</a></li>
+                    <li><a class="member-first " href="">회원가입</a></li>
+                    <li><a class="member-second " href="">고객센터</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- ************** 게시판  main ************** -->
+    <!-- 200603 detail.jsp -> html -->
+    <main id="main">
+
+        <section class="detail">
+
+            <h1 class="d-none">디테일</h1>
+
+            <div class="mini-title-box">
+                <a href="list" class="mini-title">후기게시판 전체목록</a>
+            </div>
+            <div class="title-box">
+                <div class="title fnt_jua">${r.title }</div>
+
+            </div>
+
+            <div class="perface-box detail-margin-top">제조사-품명 : ${r.item }</div>
+
+            <div class="star-grade detail-margin-top">
+                평점 : ${r.gradeTitle } <span class="star">${r.star }</span>
+                [${r.starGrade }점]
+            </div>
+
+            <div class="meta-box detail-margin-top">
+                <div class="meta-info">
+                    <div class="regdate">
+                        <fmt:parseDate var="date" value="${r.regdate}" pattern="yyyy-MM-dd HH:mm" />
+                        <fmt:formatDate value="${date}" pattern="yyyy-MM-dd HH:mm" />
+                        2020-06-03 16:20:03
+                    </div>
+                    <div class="writer-name">${r.writerName }</div>
+                </div>
+                <div class="meta-info">
+                    <div class="hit">조회수 ${r.hit }</div>
+                    <div class="comment">댓글 ${r.comment }</div>
+                    <div class="love">
+                        <span class="love-img">♥</span> ${r.likes }
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="title-box detail-margin-top">
+                    <input class="title-text" type="text" placeholder="제목" value="제목이랍니다" readonly required>
+                </div> -->
+
+            <div class="content-box detail-margin-top">
+                <div class="content">${r.content }</div>
+            </div>
+
+            <form action="" method="POST">
+                <div class="btn-box">
+                    <!--<input type="button" class="btn-text love-btn" value="공감♡"></input>-->
+                    <button type="button" class="love-btn "><span class="love-btn-txt">공감</span><i
+                            class="love-img far fa-heart"></i>
+                        <!--<i class="likes fas fa-heart"></i>--></button>
+                </div>
+            </form>
+
+            <div class="btn-box">
+                <div class="btn-box_box">
+                    <a class="btn-text btn-cancel btn-hover" href="list">이전 목록</a> <a
+                        class="btn-text btn-default btn-hover" href="edit?id=${r.id }">수정</a>
+                    <a class="btn-text btn-default btn-hover" href="del?id=${r.id }">삭제</a>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ------------- comment ------------------ -->
+
+    <section id="comment">
+        <h1 class="d-none">댓글</h1>
+
+        <header class="comment-header">
+            <div class="comment-header-info">
+                <span class="comment-header-title">댓글</span>
+                <span class="comment-header-cnt">총 150개</span>
+            </div>
+            <div class="comment-header-refresh">
+                <i class="fas fa-sync"></i>
+                <span class="refresh-txt">새로고침</span>
+            </div>
+        </header>
+
+        <div class="comment-sort">
+            <ul class="comment-sort-list">
+                <li class="comment-sort-item">인기순</li>
+                <li class="comment-sort-item">최신순</li>
+            </ul>
+        </div>
+
+        <div class="comment-box">
+            <div class="comment-likes">
+                <button type="button" class="likes-btn"><i class="likes far fa-heart"></i>
+                    <!--<i class="likes fas fa-heart"></i>--></button>
+                <div class="likes-cnt">250</div>
+            </div>
+
+            <div class="comment-box_box">
+                <div class="comment-meta-info">
+                    <a href="" class="user-id">id랍니다</a>
+                    <div class="regdate">2020-06-03 15:23:43</div>
+                    <div class="update">
+                        <div class="dots-box">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <div class="update-box">
+                            <div class="update-edit"><span>수정</span></div>
+                            <div class="update-delete"><span>삭제</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="comment-content">
+                    너구리라면이 원래 최애였는데,,
+                    진라면도 진짜 맛있죠,,
+                    공감됩니다!!
+                    너구리라면이 원래 최애였는데,,
+                    진라면도 진짜 맛있죠,,
+                    공감됩니다!!
+                    너구리라면이 원래 최애였는데,,
+                    진라면도 진짜 맛있죠,,
+                    공감됩니다!!
+                </p>
+
+                <ul class="comment-btn-list">
+                    <li class="comment-item">
+                        <button class="comment-item-btn btn-reset comment-report-btn">
+                            <img src="../../../../images/board/siren-2859791_640.png" width="16px" height="16px" alt="">
+                            신고</button>
+                    </li>
+                    <li class="comment-item">
+                        <button class="comment-item-btn btn-reset comment-write-btn"><i
+                                class="fas fa-comment-medical"></i>댓글 쓰기</button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- <form class="comment-form d-none" action="" method="post"> -->
+
+        <div class="comment-write-box">
+            <div class="img-box">
+                <img src="../../../../images/right-arrow-64x64.png" alt="">
+            </div>
+
+            <div class="comment-box_box">
+                <div class="comment-meta-info">
+                    <a href="" class="comment-writer-name">id랍니다</a>
+                    <!-- <div class="regdate">2020-06-03 15:23:43</div> -->
+                </div>
+
+                <textarea class="comment-write-content" name="contents" placeholder="댓글을 입력해주세요." rows="" cols=""
+                    spellcheck="false">sddssd</textarea>
+                <div class="comment-container">
+                    <ul class="comment-btn-list">
+                        <li class="comment-reg-item"><input type="submit" value="등록"
+                                class="comment-reg-btn btn-reset" /></li>
+                        <li class="comment-reg-item margin-left"><a class="comment-cancel-btn"> 취소 </a></li>
+                    </ul>
+
+                    <div class="comment-write-count">
+                        <span class="comment-write-num">0</span>/<span>300</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- </form> -->
+
+        <div class="comment-box">
+            <div class="comment-likes">
+                <button type="button" class="likes-btn"><i class="likes far fa-heart"></i>
+                    <!--<i class="likes fas fa-heart"></i>--></button>
+                <div class="likes-cnt">250</div>
+            </div>
+
+            <div class="comment-box_box">
+                <div class="comment-meta-info">
+                    <a href="" class="user-id">id랍니다</a>
+                    <div class="regdate">2020-06-03 15:23:43</div>
+                </div>
+
+                <p class="comment-content">
+                    너구리라면이 원래 최애였는데,,
+                    진라면도 진짜 맛있죠,,
+                    공감됩니다!!
+                </p>
+
+                <ul class="comment-btn-list">
+                    <li class="comment-item">
+                        <button class="comment-item-btn btn-reset comment-report-btn">
+                            <img src="../../../../images/board/siren-2859791_640.png" width="16px" height="16px" alt="">
+                            신고</button>
+                    </li>
+                    <li class="comment-item">
+                        <button class="comment-item-btn  comment-write-btn btn-reset"><i
+                                class="fas fa-comment-medical"></i>댓글 쓰기</button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="comment-box">
+            <div class="comment-likes">
+                <button type="button" class="likes-btn"><i class="likes far fa-heart"></i>
+                    <!--<i class="likes fas fa-heart"></i>--></button>
+                <div class="likes-cnt">250</div>
+            </div>
+
+            <div class="comment-box_box">
+                <div class="comment-meta-info">
+                    <a href="" class="user-id">id랍니다</a>
+                    <div class="regdate">2020-06-03 15:23:43</div>
+                </div>
+
+                <p class="comment-content">
+                    너구리라면이 원래 최애였는데,,
+                    진라면도 진짜 맛있죠,,
+                    공감됩니다!!
+                </p>
+
+                <ul class="comment-btn-list">
+                    <li class="comment-item">
+                        <button class="comment-item-btn btn-reset comment-report-btn">
+                            <img src="../../../../images/board/siren-2859791_640.png" width="16px" height="16px" alt="">
+                            신고</button>
+                    </li>
+                    <li class="comment-item">
+                        <button class="comment-item-btn comment-write-btn btn-reset"><i
+                                class="fas fa-comment-medical"></i>댓글 쓰기</button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <footer class="footer">
+        <div class="box flex">
+            <ul class="foot-list">
+                <li><a class="privacy" href="">개인정보 처리방침</a></li>
+                <li><a href="">라면모아 소개</a></li>
+                <li><a href="">고객센터</a></li>
+                <li><a href="">처음이세요?</a></li>
+                <li><a href="">제휴</a></li>
+            </ul>
+            <div class="foot-info">
+                <ul class="info-list">
+                    <li>라면모아</li>
+                    <li>라면모아 이메일 :</li>
+                    <li>라면모아 팀 :</li>
+                    <li>고객센터 전화번호</li>
+                </ul>
+                <p class="copy">Copyright 2020. RamyunMoa All rights reserved.</p>
+            </div>
+            <ul class="foot-sns">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+
+</html>

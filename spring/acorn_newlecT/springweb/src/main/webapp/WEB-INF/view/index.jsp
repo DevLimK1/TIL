@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Welcome.....</h1>
-	<img alt="" src="resource/images/생생우동.jpg"> <!-- 원래 실행이 되면 안된다. -->
+	<h1 style="font-size:100px;">인덱스 페이지</h1>
 </body>
 </html>

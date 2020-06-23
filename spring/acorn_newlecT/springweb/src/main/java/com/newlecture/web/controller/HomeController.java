@@ -22,7 +22,7 @@ public class HomeController {
 	@GetMapping("/index")
 	public String index() {
 		
-		return "index";  //"Hello" 이름의 파일을 찾아본다. ->  경로는 
+		return "root.index";  //"Hello" 이름의 파일을 찾아본다. ->  경로는 
 	}
 	
 }
