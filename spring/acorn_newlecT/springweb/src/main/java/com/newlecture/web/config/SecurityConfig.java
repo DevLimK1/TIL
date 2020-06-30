@@ -8,6 +8,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.newlecture.web.security.NewlectureAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -19,8 +22,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception { //url 적어서 url 인증이 필요합니다.
 		http.authorizeRequests()
-		.antMatchers("/admin/**").hasRole("ADMIN")//ADMIN만 접근 가능
-		.antMatchers("/teacher/**").hasRole("TEACHER") //TEACHER만 접근 가능
+		.antMatchers("/admin/**").hasRole("ADMIN")//ADMIN만 접근 가능 , DB에서는 ROLE_ADMIN이 있어야함. ROLE_이 생략된거임
+		.antMatchers("/teacher/**").hasAnyRole("TEACHER","ADMIN") //TEACHER또는 ADMIN만 접근 가능
 		.antMatchers("/student/**").hasRole("STUDENT") //STUDENT만 접근 가능
 		.antMatchers("/member/home").authenticated()//인증 된 사람이면 아무나 다
 		.and()
@@ -28,7 +31,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.loginPage("/member/login") //GET 요청(URL)
 			.loginProcessingUrl("/member/login") //POST 요청 (URL)
 			.defaultSuccessUrl("/index")
+			.successHandler(new NewlectureAuthenticationSuccessHandler()) 
+			//.failureHandler(authenticationFailureHandler)
 		.and()
+		.logout()
+			.logoutUrl("/member/logout")
+			.logoutSuccessUrl("/index")
+			.invalidateHttpSession(true) //session값 지우기
+			.and()
+			//<logout logout-url="/member/logout"
+			//logout-url=~~~/> --> xml 태그가 위와 같이 쓸 수 있음
 		.csrf() //사이트간 요청 위조
 			.disable();
 			
@@ -57,8 +69,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth
 			.jdbcAuthentication()
 				.dataSource(dataSource)
-				.usersByUsernameQuery("select uid id, pwd password, 1 enabled from member where uid=?");
-		//우리가 사용하고 있는 칼럼 테이블 uid를 id라는 별칭으로 바꾼다. pwd -> password , 1(존재하지 않은 것을 상수화)을 enabled라는 별칭을 준다.
+				.usersByUsernameQuery("select uid id, pwd password, 1 enabled from Member where uid=?")//우리가 사용하고 있는 칼럼 테이블 uid를 id라는 별칭으로 바꾼다. pwd -> password , 1(존재하지 않은 것을 상수화)을 enabled라는 별칭을 준다.
+				.authoritiesByUsernameQuery("SELECT uid id, 'ROLE_ADMIN' roleId From Member where uid=?")
+				.passwordEncoder(new BCryptPasswordEncoder());//암호화
+		//enabled , roleId 는 필수(Spring 요구조건)
 			
 	}
 }

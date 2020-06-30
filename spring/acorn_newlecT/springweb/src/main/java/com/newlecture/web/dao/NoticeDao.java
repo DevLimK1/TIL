@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.newlecture.web.entity.Notice;
 import com.newlecture.web.entity.NoticeView;
 
+//NoticeDao.xml 파일에 설정했다면 @Mapper를 주석처리해도 된다.
 @Mapper //mybatis가 ioc에 담겨지게 해줄 annotation이다.
 public interface NoticeDao {//데이터를 가져오는 클래스 , 스프링에서는 repository 라고도 한다.
 	
@@ -21,8 +23,8 @@ public interface NoticeDao {//데이터를 가져오는 클래스 , 스프링에
 //	@Select("SELECT * FROM Notice WHERE TITLE LIKE '%오%' ORDER BY regdate DESC LIMIT 10")
 //	@Select("SELECT * FROM Notice WHERE ${3} LIKE #{2} ORDER BY regdate DESC LIMIT 10") //아래와 같이 써도 됨
 //	@Select("SELECT * FROM Notice WHERE ${param3} LIKE #{param2} ORDER BY regdate DESC LIMIT 10")
-	@Select("SELECT * FROM Notice WHERE ${field} LIKE '%${query}%' ORDER BY regdate DESC LIMIT 10")
-	List<NoticeView> getList(int page,String query,String field) throws ClassNotFoundException, SQLException;
+	@Select("SELECT * FROM Notice WHERE ${field} LIKE '%${query}%' ORDER BY regdate DESC LIMIT 10")// @Param을 사용해서 이름을 직접사용한다. ex..,@Param("field") String field 
+	List<NoticeView> getList(int page,@Param("query") String query,@Param("field") String field) throws ClassNotFoundException, SQLException;
 	
 	
 	@Select("SELECT * FROM Notice WHERE id=#{id}" )

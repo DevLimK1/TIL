@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <!-- view -->
+    <section id="s1">
+        <style>
+            .span-style {
+                color: blue;
+                font-size: 30px;
+                transition: margin-left 1s ease;
+            }
+
+            .span-style.active {
+                margin-left: 200px;
+            }
+
+            .outer {
+                position: relative;
+                border: 1px solid red;
+                padding: 10px;
+            }
+
+            .inner {
+                /* position: relative; */
+                border: 1px solid blue;
+                padding: 10px;
+                /* transition: 2s; */
+            }
+
+            .inner>span:nth-child(3){
+                position: absolute;
+                left: 30px;
+                top: 65px;
+                border: 1px solid red;
+
+            }
+        </style>
+
+        <h1>계산기 View</h1>
+        <input type="text" class="x-input">
+        <input type="text">
+        <input type="submit" value="계산"><br>
+        <div class="outer">
+            <!-- <div class="inner">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+            </div> -->
+            <div>
+            	<form class="inner">
+            		<input type="text" name="title">
+            		<input type="text" name="content">
+            		<input type="submit" name="전송">
+            	</form>
+            </div>
+            <div class="yb">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+            </div>
+        </div>
+
+        <div class=".div">
+            gdg
+        </div>
+
+    </section>
+    <!-- <section ng-controller="calc-controller">
+        <h1>계산기 View</h1>
+        <input type="text" value="{{x}}">
+        <input type="text" value="{{y}}">
+        <input type="submit" value="계산" ng-click="calcClick()">
+        {{x}}
+    </section> -->
+
+    <!-- view -->
+    <section>
+        <h1>갤러리</h1>
+        {{3+4}}
+    </section>
+</body>
+
+</html>

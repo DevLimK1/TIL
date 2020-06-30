@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.Principal;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -44,7 +48,20 @@ public class NoticeController {
 
 		List<NoticeView> list = noticeService.getList(page, query, field);
 		model.addAttribute("list", list);
-
+	/*	
+		Map<String, String> cate1=new HashMap<>();
+		cate1.put("title", "수업노트");
+		
+		Map<String, String> cate2= new HashMap<>();
+		cate2.put("title","코드예제");
+		
+		List<Map<String, String>> categories= new ArrayList<>();
+		categories.add(cate1);
+		categories.add(cate2);
+		
+		model.addAttribute("categories",categories);
+	 */
+		
 //		return "admin/board/notice/list"; // view ->application.properties에 prefix,suffix 참고
 		return "admin.board.notice.list";
 	}
@@ -74,10 +91,20 @@ public class NoticeController {
 
 //	@RequestMapping(value = "reg",method = RequestMethod.POST)
 	@PostMapping("reg")
-	public String reg(Notice notice, MultipartFile[] file, HttpServletRequest request) throws IOException { // file은
-																											// name 키값
-																											// 으로 가지고오는
-																											// 거다
+	public String reg(Notice notice, 
+			MultipartFile[] file, 
+			HttpServletRequest request,
+			Principal principal) throws IOException {
+		// file은 name 키값 으로 가지고오는거다	
+		// Principal 인증된 사용자 정보를 담고있는 클래스
+		
+		
+		String uid=principal.getName();
+		System.out.println("uid:"+uid);
+		
+		notice.setWriterId(uid);
+		
+		
 		// public String reg(String title,String content) {
 		System.out.println("post");
 //		System.out.println(notice);

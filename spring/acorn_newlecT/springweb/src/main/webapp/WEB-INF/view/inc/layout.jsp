@@ -9,9 +9,10 @@
 <html>
 
 <head>
-    <title>코딩 전문가를 만들기 위한 온라인 강의 시스템</title>
     <meta charset="UTF-8">
-    <title>공지사항목록</title>
+    <!-- <title>공지사항목록</title> -->
+    <title><tiles:insertAttribute name="title" ignore="true"/></title>
+    
     
     <link href="/css/customer/layout.css" type="text/css" rel="stylesheet" />
     <link href='<tiles:getAsString name="css"/>' type="text/css" rel="stylesheet" />

@@ -10,7 +10,9 @@
 		<put-attribute name="main" value="/WEB-INF/view/{1}.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
 	</definition>
-	<definition name="admin.*.*.*" template="/WEB-INF/view/inc/layout.jsp">
+	<definition name="admin.*.*.*" template="/WEB-INF/view/inc/layout.jsp" 
+	preparer="com.newlecture.web.tiles.AdminLayoutPreparer">
+		<put-attribute name="title" expression="${n.title}" />
 		<put-attribute name="css" value="/css/admin/layout.css" />
 		<put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
 		<put-attribute name="aside" value="/WEB-INF/view/admin/inc/aside.jsp" />

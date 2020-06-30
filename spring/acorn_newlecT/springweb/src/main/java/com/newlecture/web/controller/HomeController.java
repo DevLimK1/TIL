@@ -2,6 +2,9 @@ package com.newlecture.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.newlecture.web.entity.Notice;
 
 
 
@@ -25,4 +28,26 @@ public class HomeController {
 		return "root.index";  //"Hello" 이름의 파일을 찾아본다. ->  경로는 
 	}
 	
+//	@GetMapping("/data")
+//	@ResponseBody
+//	public String data() {
+//		return "hello";
+//	}
+	
+//	@GetMapping("/data")
+//	@ResponseBody
+//	public Notice data() {
+//		Notice notice =new Notice();
+//		notice.setId(1);
+//		notice.setTitle("hello");
+//		notice.setWriterId("kyenwon");
+//		notice.setHit(10);
+//		return notice;
+//	}
+	
+	@GetMapping("/data")
+	@ResponseBody
+	public String data() {
+		return "alert('hello');"; //jquery.js 에서 $.getScript()사용하면 alert가 바로 실행됨.
+	}
 }

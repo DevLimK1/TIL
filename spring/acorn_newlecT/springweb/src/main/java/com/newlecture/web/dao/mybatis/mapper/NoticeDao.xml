@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.newlecture.web.dao.NoticeDao">
+	<select id="getList" resultType="com.newlecture.web.entity.NoticeView">
+		SELECT * FROM Notice 
+		WHERE ${param3} LIKE '%${param2}%'
+		ORDER BY regdate DESC LIMIT 10
+	</select>
+	
+	<select id="get" resultType="com.newlecture.web.entity.Notice">
+		SELECT * FROM Notice WHERE id=#{id}
+	</select>
+	
+	<insert id="insert" parameterType="com.newlecture.web.entity.Notice">
+		INSERT INTO Notice(title,content) VALUES(#{title},#{content})
+	</insert>
+</mapper>
