@@ -72,7 +72,7 @@ const Customer = () => {
           {/* ----------------main ------------- */}
           <Switch>
             <Route exact path="/customer/notice/list" component={NoticeList}/>
-            <Route exact path="/customer/notice/detail" component={NoticeDetail}/>
+            <Route exact path="/customer/notice/:id" component={NoticeDetail}/>
             <Route exact path="/customer/event/list" component={EventList}/>
           </Switch>
               

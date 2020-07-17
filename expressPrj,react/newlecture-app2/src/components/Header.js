@@ -46,8 +46,8 @@ const Header=()=>{
                         <h1 className="hidden">회원메뉴</h1>
                         <ul>
                             <li><Link to="/">HOME</Link></li>
-                            <li><a href="/member/login.html">로그인</a></li>
-                            <li><a href="/member/agree.html">회원가입</a></li>
+                            <li><Link to="/joinus/member/login">로그인</Link></li>
+                            <li><Link to="/joinus/member/agree">회원가입</Link></li>
                         </ul>
                     </nav>
 

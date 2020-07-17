@@ -2,13 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import queryString from 'query-string';
 import Pager from "../../inc/Pager";
-import ctx from "../../security/SecurityContext";
 
 class List extends React.Component {
   constructor(props) {
     super(props);
-
-    // ctx.userName="newlec";
 
     this.state = {
       notices: [
