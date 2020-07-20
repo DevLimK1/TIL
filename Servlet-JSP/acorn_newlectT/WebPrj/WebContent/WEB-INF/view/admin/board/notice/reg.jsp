@@ -36,7 +36,28 @@
 							type="file" name="file" /></td>
 					</tr>
 					<tr class="content">
-						<td colspan="4"><textarea class="content" name="content"></textarea></td>
+						<td colspan="4">
+						<style>
+							.html-area{
+							
+								min-height: 400px;
+								border: 1px solid #797979;
+							}
+							.html-area *{
+							/* 물려받는 속성을 없앰 */
+								all:unset;
+							}
+						</style>
+						<script type="text/javascript" src="/js/editor/editor.js"></script>
+							<div class="editor">
+								<div class="toolbar">
+									<button class="btn-bold">B</button>
+								</div>
+								<div class="html-area" contenteditable="true"></div>
+								<textarea class="content" name="content"></textarea>
+							</div>
+						</td>
+
 					</tr>
 					<tr>
 						<td colspan="4" class="text-align-right"><input

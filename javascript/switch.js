@@ -9,6 +9,7 @@ window.addEventListener("load", function(){
     var left= container.offsetLeft;
     var top= container.offsetTop;
     var current=null;
+    var placeHolder=null;
 
     container.firstElementChild.onmouseenter=function(e){
         console.log("enter 1");
@@ -16,7 +17,7 @@ window.addEventListener("load", function(){
     container.firstElementChild.onmouseenter=function(e){
         console.log("enter 1");
     }
-    
+
     container.onmousedown= function(e){
         isDragging=true;
         current=e.target;
@@ -31,8 +32,8 @@ window.addEventListener("load", function(){
         var height=currentStyle.getPropertyValue("height")
 
         current.style.position="absolute";
-
-        var placeHolder =document.createElement("div");
+        //placeHolder를 추가
+        placeHolder =document.createElement("div");
         
         placeHolder.style.width= width;
         placeHolder.style.height= height;
@@ -43,8 +44,21 @@ window.addEventListener("load", function(){
       };
     
     container.onmouseup= function(e){
-       isDragging=false;
+
+        var el=document.elementFromPoint(700,300); //위치를 가지고 
+        console.log(el);
+        el.background="red";
+        
+        //placeHolder를 제거와 current 박스의 원위치
+        if(placeHolder!=null){
+            current.style.position="initial";
+            current.style.left="initial";
+            current.style.top="initial";
+            placeHolder.remove();
+        }
+        isDragging=false;
         current=null;
+        
       };
 
     container.onmousemove= function(e){

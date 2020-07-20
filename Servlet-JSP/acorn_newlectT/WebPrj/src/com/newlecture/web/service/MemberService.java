@@ -104,6 +104,33 @@ public class MemberService {
 
 		return true;
 	}
+
+
+	public String getRoleByUserId(String uid) throws ClassNotFoundException, SQLException {
+		String roleName =null;
+
+		String sql = "SELECT type From Member WHERE uid=?";
+		String url = "jdbc:mysql://dev.notepubs.com:9898/newlecture?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
+
+		Class.forName("com.mysql.cj.jdbc.Driver"); // 최신버전의 드라이버명이다. 하위버전의 mysql에서는 드라이버 클래스가 달라져야함
+		Connection con = DriverManager.getConnection(url, "newlecture", "111");
+		PreparedStatement st = con.prepareStatement(sql);
+
+		st.setString(1, uid);
+
+		ResultSet rs = st.executeQuery();
+		
+		if (rs.next()) {
+			roleName=rs.getString("type");
+		}
+		
+		rs.close();
+		st.close();
+		con.close();
+		
+
+		return roleName;
+	}
 	
 	
 }

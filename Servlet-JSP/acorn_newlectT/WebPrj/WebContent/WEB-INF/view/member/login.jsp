@@ -19,7 +19,11 @@
 		<c:if test="param.e==1">
 			<h4 style="color: red;">아이디 또는 비밀번호가 올바르지 않습니다.</h4>
 		</c:if>
-		<form class="login-form" method="post">
+		
+		<!-- <form class="login-form" method="post"> --> 
+		<!-- action을 안써주면 action="login?returnURL=/admin/index"이 저절로 들어간다. --> 
+		<!-- <form class="login-form" action="login" method="post"> --> <!--returnURL=null로 찍힌다.  -->
+		<form class="login-form" action="login?returnURL=${param.returnURL}" method="post">
 			<fieldset>
 				<legend class="hidden">로그인 폼</legend>
 				<h4>

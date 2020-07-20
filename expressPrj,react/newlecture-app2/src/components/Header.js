@@ -1,10 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import SecurityContext from './security/SecurityContext';
 
 const Header=()=>{
+    let loginState;
+    
+    if(SecurityContext.userName===null)
+        loginState=<Link to="/joinus/member/login">로그인</Link>
+    else
+        loginState=<Link to="/joinus/member/logout">로그아웃</Link>
+    
     return (
         <header id="header">
         
+
+
         <div className="content-container">
             {/* <!-- ---------------------------<header>--------------------------------------- --> */}
 
@@ -46,7 +56,7 @@ const Header=()=>{
                         <h1 className="hidden">회원메뉴</h1>
                         <ul>
                             <li><Link to="/">HOME</Link></li>
-                            <li><Link to="/joinus/member/login">로그인</Link></li>
+                            <li>{loginState}</li>
                             <li><Link to="/joinus/member/agree">회원가입</Link></li>
                         </ul>
                     </nav>
@@ -54,7 +64,7 @@ const Header=()=>{
                     <nav id="member-menu" className="linear-layout">
                         <h1 className="hidden">고객메뉴</h1>
                         <ul className="linear-layout">
-                            <li><a href="/member/home"><img src="/images/txt-mypage.png" alt="마이페이지" /></a></li>
+                            <li><Link to="/admin/notice/list"><img src="/images/txt-mypage.png" alt="마이페이지" /></Link></li>
                             <li><Link to="/customer/notice/list"><img src="/images/txt-customer.png" alt="고객센터" /></Link></li>
                         </ul>
                     </nav>

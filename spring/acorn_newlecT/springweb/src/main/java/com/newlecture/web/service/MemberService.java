@@ -24,5 +24,15 @@ public class MemberService {
 		
 		memberDao.insert(member);	
 	}
+
+	public boolean validate(String uid, String pwd) {
+		Member member=memberDao.get(uid);
+		if(member==null)
+			return false;
+		else if(!member.getPwd().equals(pwd))
+			return false;
+		
+		return true;
+	}
 	
 }

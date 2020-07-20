@@ -28,11 +28,12 @@ class Login extends Component {
       if(!json.result)
         alert('아이디 또는 비번이 일치하지 않습니다.');
       else
-        ctx.userName=this.state.id; 
+        ctx.userName=this.state.uid; 
 
-      let returnURL=this.props.state.from;
+      let returnURL=this.props.location.state.from;
+      console.log(returnURL);
       if(returnURL)
-        this.props.history.push(returnURL);
+        this.props.history.push(returnURL); //admin/notice/list
       else
         this.props.history.push("/index");
       

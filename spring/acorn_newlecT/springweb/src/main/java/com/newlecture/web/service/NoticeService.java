@@ -19,8 +19,12 @@ public class NoticeService {
 //	private CommentDao commentDao;
 
 	public List<NoticeView> getList(Integer page, String query, String field) throws ClassNotFoundException, SQLException {
+		int offset=(page-1)*10; // 1->0 , 2->10,3->20
 
-		return noticeDao.getList(page, query, field);
+		int size=10;
+
+		return noticeDao.getList(offset,size,query,field);
+//		return noticeDao.getList(page, query, field);
 	}
 
 	public Notice get(int id) {

@@ -23,8 +23,9 @@ public interface NoticeDao {//데이터를 가져오는 클래스 , 스프링에
 //	@Select("SELECT * FROM Notice WHERE TITLE LIKE '%오%' ORDER BY regdate DESC LIMIT 10")
 //	@Select("SELECT * FROM Notice WHERE ${3} LIKE #{2} ORDER BY regdate DESC LIMIT 10") //아래와 같이 써도 됨
 //	@Select("SELECT * FROM Notice WHERE ${param3} LIKE #{param2} ORDER BY regdate DESC LIMIT 10")
-	@Select("SELECT * FROM Notice WHERE ${field} LIKE '%${query}%' ORDER BY regdate DESC LIMIT 10")// @Param을 사용해서 이름을 직접사용한다. ex..,@Param("field") String field 
-	List<NoticeView> getList(int page,@Param("query") String query,@Param("field") String field) throws ClassNotFoundException, SQLException;
+	@Select("SELECT * FROM Notice WHERE ${field} LIKE '%${query}%' ORDER BY regdate DESC LIMIT #{size} OFFSET ${offset}")// @Param을 사용해서 이름을 직접사용한다. ex..,@Param("field") String field
+	List<NoticeView> getList(@Param("offset") int offset,@Param("size") int size, String query,@Param("field") String field) throws ClassNotFoundException, SQLException;
+//	List<NoticeView> getList(int page,@Param("query") String query,@Param("field") String field) throws ClassNotFoundException, SQLException;
 	
 	
 	@Select("SELECT * FROM Notice WHERE id=#{id}" )

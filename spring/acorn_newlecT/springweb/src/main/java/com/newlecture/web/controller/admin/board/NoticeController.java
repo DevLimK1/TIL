@@ -35,6 +35,7 @@ public class NoticeController {
 	@Autowired // 알아서 해당 클래스객체를 연결시켜준다.
 	private NoticeService noticeService;
 	//	private NoticeDao noticeDao;
+	
 
 	@GetMapping("list")
 	public String list(@RequestParam(name = "p", defaultValue = "1") Integer page,
